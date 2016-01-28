@@ -1,5 +1,5 @@
-#ifndef _DATA_TYPES_H_
-#define _DATA_TYPES_H_
+#ifndef _MATH_TYPES_H_
+#define _MATH_TYPES_H_
 
 /*
 Copyright (c) 2015 Joshua Gibson

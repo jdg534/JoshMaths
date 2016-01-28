@@ -225,6 +225,8 @@ namespace Math
 
 		// slep
 		Quaternion slerp(const Quaternion & a, const Quaternion & b, float t);
+
+		float biLerp(float a0, float a1, float b0, float b1, float tx, float ty);
 	}
 }
 

@@ -201,16 +201,17 @@ PolarCoordinate Math::PolarCoordinateMath::CartesianToPolar(Vector2D & cartVal)
 	PolarCoordinate rv;
 	rv.radius = VectorMath::magnitude(cartVal);
 	rv.angle = atanf(cartVal.x / cartVal.y);
-	rv.angle = radiansToDegrees(rv.angle);
+	// rv.angle = radiansToDegrees(rv.angle); // rads only
 	return rv;
 }
 
 Vector2D Math::PolarCoordinateMath::PolarToCartesian(PolarCoordinate & PolarVal)
 {
 	Vector2D rv;
-	float angleAsRads = degreesToRadians(PolarVal.angle);
-	rv.x = PolarVal.radius * cosf(angleAsRads);
-	rv.y = PolarVal.radius * sinf(angleAsRads);
+	// float angleAsRads = degreesToRadians(PolarVal.angle); 
+	// angle should be in rads
+	rv.x = PolarVal.radius * cosf(PolarVal.angle);
+	rv.y = PolarVal.radius * sinf(PolarVal.angle);
 	return rv;
 }
 
@@ -1421,4 +1422,12 @@ Quaternion Math::interpolation::slerp(const Quaternion & a, const Quaternion & b
 	Quaternion rv = QuaternionMath::add(rvA, rvB);
 	rv = QuaternionMath::normalise(rv);
 	return rv;
+}
+
+float Math::interpolation::biLerp(float a0, float a1, float b0, float b1, float tx, float ty)
+{
+	float ax = lerp(a0, a1, tx);
+	float bx = lerp(b0, b1, tx);
+
+	return lerp(ax, bx, ty);
 }
