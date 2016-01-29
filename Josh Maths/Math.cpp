@@ -34,6 +34,30 @@ float Math::VectorMath::dotProduct(const Vector3D & vecA, const Vector3D & vecB)
 	return (vecA.x * vecB.x) + (vecA.y * vecB.y) + (vecA.z * vecB.z);
 }
 
+float Math::VectorMath::altDotProduct(const Vector2D & vecA, const Vector2D & vecB)
+{
+	//  is |A| |B| cos(theta)
+	float aMag = magnitude(vecA);
+	float bMag = magnitude(vecB);
+
+	// cos(theta) = (A.B)/|A| |B|
+	float cosTheta = dotProduct(vecA, vecB) / (aMag + bMag);
+
+	return aMag * bMag * cosTheta;
+}
+
+float Math::VectorMath::altDotProduct(const Vector3D & vecA, const Vector3D & vecB)
+{
+	//  is |A| |B| cos(theta)
+	float aMag = magnitude(vecA);
+	float bMag = magnitude(vecB);
+
+	// cos(theta) = (A.B)/|A| |B|
+	float cosTheta = dotProduct(vecA, vecB) / (aMag + bMag);
+
+	return aMag * bMag * cosTheta;
+}
+
 Vector2D Math::VectorMath::crossProduct(const Vector2D & vecA, const Vector2D & vecB)
 {
 	Vector2D rv;
@@ -49,6 +73,18 @@ Vector3D Math::VectorMath::crossProduct(const Vector3D & vecA, const Vector3D & 
 	rv.y = (vecA.z * vecB.x) - (vecA.x * vecB.z);
 	rv.z = (vecA.x * vecB.y) - (vecA.y * vecB.x);
 	return rv;
+}
+
+float Math::VectorMath::angleBetween(const Vector2D & a, const Vector2D b)
+{
+	float cosTheta = (dotProduct(a,b)) / (magnitude(a) * magnitude(b));
+	return acosf(cosTheta);
+}
+
+float Math::VectorMath::angleBetween(const Vector3D & a, const Vector3D b)
+{
+	float cosTheta = (dotProduct(a, b)) / (magnitude(a) * magnitude(b));
+	return acosf(cosTheta);
 }
 
 Vector2D Math::VectorMath::add (const Vector2D & a, const Vector2D & b)
@@ -215,7 +251,6 @@ Vector2D Math::PolarCoordinateMath::PolarToCartesian(PolarCoordinate & PolarVal)
 	return rv;
 }
 
-
 Matrix2x1 Math::MatrixMath::add(const Matrix2x1 & a, const Matrix2x1 & b)
 {
 	Matrix2x1 rv;
@@ -320,7 +355,6 @@ Matrix4x4 Math::MatrixMath::add(const Matrix4x4 & a, const Matrix4x4 & b)
 	return rv;
 }
 		
-
 Matrix2x1 Math::MatrixMath::subtract(const Matrix2x1 & a, const Matrix2x1 & b)
 {
 	Matrix2x1 rv;
@@ -426,7 +460,6 @@ Matrix4x4 Math::MatrixMath::subtract(const Matrix4x4 & a, const Matrix4x4 & b)
 
 	return rv;
 }
-
 
 Matrix2x1 Math::MatrixMath::multiply(float scale, const Matrix2x1 & a)
 {
@@ -534,7 +567,6 @@ Matrix4x4 Math::MatrixMath::multiply(float scale, const Matrix4x4 & a)
 	return rv;
 }
 
-
 Matrix2x1 Math::MatrixMath::multiply(const Matrix2x2 & a, const Matrix2x1 & b)
 {
 	Matrix2x1 rv;
@@ -555,7 +587,6 @@ Matrix2x2 Math::MatrixMath::multiply(const Matrix2x2 & a, const Matrix2x2 & b)
 	
 	return rv;
 }
-
 
 Matrix3x1 Math::MatrixMath::multiply(const Matrix3x3 & a, const Matrix3x1 & b)
 {
@@ -584,7 +615,6 @@ Matrix3x3 Math::MatrixMath::multiply(const Matrix3x3 & a, const Matrix3x3 & b)
 
 	return rv;
 }
-
 
 Matrix4x1 Math::MatrixMath::multiply(const Matrix4x4 & a, const Matrix4x1 & b)
 {
@@ -679,7 +709,6 @@ Matrix4x3 Math::MatrixMath::multiply(const Matrix4x3 & a, const Matrix3x3 & b)
 	return rv;
 }
 
-
 float Math::MatrixMath::determinant(const Matrix2x2 & a)
 {
 	return (a.r1c1 * a.r2c2) - (a.r1c2 * a.r2c1);
@@ -716,7 +745,6 @@ float Math::MatrixMath::determinant(const Matrix4x4 & a)
 	bd = a.r1c1 * a.r2c4 * a.r3c3 * a.r4c2;
 	return (aa + ab + ac + ad) - (ba + bb + bc + bd);
 }
-
 
 Matrix2x2 Math::MatrixMath::transpose(const Matrix2x2 & a)
 {
@@ -771,7 +799,6 @@ Matrix4x4 Math::MatrixMath::transpose(const Matrix4x4 & a)
 
 	return rv;
 }
-
 
 Matrix2x2 Math::MatrixMath::inverse(const Matrix2x2 & a)
 {
@@ -846,7 +873,6 @@ Matrix4x4 Math::MatrixMath::inverse(const Matrix4x4 & a)
 	return multiply(mul, b);
 } 
 
-
 void Math::MatrixMath::makeIdentity(Matrix2x2 & a)
 {
 	a.r1c1 = 1.0f; a.r1c2 = 0.0f;
@@ -867,7 +893,6 @@ void Math::MatrixMath::makeIdentity(Matrix4x4 & a)
 	a.r3c1 = 0.0f; a.r3c2 = 0.0f; a.r3c3 = 1.0f; a.r3c4 = 0.0f;
 	a.r4c1 = 0.0f; a.r4c2 = 0.0f; a.r4c3 = 0.0f; a.r4c4 = 1.0f;
 }
-
 
 Quaternion Math::QuaternionMath::conjugate(const Quaternion & original)
 {
@@ -1029,8 +1054,6 @@ Matrix3x3 Math::QuaternionMath::toMatrix3x3(Quaternion & a)
 
 	return rv;
 }
-
-
 
 void Math::transform::scale2D(Matrix2x1 & toScale, float xScale, float yScale)
 {
@@ -1325,12 +1348,32 @@ void Math::transform::translate3D(Matrix3x1 & toTranslate, Vector3D & translateB
 	toTranslate.r3c1 += translateBy.z;
 }
 
+Matrix4x4 Math::transform::calculatePerspectiveProjectionMatrix(float fovInYDirection, float aspectRatio, float nearDepth, float farDepth)
+{
+	// see: https://www.opengl.org/sdk/docs/man2/xhtml/gluPerspective.xml
+	// and http://www.sparknotes.com/testprep/books/sat2/math2c/chapter9section2.rhtml
+
+	float f = fovInYDirection / 2.0f;
+	f = cosf(f) / sinf(f);
+
+	Matrix4x4 rv; // RV Return Value
+	Math::MatrixMath::makeIdentity(rv);
+
+	rv.r1c1 = f / aspectRatio;
+	rv.r2c2 = f;
+	rv.r3c3 = (farDepth + nearDepth) / (nearDepth - farDepth);
+	rv.r3c4 = (2.0f * farDepth * nearDepth) / (nearDepth - farDepth);
+	rv.r4c3 = -1.0f;
+	rv.r4c4 = 0.0f;
+
+	return rv;
+}
+
 float Math::interpolation::lerp(float valueA, float valueB, float targetPoint) // target point should be between 0.0f & 1.0f
 {
 	return (1.0f - targetPoint) * valueA + targetPoint * valueB;
 }
 		
-
 Vector2D Math::interpolation::lerp(const Vector2D & vectorA, const Vector2D & vectorB, float targetPoint)
 {
 	if (targetPoint <= 0.0f)

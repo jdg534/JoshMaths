@@ -33,8 +33,14 @@ namespace Math
 		float dotProduct(const Vector2D & vecA, const Vector2D & vecB);
 		float dotProduct(const Vector3D & vecA, const Vector3D & vecB);
 
+		float altDotProduct(const Vector2D & vecA, const Vector2D & vecB);
+		float altDotProduct(const Vector3D & vecA, const Vector3D & vecB);
+
 		Vector2D crossProduct(const Vector2D & vecA, const Vector2D & vecB);
 		Vector3D crossProduct(const Vector3D & vecA, const Vector3D & vecB);
+
+		float angleBetween(const Vector2D & a, const Vector2D b);
+		float angleBetween(const Vector3D & a, const Vector3D b);
 
 		Vector2D add (const Vector2D & a, const Vector2D & b);
 		Vector2D subtract (const Vector2D & a, const Vector2D & b);
@@ -204,6 +210,10 @@ namespace Math
 	
 		void translate2D(Matrix2x1 & toTranslate, Vector2D & translateBy);
 		void translate3D(Matrix3x1 & toTranslate, Vector3D & translateBy);
+
+		Matrix4x4 calculatePerspectiveProjectionMatrix(float fovInYDirection, float aspectRatio, float nearDepth, float farDepth);
+
+
 	}
 
 	namespace interpolation
