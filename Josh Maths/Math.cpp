@@ -1281,7 +1281,7 @@ Matrix2x2 Math::transform::get2x2ScalingMatrix(float x, float y)
 	return rv;
 }
 		
-Matrix3x3 get3x3ScalingMatrix(float x, float y, float z)
+Matrix3x3 Math::transform::get3x3ScalingMatrix(float x, float y, float z)
 {
 	Matrix3x3 rv;
 	Math::MatrixMath::makeIdentity(rv);
@@ -1430,4 +1430,24 @@ float Math::interpolation::biLerp(float a0, float a1, float b0, float b1, float 
 	float bx = lerp(b0, b1, tx);
 
 	return lerp(ax, bx, ty);
+}
+
+float Math::interpolation::triLerp(float _000, float _100,
+	float _010, float _110,
+
+	float _001, float _101,
+	float _011, float _111,
+
+	float tx, float ty, float tz)
+{
+	float frontAx = lerp(_000, _100, tx);
+	float frontBx = lerp(_010, _110, tx);
+
+	float backAx = lerp(_001, _101, tx);
+	float backBx = lerp(_011, _111, tx);
+
+	float frontPoint = lerp(frontAx, frontBx, ty);
+	float backPoint = lerp(backAx, backBx, ty);
+
+	return lerp(frontPoint, backPoint, tz);
 }
