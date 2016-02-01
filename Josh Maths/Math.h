@@ -211,6 +211,10 @@ namespace Math
 		void translate2D(Matrix2x1 & toTranslate, Vector2D & translateBy);
 		void translate3D(Matrix3x1 & toTranslate, Vector3D & translateBy);
 
+		Matrix4x4 calcRHViewMatrix(Vector3D eye, Vector3D up, Vector3D at);
+		Matrix4x4 calcLHViewMatrix(Vector3D eye, Vector3D up, Vector3D at);
+
+		Matrix4x4 calculateOrthographicProjectionMatrix(float width, float height, float nearZ, float farZ);
 		Matrix4x4 calculatePerspectiveProjectionMatrix(float fovInYDirection, float aspectRatio, float nearDepth, float farDepth);
 
 

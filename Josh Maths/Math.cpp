@@ -1348,11 +1348,101 @@ void Math::transform::translate3D(Matrix3x1 & toTranslate, Vector3D & translateB
 	toTranslate.r3c1 += translateBy.z;
 }
 
+Matrix4x4 Math::transform::calcRHViewMatrix(Vector3D eye, Vector3D up, Vector3D at)
+{
+	// http://www.gamedev.net/page/resources/_/technical/graphics-programming-and-theory/perspective-projections-in-lh-and-rh-systems-r3598
+
+	// first calc 3 Vector3: look, right, up
+
+	Vector3D look = VectorMath::subtract(eye, at);
+	Vector3D right = VectorMath::crossProduct(up, look);
+	Vector3D camUp = VectorMath::crossProduct(look, right);
+
+	float a, b, c;
+	a = VectorMath::dotProduct(right, eye);
+	b = VectorMath::dotProduct(camUp, eye);
+	c = VectorMath::dotProduct(look, eye);
+
+	Matrix4x4 rv;
+	MatrixMath::makeIdentity(rv);
+	rv.r1c1 = right.x;
+	rv.r2c1 = right.y;
+	rv.r3c1 = right.z;
+	rv.r4c1 = a;
+
+	rv.r1c2 = camUp.x;
+	rv.r2c2 = camUp.y;
+	rv.r3c2 = camUp.z;
+	rv.r4c2 = b;
+
+	rv.r1c3 = look.x;
+	rv.r2c3 = look.y;
+	rv.r3c3 = look.z;
+	rv.r4c3 = c;
+
+	return rv;
+
+}
+
+Matrix4x4 Math::transform::calcLHViewMatrix(Vector3D eye, Vector3D up, Vector3D at)
+{
+	// http://www.gamedev.net/page/resources/_/technical/graphics-programming-and-theory/perspective-projections-in-lh-and-rh-systems-r3598
+
+	Vector3D look = VectorMath::subtract(at, eye);
+	Vector3D right = VectorMath::crossProduct(up, look);
+	Vector3D camUp = VectorMath::crossProduct(look, right);
+
+	float a, b, c;
+	a = -VectorMath::dotProduct(right, eye);
+	b = -VectorMath::dotProduct(camUp, eye);
+	c = -VectorMath::dotProduct(look, eye);
+
+	Matrix4x4 rv;
+	MatrixMath::makeIdentity(rv);
+	rv.r1c1 = right.x;
+	rv.r2c1 = right.y;
+	rv.r3c1 = right.z;
+	rv.r4c1 = a;
+
+	rv.r1c2 = camUp.x;
+	rv.r2c2 = camUp.y;
+	rv.r3c2 = camUp.z;
+	rv.r4c2 = b;
+
+	rv.r1c3 = look.x;
+	rv.r2c3 = look.y;
+	rv.r3c3 = look.z;
+	rv.r4c3 = c;
+
+	return rv;
+}
+
+Matrix4x4 Math::transform::calculateOrthographicProjectionMatrix(float width, float height, float nearZ, float farZ)
+{
+	// http://www.codinglabs.net/article_world_view_projection_matrix.aspx
+
+	Matrix4x4 rv;
+	Math::MatrixMath::makeIdentity(rv);
+	rv.r1c1 = 1.0f / width;
+	rv.r2c2 = 1.0f / height;
+	rv.r3c3 = -(2.0f / (farZ - nearZ));
+	rv.r3c4 = -(
+		(farZ + nearZ)
+		/
+		(farZ - nearZ)
+		);
+
+	return rv;
+}
+
 Matrix4x4 Math::transform::calculatePerspectiveProjectionMatrix(float fovInYDirection, float aspectRatio, float nearDepth, float farDepth)
 {
 	// see: https://www.opengl.org/sdk/docs/man2/xhtml/gluPerspective.xml
 	// and http://www.sparknotes.com/testprep/books/sat2/math2c/chapter9section2.rhtml
 
+	// or: http://www.codinglabs.net/article_world_view_projection_matrix.aspx
+
+	/*
 	float f = fovInYDirection / 2.0f;
 	f = cosf(f) / sinf(f);
 
@@ -1364,6 +1454,26 @@ Matrix4x4 Math::transform::calculatePerspectiveProjectionMatrix(float fovInYDire
 	rv.r3c3 = (farDepth + nearDepth) / (nearDepth - farDepth);
 	rv.r3c4 = (2.0f * farDepth * nearDepth) / (nearDepth - farDepth);
 	rv.r4c3 = -1.0f;
+	rv.r4c4 = 0.0f;
+	*/
+
+	Matrix4x4 rv;
+	Math::MatrixMath::makeIdentity(rv);
+	// based on 3DCG wk2 L2 slide 30
+
+	float a = fovInYDirection;
+	float f = farDepth;
+	float n = nearDepth;
+	float r = aspectRatio;
+
+	rv.r1c1 = 1.0f / (r * tanf(a / 2.0f));
+	rv.r2c2 = 1.0f / tanf(a / 2.0f);
+	rv.r3c3 = (f) / (f - n);
+	rv.r3c4 = 1.0f;
+	rv.r4c3 = 
+		(-(n * f)) 
+		/ 
+		(f - n);
 	rv.r4c4 = 0.0f;
 
 	return rv;
