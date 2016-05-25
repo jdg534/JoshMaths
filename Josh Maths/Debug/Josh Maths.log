@@ -1,20 +1,15 @@
-﻿Build started 01/02/2016 20:53:38.
-     1>Project "C:\gitRepos\MathsLib\JoshMaths\Josh Maths\Josh Maths.vcxproj" on node 2 (Build target(s)).
+﻿Build started 25/05/2016 23:48:41.
+     1>Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\Josh Maths.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\" /Fd"Debug\vc140.pdb" /Gd /TP /analyze- /errorReport:prompt Math.cpp main.cpp
-         Math.cpp
-     1>c:\gitrepos\mathslib\joshmaths\josh maths\math.cpp(227): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-     1>c:\gitrepos\mathslib\joshmaths\josh maths\math.cpp(232): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
-         Generating Code...
-         Compiling...
-         main.cpp
-         Generating Code...
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\gitRepos\MathsLib\JoshMaths\Debug\Josh Maths.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /Debug /PDB:"C:\gitRepos\MathsLib\JoshMaths\Debug\Josh Maths.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\gitRepos\MathsLib\JoshMaths\Debug\Josh Maths.lib" /MACHINE:X86 Debug\main.obj
-         Debug\Math.obj
-         Josh Maths.vcxproj -> C:\gitRepos\MathsLib\JoshMaths\Debug\Josh Maths.exe
-     1>Done Building Project "C:\gitRepos\MathsLib\JoshMaths\Josh Maths\Josh Maths.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt JoshMath.cpp
+         JoshMath.cpp
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\josh maths\joshmath.cpp(240): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\josh maths\joshmath.cpp(245): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+       Lib:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\Josh Maths.lib" /NOLOGO Debug\JoshMath.obj
+         Josh Maths.vcxproj -> C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\Josh Maths.lib
+     1>Done Building Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\Josh Maths.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:03.03
+Time Elapsed 00:00:00.31

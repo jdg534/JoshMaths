@@ -15,18 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Math.cpp">
+    <ClCompile Include="JoshMath.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Math.h">
+    <ClInclude Include="MathTypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MathTypes.h">
+    <ClInclude Include="JoshMath.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

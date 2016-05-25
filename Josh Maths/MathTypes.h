@@ -1,5 +1,5 @@
-#ifndef _MATH_TYPES_H_
-#define _MATH_TYPES_H_
+#ifndef MATH_TYPES_H_
+#define MATH_TYPES_H_
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -27,6 +27,14 @@ SOFTWARE.
 struct Vector2D
 {
 	float x, y;
+
+	// operators
+	// bool operator==(const Vector2D & a, const Vector2D & b)
+	friend bool operator==(const Vector2D & a,const Vector2D & b)
+	{
+		return a.x == b.x &&
+			a.y == b.y;
+	}
 };
 
 struct Vector3D
@@ -101,5 +109,7 @@ struct Matrix4x4
 	float r1c3, r2c3, r3c3, r4c3;
 	float r1c4, r2c4, r3c4, r4c4;
 };
+
+
 
 #endif
