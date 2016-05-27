@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "CppUnitTest.h"
 
-//#include <cassert> // needed?, NO!!!
 
-#include <JoshMath.h>
+#include "MathTypes.h"
+#include "JoshMath.h"
 
 #include <sstream>
 #include <string>
@@ -58,6 +58,8 @@ namespace JoshMathsUnitTest
 	// first the vector maths
 	TEST_CLASS(VectorMathsTestClass)
 	{
+	public:
+
 		TEST_METHOD(VectorAdditionWorksIn2D)
 		{
 			Vector2D a;
@@ -71,6 +73,10 @@ namespace JoshMathsUnitTest
 
 			expectedResults.x = 25.0f + 50.0f;
 			expectedResults.y = -25.0f + -100.0f;
+
+			results = Math::VectorMath::add(a, b);
+
+			
 
 			Assert::AreEqual(results, expectedResults);
 		}
