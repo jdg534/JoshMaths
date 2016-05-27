@@ -100,7 +100,7 @@ namespace Math
 		Matrix4x3 subtract(const Matrix4x3 & a, const Matrix4x3 & b);
 		Matrix4x4 subtract(const Matrix4x4 & a, const Matrix4x4 & b);
 
-		// multerplication
+		// multerplication, (with scaler value)
 
 		Matrix2x1 multiply(float scale, const Matrix2x1 & a);
 		Matrix2x2 multiply(float scale, const Matrix2x2 & a);
