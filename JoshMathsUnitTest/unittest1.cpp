@@ -72,6 +72,7 @@ namespace JoshMathsUnitTest
 
 		TEST_METHOD(GeneralMath_ConvetionRadiansToDegrees)
 		{
+			// not exactly the same, but close enough (floating point rounding issues)
 			float radianValue = 5.372f;
 
 			float expectedValue = 307.79293f;
@@ -83,15 +84,17 @@ namespace JoshMathsUnitTest
 
 		TEST_METHOD(PolarCoordinateMath_CartesianToPolar)
 		{
+			// not exactly the same, but close enough (floating point rounding issues)
+
 			Vector2D input;
 			PolarCoordinate expectedRes, actualRes;
 			// angle in rads not degrees
 
-			input.x = 12;
-			input.y = 5;
+			input.x = 3.53553f;
+			input.y = 3.53553f;
 
-			expectedRes.radius = 13;
-			expectedRes.angle = 22.6f;// 
+			expectedRes.radius = 5.0f;
+			expectedRes.angle = 45.0f;
 			expectedRes.angle = Math::degreesToRadians(expectedRes.angle);
 
 			actualRes = Math::PolarCoordinateMath::CartesianToPolar(input);
@@ -107,15 +110,11 @@ namespace JoshMathsUnitTest
 
 			Vector2D expectedResults, actualResults;
 
-			Assert::AreEqual(expectedResults, actualResults);
+			input.angle = Math::degreesToRadians(45.0f);
+			input.radius = 5.0f;
 
-			// https://www.mathsisfun.com/polar-cartesian-coordinates.html
-
-			input.radius = 13;
-			input.angle = 22.6;
-
-			expectedResults.x = 12;
-			expectedResults.y = 5;
+			expectedResults.x = 3.53553f;
+			expectedResults.y = 3.53553f;
 
 			actualResults = Math::PolarCoordinateMath::PolarToCartesian(input);
 

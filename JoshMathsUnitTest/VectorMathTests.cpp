@@ -91,8 +91,43 @@ namespace JoshMathsUnitTest
 		alt dot product
 		cross product
 		angle between
-
-
 		*/
+
+		// subtraction
+		TEST_METHOD(VectorMath_Subtraction2D)
+		{
+			Vector2D a, b, actual, expected;
+			a.x = b.x = 12.752f;
+			a.y = b.y = 1324.43f;
+
+			expected.x = expected.y = 0.0f;
+			actual = Math::VectorMath::subtract(a, b);
+
+			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(VectorMath_Subtraction3D)
+		{
+			Vector3D a, b, actual, expected;
+			a.x = b.x = 12.752f;
+			a.y = b.y = 1324.43f;
+			a.z = b.z = 534.123f;
+
+			expected.x = expected.y = expected.z = 0.0f;
+			actual = Math::VectorMath::subtract(a, b);
+
+			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(VectorMath_WayTo2D)
+		{
+
+		}
+
+		TEST_METHOD(VectorMath_WayTo3D)
+		{
+
+		}
+
 	};
 }
