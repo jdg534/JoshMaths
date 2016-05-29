@@ -63,10 +63,6 @@ namespace Math
 		float lookAt2D(const Vector2D & currentlyLookingAtPos, const Vector2D & toLookAtPos, const Vector2D & currentPos);// return angle to rotate by in radians
 		Matrix4x4 lookAt3D(Vector3D & position, Vector3D & targetPosition, Vector3D & upVec);
 
-		// comparison funcs (MS unit test were tempremental with == operator) 
-		bool sameValues(const Vector2D & a, const Vector2D & b);
-		bool sameValues(const Vector3D & a, const Vector3D & b);
-
 	}
 
 	

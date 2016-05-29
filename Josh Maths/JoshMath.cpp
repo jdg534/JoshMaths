@@ -222,19 +222,6 @@ Matrix4x4 Math::VectorMath::lookAt3D(Vector3D & position, Vector3D & targetPosit
 	return rv;
 }
 
-bool Math::VectorMath::sameValues(const Vector2D & a, const Vector2D & b)
-{
-	return a.x == b.x
-		&& a.y == b.y;
-}
-
-bool Math::VectorMath::sameValues(const Vector3D & a, const Vector3D & b)
-{
-	return a.x == b.x
-		&& a.y == b.y
-		&& a.z == b.z;
-}
-
 float Math::degreesToRadians(float valueInDegrees)
 {
 	return valueInDegrees * (3.14159265359 / 180);

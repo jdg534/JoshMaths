@@ -121,13 +121,112 @@ namespace JoshMathsUnitTest
 
 		TEST_METHOD(VectorMath_WayTo2D)
 		{
+			Vector2D pointOfOrigin, targetPoint, expectedResults, actualResults;
+			pointOfOrigin.x = 77.8271f;
+			pointOfOrigin.y = 151.561f;
+			targetPoint.x = 81.73;
+			targetPoint.y = 123.456f;
 
+			expectedResults.x = targetPoint.x - pointOfOrigin.x;
+			expectedResults.y = targetPoint.y - pointOfOrigin.y;
+
+			actualResults = Math::VectorMath::wayToVector(pointOfOrigin, targetPoint);
+			Assert::AreEqual(expectedResults, actualResults);
 		}
 
 		TEST_METHOD(VectorMath_WayTo3D)
 		{
+			Vector3D pointOfOrigin, targetPoint, expectedResults, actualResults;
+			pointOfOrigin.x = 77.8271f;
+			pointOfOrigin.y = 151.561f;
+			pointOfOrigin.z = 456.789f;
+			targetPoint.x = 81.73;
+			targetPoint.y = 123.456f;
+			targetPoint.z = 789.654f;
 
+			expectedResults.x = targetPoint.x - pointOfOrigin.x;
+			expectedResults.y = targetPoint.y - pointOfOrigin.y;
+			expectedResults.z = targetPoint.z - pointOfOrigin.z;
+
+			actualResults = Math::VectorMath::wayToVector(pointOfOrigin, targetPoint);
+			Assert::AreEqual(expectedResults, actualResults);
 		}
 
+		// mag
+		TEST_METHOD(VectorMath_Mag2D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		TEST_METHOD(VectorMath_Mag3D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		// scale
+		TEST_METHOD(VectorMath_Scale2D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		TEST_METHOD(VectorMath_Scale3D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		// unit vector
+		TEST_METHOD(VectorMath_UnitVec2D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		TEST_METHOD(VectorMath_UnitVec3D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		// dot product
+		TEST_METHOD(VectorMath_DotProd2D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		TEST_METHOD(VectorMath_DotProd3D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		// alt dot product
+		TEST_METHOD(VectorMath_AltDotProd2D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		TEST_METHOD(VectorMath_AltDotProd3D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		// cross product
+		TEST_METHOD(VectorMath_Cross2D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		TEST_METHOD(VectorMath_Cross3D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		// look at
+		TEST_METHOD(VectorMath_LookAt2D)
+		{
+			Assert::AreEqual(1, 0);
+		}
+
+		TEST_METHOD(VectorMath_LookAt3D)
+		{
+			Assert::AreEqual(1, 0);
+		}
 	};
 }
