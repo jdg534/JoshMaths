@@ -1,21 +1,29 @@
-﻿Build started 29/05/2016 01:24:09.
-     1>Project "C:\Users\user\Desktop\joshMaths\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" on node 2 (Build target(s)).
+﻿Build started 30/05/2016 00:40:05.
+     1>Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"C:\Users\user\Desktop\joshMaths\JoshMaths\Josh Maths\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt VectorMathTests.cpp
-         VectorMathTests.cpp
-     1>c:\users\user\desktop\joshmaths\joshmaths\joshmathsunittest\vectormathtests.cpp(82): warning C4101: 'results' : unreferenced local variable
-     1>c:\users\user\desktop\joshmaths\joshmaths\joshmathsunittest\vectormathtests.cpp(127): warning C4305: '=' : truncation from 'double' to 'float'
-     1>c:\users\user\desktop\joshmaths\joshmaths\joshmathsunittest\vectormathtests.cpp(143): warning C4305: '=' : truncation from 'double' to 'float'
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt MatrixMathTests.cpp
+         MatrixMathTests.cpp
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(273): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(306): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(339): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(372): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(406): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(439): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(472): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(505): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(538): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(571): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(604): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" /LIBPATH:C:\Users\user\Desktop\joshMaths\JoshMaths\Debug "Josh Maths.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.lib" /MACHINE:X86 /DLL Debug\MatrixMathTests.obj
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" /LIBPATH:C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug "Josh Maths.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.lib" /MACHINE:X86 /DLL Debug\MatrixMathTests.obj
          Debug\QuaternionMathTests.obj
          Debug\stdafx.obj
          Debug\unittest1.obj
          Debug\VectorMathTests.obj
-            Creating library C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.lib and object C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.exp
-         JoshMathsUnitTest.vcxproj -> C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.dll
-     1>Done Building Project "C:\Users\user\Desktop\joshMaths\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" (Build target(s)).
+            Creating library C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.lib and object C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.exp
+         JoshMathsUnitTest.vcxproj -> C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.dll
+     1>Done Building Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.11
+Time Elapsed 00:00:01.10

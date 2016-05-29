@@ -41,8 +41,9 @@ float Math::VectorMath::altDotProduct(const Vector2D & vecA, const Vector2D & ve
 	float bMag = magnitude(vecB);
 
 	// cos(theta) = (A.B)/|A| |B|
-	float cosTheta = dotProduct(vecA, vecB) / (aMag + bMag);
-
+	float thetaRads = angleBetween(vecA, vecB);
+	// float cosTheta = dotProduct(vecA, vecB) / (aMag + bMag);
+	float cosTheta = cosf(thetaRads);
 	return aMag * bMag * cosTheta;
 }
 
@@ -53,7 +54,10 @@ float Math::VectorMath::altDotProduct(const Vector3D & vecA, const Vector3D & ve
 	float bMag = magnitude(vecB);
 
 	// cos(theta) = (A.B)/|A| |B|
-	float cosTheta = dotProduct(vecA, vecB) / (aMag + bMag);
+	float thetaRads = angleBetween(vecA, vecB);
+	float cosTheta = cosf(thetaRads);
+
+	// float cosTheta = dotProduct(vecA, vecB) / (aMag + bMag);
 
 	return aMag * bMag * cosTheta;
 }
@@ -69,7 +73,7 @@ Vector2D Math::VectorMath::crossProduct(const Vector2D & vecA, const Vector2D & 
 Vector3D Math::VectorMath::crossProduct(const Vector3D & vecA, const Vector3D & vecB)
 {
 	Vector3D rv;
-	rv.x = (vecA.y * vecB.z) - (vecB.z * vecA.y);
+	rv.x = (vecA.y * vecB.z) - (vecA.z * vecB.y);
 	rv.y = (vecA.z * vecB.x) - (vecA.x * vecB.z);
 	rv.z = (vecA.x * vecB.y) - (vecA.y * vecB.x);
 	return rv;
@@ -150,7 +154,7 @@ Vector2D Math::VectorMath::scaled(float scale, const Vector2D & toScale)
 	Vector2D rv;
 	rv.x = toScale.x * scale;
 	rv.y = toScale.y * scale;
-	return toScale;
+	return rv;
 }
 
 Vector3D Math::VectorMath::scaled(float scale, const Vector3D & toScale)

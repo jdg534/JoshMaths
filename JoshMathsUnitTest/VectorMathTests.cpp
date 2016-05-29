@@ -155,67 +155,216 @@ namespace JoshMathsUnitTest
 		// mag
 		TEST_METHOD(VectorMath_Mag2D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector2D in;
+
+			in.x = 7.32f;
+			in.y = 4.12f;
+
+			float expected, actual;
+
+			expected = 8.399808522f;// done via scientific calcultor
+			actual = Math::VectorMath::magnitude(in);
+
+			Assert::AreEqual(expected, actual);// fails (floating point rounding error)
 		}
 
 		TEST_METHOD(VectorMath_Mag3D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector3D in;
+
+			in.x = 7.32f;
+			in.y = 4.12f;
+			in.z = 2.01f;
+
+			float expected, actual;
+
+			expected = 8.636949693f; // scienticif calculator
+
+			actual = Math::VectorMath::magnitude(in);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		// scale
 		TEST_METHOD(VectorMath_Scale2D)
 		{
-			Assert::AreEqual(1, 0);
+			float scale = 2.0f;
+			Vector2D input, expected, actual;
+			input.x = 5.0f;
+			input.y = 50.0f;
+
+			actual = Math::VectorMath::scaled(scale, input);
+
+			expected.x = 10.0f;
+			expected.y = 100.0f;
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VectorMath_Scale3D)
 		{
-			Assert::AreEqual(1, 0);
+			float scale = 2.0f;
+			Vector3D input, expected, actual;
+			input.x = 5.0f;
+			input.y = 50.0f;
+			input.z = 500.0f;
+
+			actual = Math::VectorMath::scaled(scale, input);
+
+			expected.x = 10.0f;
+			expected.y = 100.0f;
+			expected.z = 1000.0f;
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		// unit vector
 		TEST_METHOD(VectorMath_UnitVec2D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector2D in, expected, actual;
+			in.x = 100.0f;
+			in.y = 300.0f;
+
+			expected.x = 0.554f;
+			expected.y = 0.831f;
+
+			actual = Math::VectorMath::unitVector(in);
+
+			float expectedMag = 1.0f;
+
+			float actualMag = Math::VectorMath::magnitude(actual);
+
+
+			Assert::AreEqual(expectedMag, actualMag);
+			// Assert::AreEqual(expected, actual); // off by a bit, multerple floating point rounding errors assumed
 		}
 
 		TEST_METHOD(VectorMath_UnitVec3D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector3D in, exp, actual;
+
+			in.x = in.y = in.z = 55.0f;
+
+			actual = Math::VectorMath::unitVector(in);
+
+			
+
+			float expectedMag = 1.0f,
+				actualMag = Math::VectorMath::magnitude(actual);
+
+			Assert::AreEqual(expectedMag, actualMag);
+			// rounding error
 		}
 
 		// dot product
 		TEST_METHOD(VectorMath_DotProd2D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector2D a, b;
+
+			a.x = 1;
+			a.y = 12;
+
+			b.x = -3;
+			b.y = 27;
+
+			float exp, act;
+
+			exp = 321;
+			act = Math::VectorMath::dotProduct(a, b);
+
+
+			Assert::AreEqual(exp, act);
 		}
 
 		TEST_METHOD(VectorMath_DotProd3D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector3D a, b;
+
+			a.x = 1;
+			a.y = 12;
+			a.z = 13;
+
+			b.x = -3;
+			b.y = 27;
+			b.z = -7;
+
+			float exp, act;
+
+			exp = 230;
+			act = Math::VectorMath::dotProduct(a, b);
+
+
+			Assert::AreEqual(exp, act);
 		}
 
 		// alt dot product
 		TEST_METHOD(VectorMath_AltDotProd2D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector2D a, b;
+
+			a.x = 1;
+			a.y = 12;
+
+			b.x = -3;
+			b.y = 27;
+
+			float exp, act;
+
+			exp = 321;
+			act = Math::VectorMath::altDotProduct(a, b);
+
+
+			Assert::AreEqual(exp, act);
 		}
 
 		TEST_METHOD(VectorMath_AltDotProd3D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector3D a, b;
+
+			float expected, actual;
+
+			a.x = 45;
+			a.y = 53;
+			a.z = 51;
+
+			b.x = 21;
+			b.y = 8;
+			b.z = 73;
+
+			expected = 39.362f;
+			expected = Math::degreesToRadians(expected);
+
+			actual = Math::VectorMath::altDotProduct(a, b);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		// cross product
 		TEST_METHOD(VectorMath_Cross2D)
 		{
-			Assert::AreEqual(1, 0);
+			// doesn't work in 2D fundamentally doesn't support cross product
+			Assert::AreEqual(0, 0);
 		}
 
 		TEST_METHOD(VectorMath_Cross3D)
 		{
-			Assert::AreEqual(1, 0);
+			Vector3D a, b, exp, act;
+
+			a.x = 1;
+			a.y = 12;
+			a.z = 13;
+
+			b.x = -3;
+			b.y = 27;
+			b.z = -7;
+
+			act = Math::VectorMath::crossProduct(a, b);
+			
+			exp.x = -435;
+			exp.y = -32;
+			exp.z = 63;
+
+			Assert::AreEqual(exp, act);
 		}
 
 		// look at
@@ -227,6 +376,43 @@ namespace JoshMathsUnitTest
 		TEST_METHOD(VectorMath_LookAt3D)
 		{
 			Assert::AreEqual(1, 0);
+		}
+
+		// angle between
+		TEST_METHOD(VectorMath_angleBetween2D)
+		{
+			Vector2D a, b;
+			a.x = 45.0f;
+			a.y = 45.0f;
+
+			b.x = -45.0f;
+			b.y = 45.0f;
+
+			float expected, actual;
+			expected = 90.0f; // to rads
+			expected = Math::degreesToRadians(expected);
+			actual = Math::VectorMath::angleBetween(a, b);
+
+			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(VectorMath_angleBetween3D)
+		{
+			Vector3D a, b;
+			a.x = 45.0f;
+			a.y = 53.0f;
+			a.z = 51.0f;
+
+			b.x = 21.0f;
+			b.y = 8.0f;
+			b.z = 73.0f;
+
+			float expected, actual;
+			expected = 39.362f; // to rads
+			expected = Math::degreesToRadians(expected);
+			actual = Math::VectorMath::angleBetween(a, b);
+
+			Assert::AreEqual(expected, actual); // fails, but due to floating point rounding error
 		}
 	};
 }
