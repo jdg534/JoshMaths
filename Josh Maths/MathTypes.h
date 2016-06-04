@@ -215,5 +215,59 @@ struct Matrix4x4
 };
 
 
+// bounding volumes, ray object intersection tests to be done, via maths library
+// won't deal with BVH yet
+
+struct Ray2D
+{
+	Vector2D pointOfOrigin;
+	Vector2D direction; // this MUST be a unit vector
+};
+
+struct Ray3D
+{
+	Vector3D pointOfOrigin;
+	Vector3D direction; // MUST be a unit vector
+};
+
+enum BoundingVolumeType
+{
+	BVT_UNDEFINED = 0,
+	BVT_BOX,
+	BVT_CUBE,
+	BVT_CIRCLE,
+	BVT_SPHERE
+};
+
+struct BoundingVolumeBase
+{
+	unsigned short bvType;
+};
+
+
+
+struct BoundingBox : public BoundingVolumeBase
+{
+	float left, right, top, bottom;
+};
+
+struct BoundingCube : public BoundingBox
+{
+	float front, back;
+};
+
+struct BoundingCircle : public BoundingVolumeBase
+{
+	Vector2D position;
+	float radius;
+};
+
+struct BoundingSphere : public BoundingVolumeBase
+{
+	Vector3D position;
+	float radius;
+};
+// figure out how a cylender should be represented (currently low priorty)
+
 
 #endif

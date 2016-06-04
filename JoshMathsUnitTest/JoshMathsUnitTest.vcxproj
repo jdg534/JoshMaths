@@ -88,6 +88,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="InterpolationMathTests.cpp" />
     <ClCompile Include="MatrixMathTests.cpp" />
     <ClCompile Include="QuaternionMathTests.cpp" />
     <ClCompile Include="stdafx.cpp">

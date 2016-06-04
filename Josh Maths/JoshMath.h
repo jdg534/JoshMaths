@@ -54,6 +54,9 @@ namespace Math
 		float magnitude (const Vector2D & a);
 		float magnitude (const Vector3D & a);
 
+		float magnitudeSquared(const Vector2D & a);
+		float magnitudeSquared(const Vector3D & a);
+
 		Vector2D scaled(float scale, const Vector2D & toScale);
 		Vector3D scaled(float scale, const Vector3D & toScale);
 
@@ -176,7 +179,7 @@ namespace Math
 		Matrix3x3 toMatrix3x3(Quaternion & a);
 	}
 
-	namespace transform
+	namespace Transform
 	{
 		void scale2D(Matrix2x1 & toScale, float xScale, float yScale);
 		void scale3D(Matrix3x1 & toScale, float xScale, float yScale, float zScale);
@@ -221,7 +224,7 @@ namespace Math
 
 	}
 
-	namespace interpolation
+	namespace Interpolation
 	{
 		float lerp(float valueA, float valueB, float targetPoint); // target point should be between 0.0f & 1.0f
 		
@@ -272,6 +275,37 @@ namespace Math
 			float _011, float _111,
 
 			float tx, float ty, float tz);
+
+		float interpolationWeight(float min, float max, float x);
+	}
+
+	namespace VolumeIntersection
+	{
+		bool volumesOverlap(const BoundingBox & a, const BoundingBox & b);
+		bool volumesOverlap(const BoundingCircle & a, const BoundingCircle & b);
+		bool volumesOverlap(const BoundingSphere & a, const BoundingSphere & b);
+		bool volumesOverlap(const BoundingCube & a, const BoundingCube & b);
+		
+		bool pointInBoundingVolume(const Vector2D & a, const BoundingBox & vol);
+		bool pointInBoundingVolume(const Vector2D & a, const BoundingCircle & vol);
+		bool pointInBoundingVolume(const Vector3D & a, const BoundingSphere & vol);
+		bool pointInBoundingVolume(const Vector3D & a, const BoundingCube & vol);
+
+		bool volumeInRayPath(const Ray2D & r, const BoundingBox & vol);
+		bool volumeInRayPath(const Ray2D & r, const BoundingCircle & vol);
+		bool volumeInRayPath(const Ray3D & r, const BoundingSphere & vol);
+		bool volumeInRayPath(const Ray3D & r, const BoundingCube & vol);
+
+		float rayDistanceToCollision(const Ray2D & r, const BoundingBox & vol);
+		float rayDistanceToCollision(const Ray2D & r, const BoundingCircle & vol);
+		float rayDistanceToCollision(const Ray3D & r, const BoundingSphere & vol);
+		float rayDistanceToCollision(const Ray3D & r, const BoundingCube & vol);
+	}
+
+	namespace Miscellaneous
+	{
+		// returns an alterture relative to the parabola's centre point
+		float parabola(const Vector2D & questionCoord, const Vector2D & parabolaCentrePoint, float parabolaRadius); // based off: http://www.stuffwithstuff.com/robot-frog/3d/hills/hill.html
 	}
 }
 
