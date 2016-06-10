@@ -910,11 +910,27 @@ void Math::MatrixMath::makeIdentity(Matrix4x4 & a)
 	a.r4c1 = 0.0f; a.r4c2 = 0.0f; a.r4c3 = 0.0f; a.r4c4 = 1.0f;
 }
 
+Quaternion Math::QuaternionMath::create(float angle, Vector3D axis)
+{
+	Vector3D axisUnitVecForm = Math::VectorMath::unitVector(axis);
+
+	float cosThetaOver2, sinThetaOver2;
+	cosThetaOver2 = cosf(angle / 2.0f);
+	sinThetaOver2 = sinf(angle / 2.0f);
+
+	Quaternion rv;
+	rv.w = cosThetaOver2;
+	rv.x = axisUnitVecForm.x * sinThetaOver2;
+	rv.y = axisUnitVecForm.y * sinThetaOver2;
+	rv.z = axisUnitVecForm.z * sinThetaOver2;
+	return rv;
+}
+
 Quaternion Math::QuaternionMath::conjugate(const Quaternion & original)
 {
 	Quaternion rv;
 
-	rv.theta = original.theta;
+	rv.w = original.w;
 	rv.x = 0.0f - original.x;
 	rv.y = 0.0f - original.y;
 	rv.z = 0.0f - original.z;
@@ -931,7 +947,7 @@ Quaternion Math::QuaternionMath::normalise(Quaternion & toNormalise)
 		rv.x = 0.0f;
 		rv.y = 0.0f;
 		rv.z = 0.0f;
-		rv.theta = 1.0f;
+		rv.w = 1.0f;
 	}
 	else
 	{
@@ -951,24 +967,24 @@ Quaternion Math::QuaternionMath::scale(const Quaternion & toScale, float scale)
 	rv.x = toScale.x * scale;
 	rv.y = toScale.y * scale;
 	rv.z = toScale.z * scale;
-	rv.theta = toScale.theta * scale;
+	rv.w = toScale.w * scale;
 	return rv;
 }
 
 Quaternion Math::QuaternionMath::multiply(const Quaternion & a, const Quaternion & b)
 {
 	Quaternion rv;
-	rv.x = a.x * b.theta + a.y * b.z - a.z * b.y + a.theta * b.x;
-	rv.y = -a.x * b.z + a.y * b.theta + a.z * b.x + a.theta * b.y;
-	rv.z = a.x * b.y - a.y * b.x + a.z * b.theta + a.theta * b.z;
-	rv.theta = -a.x * b.x - a.y * b.y - a.z * b.z + a.theta * b.theta;
+	rv.w = (a.w * b.w - a.x * b.x - a.y * b.y - a.z * b.z);
+	rv.x = (a.w * b.x + a.x * b.w + a.y * b.z - a.z * b.y);
+	rv.y = (a.w * b.y - a.x * b.z + a.y * b.w + a.z * b.x);
+	rv.z = (a.w * b.z + a.x * b.y - a.y * b.x + a.z * b.w);
 	return rv;
 }
 
 Quaternion Math::QuaternionMath::add(const Quaternion & a, const Quaternion & b)
 {
 	Quaternion rv;
-	rv.theta = a.theta + b.theta;
+	rv.w = a.w + b.w;
 	rv.x = a.x + b.x;
 	rv.y = a.y + b.y;
 	rv.z = a.z + b.z;
@@ -978,7 +994,7 @@ Quaternion Math::QuaternionMath::add(const Quaternion & a, const Quaternion & b)
 Quaternion Math::QuaternionMath::subtract(const Quaternion & a, const Quaternion & b)
 {
 	Quaternion rv;
-	rv.theta = a.theta - b.theta;
+	rv.w = a.w - b.w;
 	rv.x = a.x - b.x;
 	rv.y = a.y - b.y;
 	rv.z = a.z - b.z;
@@ -987,7 +1003,7 @@ Quaternion Math::QuaternionMath::subtract(const Quaternion & a, const Quaternion
 
 void Math::QuaternionMath::identityForMul(Quaternion & a)
 {
-	a.theta = 1.0f;
+	a.w = 1.0f;
 	a.x = 0.0f;
 	a.y = 0.0f;
 	a.z = 0.0f;
@@ -995,7 +1011,7 @@ void Math::QuaternionMath::identityForMul(Quaternion & a)
 
 void Math::QuaternionMath::identityForAdd(Quaternion & a)
 {
-	a.theta = 0.0f;
+	a.w = 0.0f;
 	a.x = 0.0f;
 	a.y = 0.0f;
 	a.z = 0.0f;
@@ -1006,7 +1022,7 @@ float Math::QuaternionMath::norm(Quaternion & a)
 	return sqrtf(a.x * a.x 
 		+ a.y * a.y
 		+ a.z * a.z
-		+ a.theta * a.theta);
+		+ a.w * a.w);
 }
 
 Quaternion Math::QuaternionMath::inverse(Quaternion & a)
@@ -1019,32 +1035,32 @@ Quaternion Math::QuaternionMath::inverse(Quaternion & a)
 Matrix4x4 Math::QuaternionMath::toMatrix4x4(Quaternion & a)
 {
 	Matrix4x4 rv;
-	float tx, ty, tz, xx, yy, yz, xy, xz, zz;
+	float wx, wy, wz, xx, yy, yz, xy, xz, zz;
 	xx = a.x * a.x;
 	xy = a.x * a.y;
 	xz = a.x * a.z;
 	yy = a.y * a.y;
 	zz = a.z * a.z;
 	yz = a.y * a.z;
-	tx = a.theta * a.x;
-	ty = a.theta * a.y;
-	tz = a.theta * a.z;
+	wx = a.w * a.x;
+	wy = a.w * a.y;
+	wz = a.w * a.z;
 
-	rv.r1c1 = 1.0f - 2.0f * (yy + zz);
-	rv.r2c1 = 2.0f * (xy - tz);
-	rv.r3c1 = 2.0f * (xz + ty);
-	rv.r4c1 = 0.0f;
-
-	rv.r1c2 = 2.0f * (xy + tz);
-	rv.r2c2 = 1.0f - 2.0f * (xx + zz);
-	rv.r3c2 = 2.0f * (yz - tx);
-	rv.r4c2 = 0.0f;
+	rv.r1c1 = 1.0f - (2.0f * yy) - (2.0f * zz);
+	rv.r1c2 = 2.0f * xy - 2.0f * wz;
+	rv.r1c3 = 2.0f * xz + 2.0f * wy;
 	
-	rv.r1c3 = 2.0f*(xz - ty);
-	rv.r2c3 = 2.0f*(yz + tx);
-	rv.r3c3 = 1.0f - 2.0f*(xx + yy);
-	rv.r4c3 = 0.0;
+	rv.r2c1 = 2.0f * xy + 2.0f * wz;
+	rv.r2c2 = 1.0f - (2.0f * xx) - (2.0f * zz);
+	rv.r2c3 = 2.0f * yz - 2.0f * wx;
 
+	rv.r3c1 = 2.0f * xz - 2.0f * wy;
+	rv.r3c2 = 2.0f * yz + 2.0f *wx;
+	rv.r3c3 = 1.0f - (2.0f * xx) - (2.0f * yy);
+
+	rv.r4c1 = 0.0f;
+	rv.r4c2 = 0.0f;
+	rv.r4c3 = 0.0;
 	rv.r1c4 = 0.0f;
 	rv.r2c4 = 0.0f;
 	rv.r3c4 = 0.0f;
@@ -1056,18 +1072,28 @@ Matrix4x4 Math::QuaternionMath::toMatrix4x4(Quaternion & a)
 Matrix3x3 Math::QuaternionMath::toMatrix3x3(Quaternion & a)
 {
 	Matrix3x3 rv;
-	rv.r1c1 = 1.0f - (2.0f * (a.y * a.y)) - (2.0f * (a.z * a.z));
-	rv.r1c2 = (2.0f * a.x * a.y) - (2.0f * a.theta * a.z);
-	rv.r1c3 = (2.0f * a.x * a.z) + (2.0f * a.theta * a.y);
+	float wx, wy, wz, xx, yy, yz, xy, xz, zz;
+	xx = a.x * a.x;
+	xy = a.x * a.y;
+	xz = a.x * a.z;
+	yy = a.y * a.y;
+	zz = a.z * a.z;
+	yz = a.y * a.z;
+	wx = a.w * a.x;
+	wy = a.w * a.y;
+	wz = a.w * a.z;
 
-	rv.r2c1 = (2.0f * a.x * a.y) + (2.0f * a.theta * a.z);
-	rv.r2c2 = 1.0f - (2.0f * (a.x * a.x)) - (2.0f * (a.z * a.z));
-	rv.r2c3 = (2.0f * (a.y * a.z)) - (2.0f * a.theta * a.x);
+	rv.r1c1 = 1.0f - (2.0f * yy) - (2.0f * zz);
+	rv.r1c2 = 2.0f * xy - 2.0f * wz;
+	rv.r1c3 = 2.0f * xz + 2.0f * wy;
 
-	rv.r3c1 = (2.0f * a.x * a.z) - (2.0f * a.theta * a.y);
-	rv.r3c2 = (2.0f * a.y * a.z) + (2.0f * a.theta * a.x);
-	rv.r3c3 = 1.0f - (2.0f * (a.x * a.x)) - (2.0f * (a.y * a.y));
+	rv.r2c1 = 2.0f * xy + 2.0f * wz;
+	rv.r2c2 = 1.0f - (2.0f * xx) - (2.0f * zz);
+	rv.r2c3 = 2.0f * yz - 2.0f * wx;
 
+	rv.r3c1 = 2.0f * xz - 2.0f * wy;
+	rv.r3c2 = 2.0f * yz + 2.0f *wx;
+	rv.r3c3 = 1.0f - (2.0f * xx) - (2.0f * yy);
 	return rv;
 }
 
@@ -1545,7 +1571,7 @@ Quaternion Math::Interpolation::lerp(const Quaternion & qa, const Quaternion & q
 	}
 
 	Quaternion rv;
-	rv.theta = lerp(qa.theta, qb.theta, targetPoint);
+	rv.w = lerp(qa.w, qb.w, targetPoint);
 	rv.x = lerp(qa.x, qb.x, targetPoint);
 	rv.y = lerp(qa.y, qb.y, targetPoint);
 	rv.z = lerp(qa.z, qb.z, targetPoint);
@@ -1572,7 +1598,7 @@ Quaternion Math::Interpolation::slerp(const Quaternion & a, const Quaternion & b
 	dotProduct = a.x * b.x
 		+ a.y * b.y
 		+ a.z * b.z
-		+ a.theta * b.theta;
+		+ a.w * b.w;
 	float omega = acosf(dotProduct);
 	float sinO;
 	float sinTO;

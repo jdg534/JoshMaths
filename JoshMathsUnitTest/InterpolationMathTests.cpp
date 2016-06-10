@@ -39,7 +39,7 @@ namespace Microsoft
 			static std::wstring ToString<Quaternion>(const Quaternion& q)
 			{
 				std::wstringstream wss;
-				wss << "w " << q.theta << " [" << q.x << ", " << q.y << ", " << q.z << "]"; // deal with this later, should be w NOT theta
+				wss << "w " << q.w << " [" << q.x << ", " << q.y << ", " << q.z << "]"; // deal with this later, should be w NOT theta
 				return wss.str();
 				//return L"Some string representing coordinate.";
 			}

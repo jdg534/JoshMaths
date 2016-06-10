@@ -154,6 +154,8 @@ namespace Math
 
 	namespace QuaternionMath
 	{
+		Quaternion create(float angle, Vector3D axis);
+
 		Quaternion conjugate(const Quaternion & original);
 
 		Quaternion normalise(Quaternion & toNormalise);

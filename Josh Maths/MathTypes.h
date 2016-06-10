@@ -54,7 +54,7 @@ struct Quaternion
 
 	// mistake made in creation, w != theta
 
-	float theta,x, y, z;
+	float w ,x, y, z;
 	
 };
 
