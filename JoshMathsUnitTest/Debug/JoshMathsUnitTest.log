@@ -1,16 +1,24 @@
-﻿Build started 04/06/2016 01:08:34.
-     1>Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" on node 3 (Rebuild target(s)).
+﻿Build started 10/06/2016 11:43:41.
+     1>Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" on node 3 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\JoshMathsUnitTest.pch" /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt stdafx.cpp
-         stdafx.cpp
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt InterpolationMathTests.cpp MatrixMathTests.cpp QuaternionMathTests.cpp unittest1.cpp VectorMathTests.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt InterpolationMathTests.cpp MatrixMathTests.cpp VectorMathTests.cpp unittest1.cpp
+         InterpolationMathTests.cpp
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(205): warning C4101: 'a' : unreferenced local variable
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(205): warning C4101: 'expected' : unreferenced local variable
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(205): warning C4101: 'actual' : unreferenced local variable
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(205): warning C4101: 'b' : unreferenced local variable
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(213): warning C4101: 'a' : unreferenced local variable
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(213): warning C4101: 'expected' : unreferenced local variable
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(213): warning C4101: 'actual' : unreferenced local variable
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(213): warning C4101: 'b' : unreferenced local variable
+         Generating Code...
+         Compiling...
+         unittest1.cpp
+     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\unittest1.cpp(8): warning C4067: unexpected tokens following preprocessor directive - expected a newline
          VectorMathTests.cpp
      1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\vectormathtests.cpp(132): warning C4305: '=' : truncation from 'double' to 'float'
      1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\vectormathtests.cpp(148): warning C4305: '=' : truncation from 'double' to 'float'
      1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\vectormathtests.cpp(285): warning C4101: 'exp' : unreferenced local variable
-         unittest1.cpp
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\unittest1.cpp(8): warning C4067: unexpected tokens following preprocessor directive - expected a newline
-         QuaternionMathTests.cpp
          MatrixMathTests.cpp
      1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(273): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(306): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
@@ -23,15 +31,6 @@
      1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(538): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(571): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
      1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\matrixmathtests.cpp(604): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
-         InterpolationMathTests.cpp
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(205): warning C4101: 'a' : unreferenced local variable
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(205): warning C4101: 'expected' : unreferenced local variable
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(205): warning C4101: 'actual' : unreferenced local variable
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(205): warning C4101: 'b' : unreferenced local variable
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(213): warning C4101: 'a' : unreferenced local variable
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(213): warning C4101: 'expected' : unreferenced local variable
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(213): warning C4101: 'actual' : unreferenced local variable
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\joshmathsunittest\interpolationmathtests.cpp(213): warning C4101: 'b' : unreferenced local variable
          Generating Code...
        Link:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.dll" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\lib" /LIBPATH:C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug "Josh Maths.lib" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.lib" /MACHINE:X86 /DLL Debug\InterpolationMathTests.obj
@@ -40,9 +39,10 @@
          Debug\stdafx.obj
          Debug\unittest1.obj
          Debug\VectorMathTests.obj
-     1>LINK : fatal error LNK1104: cannot open file 'Josh Maths.lib'
-     1>Done Building Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" (Rebuild target(s)) -- FAILED.
+            Creating library C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.lib and object C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.exp
+         JoshMathsUnitTest.vcxproj -> C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\JoshMathsUnitTest.dll
+     1>Done Building Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" (Build target(s)).
 
-Build FAILED.
+Build succeeded.
 
-Time Elapsed 00:00:04.49
+Time Elapsed 00:00:06.67
