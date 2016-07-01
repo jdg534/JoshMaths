@@ -97,6 +97,7 @@
     </ClCompile>
     <ClCompile Include="unittest1.cpp" />
     <ClCompile Include="VectorMathTests.cpp" />
+    <ClCompile Include="VolumeIntersectionTests.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

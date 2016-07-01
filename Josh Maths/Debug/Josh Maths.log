@@ -1,15 +1,15 @@
-﻿Build started 10/06/2016 13:54:29.
-     1>Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\Josh Maths.vcxproj" on node 2 (Build target(s)).
+﻿Build started 30/06/2016 13:44:54.
+     1>Project "C:\Users\josh.gibson\Desktop\LunchTimeWork (on only use while on break)\JoshMaths\JoshMaths\Josh Maths\Josh Maths.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt JoshMath.cpp
          JoshMath.cpp
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\josh maths\joshmath.cpp(241): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
-     1>c:\users\josh\desktop\joshmathsgitrepo\joshmaths\josh maths\joshmath.cpp(246): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\josh.gibson\desktop\lunchtimework (on only use while on break)\joshmaths\joshmaths\josh maths\joshmath.cpp(241): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>c:\users\josh.gibson\desktop\lunchtimework (on only use while on break)\joshmaths\joshmaths\josh maths\joshmath.cpp(246): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\Josh Maths.lib" /NOLOGO Debug\JoshMath.obj
-         Josh Maths.vcxproj -> C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Debug\Josh Maths.lib
-     1>Done Building Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\Josh Maths.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\josh.gibson\Desktop\LunchTimeWork (on only use while on break)\JoshMaths\JoshMaths\Debug\Josh Maths.lib" /NOLOGO Debug\JoshMath.obj
+         Josh Maths.vcxproj -> C:\Users\josh.gibson\Desktop\LunchTimeWork (on only use while on break)\JoshMaths\JoshMaths\Debug\Josh Maths.lib
+     1>Done Building Project "C:\Users\josh.gibson\Desktop\LunchTimeWork (on only use while on break)\JoshMaths\JoshMaths\Josh Maths\Josh Maths.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.30
+Time Elapsed 00:00:00.16

@@ -1576,7 +1576,7 @@ Quaternion Math::Interpolation::lerp(const Quaternion & qa, const Quaternion & q
 	rv.y = lerp(qa.y, qb.y, targetPoint);
 	rv.z = lerp(qa.z, qb.z, targetPoint);
 
-	rv = QuaternionMath::normalise(rv);
+	//rv = QuaternionMath::normalise(rv);
 
 	return rv;
 }

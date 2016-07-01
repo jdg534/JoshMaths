@@ -204,14 +204,33 @@ namespace JoshMathsUnitTest
 		{
 			Quaternion a, b, expected, actual;
 			
+			float weight = 0.5f;
 
-			Assert::AreEqual(1, 2);
+			a.x = 1.0f;
+			a.y = 2.0f;
+			a.z = 3.0f;
+			a.w = 4.0f;
+
+			b.x = 2.0f;
+			b.y = 4.0f;
+			b.z = 6.0f;
+			b.w = 8.0f;
+
+			expected.x = 1.5f;
+			expected.y = 3.0f;
+			expected.z = 4.5f;
+			expected.w = 6.0f;
+
+			actual = Math::Interpolation::lerp(a, b, weight);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(InterpolationMath_QuaternionSLerp)
 		{
 			Quaternion a, b, expected, actual;
 
+			// come back to this later
 
 			Assert::AreEqual(1, 2);
 		}
