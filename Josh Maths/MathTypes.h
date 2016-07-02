@@ -249,31 +249,49 @@ enum BoundingVolumeType
 
 struct BoundingVolumeBase
 {
-	unsigned short bvType;
+	BoundingVolumeType bvType;
+	BoundingVolumeBase()
+	{
+		bvType = BVT_UNDEFINED;
+	}
 };
-
-
 
 struct BoundingBox : public BoundingVolumeBase
 {
 	float left, right, top, bottom;
+	BoundingBox()
+	{
+		bvType = BVT_BOX;
+	}
 };
 
 struct BoundingCube : public BoundingBox
 {
 	float front, back;
+	BoundingCube()
+	{
+		bvType = BVT_CUBE;
+	}
 };
 
 struct BoundingCircle : public BoundingVolumeBase
 {
 	Vector2D position;
 	float radius;
+	BoundingCircle()
+	{
+		bvType = BVT_CIRCLE;
+	}
 };
 
 struct BoundingSphere : public BoundingVolumeBase
 {
 	Vector3D position;
 	float radius;
+	BoundingSphere()
+	{
+		bvType = BVT_SPHERE;
+	}
 };
 // figure out how a cylender should be represented (currently low priorty)
 
