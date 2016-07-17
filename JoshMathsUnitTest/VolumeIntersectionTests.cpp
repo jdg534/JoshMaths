@@ -191,19 +191,100 @@ namespace JoshMathsUnitTest
 			Assert::AreEqual(expected, actual);
 		}
 
+		TEST_METHOD(VolIntersect_CubeCheckWorksRH)
+		{
+			BoundingCube a, b;
+			bool expected, actual;
+
+			a.left = -5.0f;
+			a.right = 5.0f;
+			a.top = 5.0f;
+			a.bottom = -5.0f;
+			a.back = -5.0f;
+			a.front = 5.0f;
+
+			b.left = 3.0f;
+			b.right = 6.0f;
+			b.top = 2.5f;
+			b.bottom = 1.0f;
+			b.back = 1.0f;
+			b.front = 7.0f;
+
+			expected = true;
+
+			actual = Math::VolumeIntersection::volumesOverlap(a, b);
+
+
+			Assert::AreEqual(expected, actual);
+		}
+
 		TEST_METHOD(VolIntersect_CubeCheckNoFalsePositive)
 		{
-			Assert::AreEqual(1, 2);
+			BoundingCube a, b;
+			bool expected, actual;
+
+			a.left = -5.0f;
+			a.right = 5.0f;
+			a.top = 5.0f;
+			a.bottom = -5.0f;
+			a.front = -5.0f;
+			a.back = 5.0f;
+
+			b.left = 6.0f;
+			b.right = 7.0f;
+			b.top = 2.5f;
+			b.bottom = 1.0f;
+			b.front = 1.0f;
+			b.back = 7.0f;
+
+			expected = false;
+
+			actual = Math::VolumeIntersection::volumesOverlap(a, b);
+
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_SphereCheckWorks)
 		{
-			Assert::AreEqual(1, 2);
+			BoundingSphere a, b;
+			a.position.x = 
+				a.position.y = 
+				a.position.z = 0.0f;
+			a.radius = 5.0f;
+
+			b.position.x =
+				b.position.y =
+				b.position.z = 1.0f;
+			b.radius = 0.5f;
+
+			bool expected, actual;
+			expected = true;
+
+			actual = Math::VolumeIntersection::volumesOverlap(a, b);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_SphereCheckNoFalsePositive)
 		{
-			Assert::AreEqual(1, 2);
+			BoundingSphere a, b;
+			a.position.x =
+				a.position.y =
+				a.position.z = 0.0f;
+			a.radius = 5.0f;
+
+			b.position.x =
+				b.position.y =
+				b.position.z = 100.0f;
+			b.radius = 50.0f;
+
+			bool expected, actual;
+			expected = false;
+
+			actual = Math::VolumeIntersection::volumesOverlap(a, b);
+
+			Assert::AreEqual(expected, actual);
 		}
 	};
 }
