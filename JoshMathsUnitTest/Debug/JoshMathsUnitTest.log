@@ -1,4 +1,4 @@
-﻿Build started 02/07/2016 22:27:10.
+﻿Build started 17/07/2016 19:57:20.
      1>Project "C:\Users\user\Desktop\joshMaths\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"C:\Users\user\Desktop\joshMaths\JoshMaths\Josh Maths\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt VolumeIntersectionTests.cpp
@@ -11,9 +11,11 @@
          Debug\unittest1.obj
          Debug\VectorMathTests.obj
          Debug\VolumeIntersectionTests.obj
+            Creating library C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.lib and object C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.exp
+     1>Josh Maths.lib(JoshMath.obj) : warning LNK4099: PDB 'vc120.pdb' was not found with 'Josh Maths.lib(JoshMath.obj)' or at 'C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\vc120.pdb'; linking object as if no debug info
          JoshMathsUnitTest.vcxproj -> C:\Users\user\Desktop\joshMaths\JoshMaths\Debug\JoshMathsUnitTest.dll
      1>Done Building Project "C:\Users\user\Desktop\joshMaths\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:01.11
+Time Elapsed 00:00:05.25

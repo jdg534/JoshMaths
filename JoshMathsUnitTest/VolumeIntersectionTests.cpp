@@ -164,9 +164,31 @@ namespace JoshMathsUnitTest
 			Assert::AreEqual(expected, actual);
 		}
 
-		TEST_METHOD(VolIntersect_CubeCheckWorks)
+		TEST_METHOD(VolIntersect_CubeCheckWorksLH)
 		{
-			Assert::AreEqual(1, 2);
+			BoundingCube a, b;
+			bool expected, actual;
+
+			a.left = -5.0f;
+			a.right = 5.0f;
+			a.top = 5.0f;
+			a.bottom = -5.0f;
+			a.front = -5.0f;
+			a.back = 5.0f;
+
+			b.left = 3.0f;
+			b.right = 6.0f;
+			b.top = 2.5f;
+			b.bottom = 1.0f;
+			b.front = 1.0f;
+			b.back = 7.0f;
+
+			expected = true;
+
+			actual = Math::VolumeIntersection::volumesOverlap(a, b);
+
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_CubeCheckNoFalsePositive)
