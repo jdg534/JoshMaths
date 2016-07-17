@@ -286,5 +286,117 @@ namespace JoshMathsUnitTest
 
 			Assert::AreEqual(expected, actual);
 		}
+
+		// point on bounding volume tests, plus check for false positives
+		/* cover:
+		2D point in square
+		2D point in circle
+		3D point in Cube
+		3D point in Sphere
+		*/
+
+		TEST_METHOD(VolIntersect_PointInSquare)
+		{
+			Vector2D testPoint;
+			BoundingBox box;
+			box.left = -2.0f;
+			box.right = 2.0f;
+			box.top = 2.0f;
+			box.bottom = -2.0f;
+			testPoint.x = 1.0f;
+			testPoint.y = 1.0f;
+
+			bool expected, actual;
+
+			expected = true;
+
+			actual = Math::VolumeIntersection::pointInBoundingVolume(testPoint, box);
+				 
+			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(VolIntersect_PointInSquareNoFalsePositive)
+		{
+			Vector2D testPoint;
+			BoundingBox box;
+			box.left = -2.0f;
+			box.right = 2.0f;
+			box.top = 2.0f;
+			box.bottom = -2.0f;
+			
+			testPoint.x = 5.0f;
+			testPoint.y = 1.0f;
+
+			bool expected, actual;
+
+			expected = false;
+
+			actual = Math::VolumeIntersection::pointInBoundingVolume(testPoint, box);
+
+			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(VolIntersect_PointInCircle)
+		{
+			BoundingCircle bc;
+			Vector2D point;
+			bc.position.x =
+				bc.position.y = 1.0f;
+
+			point.x =
+				point.y = -1.0f;
+			bc.radius = 5.0f;
+
+			bool expected,
+				actual;
+
+			expected = true;
+
+			actual = Math::VolumeIntersection::pointInBoundingVolume(point, bc);
+
+			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(VolIntersect_PointInCircleNoFalsePositive)
+		{
+			BoundingCircle bc;
+			Vector2D point;
+			bc.position.x =
+				bc.position.y = 1.0f;
+
+			point.x =
+				point.y = -1.0f;
+			bc.radius = 1.0f;
+
+			bool expected,
+				actual;
+
+			expected = false;
+
+			actual = Math::VolumeIntersection::pointInBoundingVolume(point, bc);
+
+			Assert::AreEqual(expected, actual);
+		}
+
+		TEST_METHOD(VolIntersect_PointInCube)
+		{
+			
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_PointInCubeNoFalsePositive)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_PointInSphere)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_PointInSphereNoFalsePositive)
+		{
+			Assert::AreEqual(1, 2);
+		}
 	};
 }
