@@ -380,23 +380,64 @@ namespace JoshMathsUnitTest
 
 		TEST_METHOD(VolIntersect_PointInCube)
 		{
-			
-			Assert::AreEqual(1, 2);
+			Vector3D point;
+			BoundingCube vol; // using left hand coord sys
+			point.x = point.y = point.z = 0.0f;
+
+			vol.left = vol.bottom = vol.front = -5.0f;
+			vol.right = vol.top = vol.back = 5.0f;
+
+			bool expected = true,
+				actual = Math::VolumeIntersection::pointInBoundingVolume(point, vol);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_PointInCubeNoFalsePositive)
 		{
-			Assert::AreEqual(1, 2);
+			Vector3D point;
+			BoundingCube vol; // using left hand coord sys
+			point.x = point.y = point.z = 25.0f;
+
+			vol.left = vol.bottom = vol.front = -5.0f;
+			vol.right = vol.top = vol.back = 5.0f;
+
+			bool expected = false,
+				actual = Math::VolumeIntersection::pointInBoundingVolume(point, vol);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_PointInSphere)
 		{
-			Assert::AreEqual(1, 2);
+			BoundingSphere vol;
+			Vector3D point;
+			point.x = 0.0f;
+			point.y = 5.0f;
+
+			vol.position.x = vol.position.y = vol.position.z = 0.0f;
+			vol.radius = 200.0f;
+
+			bool expected = true,
+				actual = Math::VolumeIntersection::pointInBoundingVolume(point, vol);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_PointInSphereNoFalsePositive)
 		{
-			Assert::AreEqual(1, 2);
+			BoundingSphere vol;
+			Vector3D point;
+			point.x = 0.0f;
+			point.y = 100.0f;
+
+			vol.position.x = vol.position.y = vol.position.z = 0.0f;
+			vol.radius = 20.0f;
+
+			bool expected = false,
+				actual = Math::VolumeIntersection::pointInBoundingVolume(point, vol);
+
+			Assert::AreEqual(expected, actual);
 		}
 	};
 }
