@@ -1,4 +1,4 @@
-﻿Build started 18/07/2016 09:45:08.
+﻿Build started 19/07/2016 09:41:43.
      1>Project "D:\534\LunchTimeStuff\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\UnitTest\include" /I"D:\534\LunchTimeStuff\JoshMaths\Josh Maths\\" /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /FC /errorReport:prompt VolumeIntersectionTests.cpp
@@ -11,9 +11,10 @@
          Debug\unittest1.obj
          Debug\VectorMathTests.obj
          Debug\VolumeIntersectionTests.obj
+            Creating library D:\534\LunchTimeStuff\JoshMaths\Debug\JoshMathsUnitTest.lib and object D:\534\LunchTimeStuff\JoshMaths\Debug\JoshMathsUnitTest.exp
          JoshMathsUnitTest.vcxproj -> D:\534\LunchTimeStuff\JoshMaths\Debug\JoshMathsUnitTest.dll
      1>Done Building Project "D:\534\LunchTimeStuff\JoshMaths\JoshMathsUnitTest\JoshMathsUnitTest.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.52
+Time Elapsed 00:00:00.91

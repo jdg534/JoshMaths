@@ -412,8 +412,9 @@ namespace JoshMathsUnitTest
 		{
 			BoundingSphere vol;
 			Vector3D point;
-			point.x = 0.0f;
+			point.x = 1.0f;
 			point.y = 5.0f;
+			point.z = 2.0f;
 
 			vol.position.x = vol.position.y = vol.position.z = 0.0f;
 			vol.radius = 200.0f;
@@ -438,6 +439,54 @@ namespace JoshMathsUnitTest
 				actual = Math::VolumeIntersection::pointInBoundingVolume(point, vol);
 
 			Assert::AreEqual(expected, actual);
+		}
+
+		// now the ray casts
+		/* 4 types of checks:
+		bool volumeInRayPath() (no trace)
+		float rayDistanceToCollisionFast() (no trace)
+		float rayDistanceToCollisionReverseTrace()
+		float rayDistanceToCollisionTrace()
+		*/
+
+		TEST_METHOD(VolIntersect_VolInPathBox)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolInPathBoxNoFalsePositive)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolInPathCircle)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolInPathCircleNoFalsePositive)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolInPathCube)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolInPathCubeNoFalsePositive)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolInPathSphere)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolInPathSphereNoFalsePositive)
+		{
+			Assert::AreEqual(1, 2);
 		}
 	};
 }

@@ -1,5 +1,5 @@
-﻿Build started 18/07/2016 09:33:01.
-     1>Project "D:\534\LunchTimeStuff\JoshMaths\Josh Maths\Josh Maths.vcxproj" on node 2 (Rebuild target(s)).
+﻿Build started 19/07/2016 09:15:34.
+     1>Project "D:\534\LunchTimeStuff\JoshMaths\Josh Maths\Josh Maths.vcxproj" on node 2 (Build target(s)).
      1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Debug\) contains files shared from another project (Josh Maths.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt JoshMath.cpp
@@ -9,8 +9,8 @@
        Lib:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"D:\534\LunchTimeStuff\JoshMaths\Debug\JoshMaths.lib" /NOLOGO Debug\JoshMath.obj
          Josh Maths.vcxproj -> D:\534\LunchTimeStuff\JoshMaths\Debug\JoshMaths.lib
-     1>Done Building Project "D:\534\LunchTimeStuff\JoshMaths\Josh Maths\Josh Maths.vcxproj" (Rebuild target(s)).
+     1>Done Building Project "D:\534\LunchTimeStuff\JoshMaths\Josh Maths\Josh Maths.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.71
+Time Elapsed 00:00:00.16
