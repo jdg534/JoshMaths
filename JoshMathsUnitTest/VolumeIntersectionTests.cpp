@@ -451,22 +451,87 @@ namespace JoshMathsUnitTest
 
 		TEST_METHOD(VolIntersect_VolInPathBox)
 		{
-			Assert::AreEqual(1, 2);
+			Ray2D ray;
+			BoundingBox box;
+
+			box.left = box.bottom = -5.0f;
+			box.right = box.top = 5.0f;
+
+			ray.pointOfOrigin.x = -10.0f;
+			ray.pointOfOrigin.y = 0.0f;
+
+			ray.direction.x = 1.0f;
+			ray.direction.y = 0.0f; // is a unit vector
+
+			bool expected = true, 
+				actual = Math::VolumeIntersection::volumeInRayPath(ray, box);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolInPathBoxNoFalsePositive)
 		{
-			Assert::AreEqual(1, 2);
+			Ray2D ray;
+			BoundingBox box;
+
+			box.left = box.bottom = -5.0f;
+			box.right = box.top = 5.0f;
+
+			ray.pointOfOrigin.x = 10.0f;
+			ray.pointOfOrigin.y = 0.0f;
+
+			ray.direction.x = 1.0f;
+			ray.direction.y = 0.0f; // is a unit vector
+
+			bool expected = false,
+				actual = Math::VolumeIntersection::volumeInRayPath(ray, box);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolInPathCircle)
 		{
-			Assert::AreEqual(1, 2);
+			Ray2D ray;
+			BoundingCircle vol;
+
+			vol.radius = 5.0f;
+			vol.position.x = 20.0f;
+			vol.position.y = 120.0f;
+			
+			ray.pointOfOrigin.x = -0.3f;
+			ray.pointOfOrigin.y = 1.0f;
+
+			ray.direction = Math::VectorMath::wayToVector(ray.pointOfOrigin, vol.position);
+			ray.direction = Math::VectorMath::unitVector(ray.direction);
+
+			bool expected = true,
+				actual = Math::VolumeIntersection::volumeInRayPath(ray, vol);
+			
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolInPathCircleNoFalsePositive)
 		{
-			Assert::AreEqual(1, 2);
+			Ray2D ray;
+			BoundingCircle vol;
+
+			vol.radius = 5.0f;
+			vol.position.x = 20.0f;
+			vol.position.y = 120.0f;
+
+			ray.pointOfOrigin.x = -0.3f;
+			ray.pointOfOrigin.y = 1.0f;
+
+			ray.direction = Math::VectorMath::wayToVector(ray.pointOfOrigin, vol.position);
+			ray.direction.x = -ray.direction.x;
+			ray.direction.y = -ray.direction.y;
+
+			ray.direction = Math::VectorMath::unitVector(ray.direction);
+
+			bool expected = false,
+				actual = Math::VolumeIntersection::volumeInRayPath(ray, vol);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolInPathCube)
