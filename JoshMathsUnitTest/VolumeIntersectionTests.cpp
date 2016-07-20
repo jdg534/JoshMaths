@@ -536,22 +536,84 @@ namespace JoshMathsUnitTest
 
 		TEST_METHOD(VolIntersect_VolInPathCube)
 		{
-			Assert::AreEqual(1, 2);
+			Ray3D ray;
+			BoundingCube vol;
+
+			vol.left = vol.front = vol.bottom = -5.0f;
+			vol.right = vol.back = vol.top = 5.0f;
+
+			ray.pointOfOrigin.x = -20.0f;
+			ray.pointOfOrigin.y = ray.pointOfOrigin.z = 0.0f;
+
+			ray.direction.x = 1.0f;
+			ray.direction.y = ray.direction.z = 0.0f;
+
+			bool expected = true,
+				actual = Math::VolumeIntersection::volumeInRayPath(ray, vol);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolInPathCubeNoFalsePositive)
 		{
-			Assert::AreEqual(1, 2);
+			Ray3D ray;
+			BoundingCube vol;
+
+			vol.left = vol.front = vol.bottom = -5.0f;
+			vol.right = vol.back = vol.top = 5.0f;
+
+			ray.pointOfOrigin.x = -20.0f;
+			ray.pointOfOrigin.y = ray.pointOfOrigin.z = 0.0f;
+
+			ray.direction.x = -1.0f;
+			ray.direction.y = ray.direction.z = 0.0f;
+
+			bool expected = false,
+				actual = Math::VolumeIntersection::volumeInRayPath(ray, vol);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolInPathSphere)
 		{
-			Assert::AreEqual(1, 2);
+			Ray3D r;
+			BoundingSphere bc;
+
+			bc.position.x = 513.0f;
+			bc.position.y = 21.21f;
+			bc.position.z = 5.0f;
+			bc.radius = 5.0f;
+
+			r.pointOfOrigin.x = r.pointOfOrigin.y = r.pointOfOrigin.z = 0.0f;
+			r.direction = Math::VectorMath::wayToVector(r.pointOfOrigin, bc.position);
+			r.direction = Math::VectorMath::unitVector(r.direction);
+
+			bool expected = true,
+				actual = Math::VolumeIntersection::volumeInRayPath(r, bc);
+
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolInPathSphereNoFalsePositive)
 		{
-			Assert::AreEqual(1, 2);
+			Ray3D r;
+			BoundingSphere bc;
+
+			bc.position.x = 513.0f;
+			bc.position.y = 21.21f;
+			bc.position.z = 5.0f;
+			bc.radius = 5.0f;
+
+			r.pointOfOrigin.x = r.pointOfOrigin.y = r.pointOfOrigin.z = 0.0f;
+			r.direction = Math::VectorMath::wayToVector(bc.position, r.pointOfOrigin);
+			r.direction = Math::VectorMath::unitVector(r.direction);
+
+			bool expected = false,
+				actual = Math::VolumeIntersection::volumeInRayPath(r, bc);
+
+
+			Assert::AreEqual(expected, actual);
 		}
 	};
 }
