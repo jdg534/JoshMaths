@@ -615,5 +615,26 @@ namespace JoshMathsUnitTest
 
 			Assert::AreEqual(expected, actual);
 		}
+
+		// start of fast distance to collision functions
+		TEST_METHOD(VolIntersect_VolDistanceToCollideFastBox)
+		{
+			Assert::AreEqual(1,2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideFastCircle)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideFastCube)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideFastSphere)
+		{
+			Assert::AreEqual(1, 2);
+		}
 	};
 }
