@@ -619,12 +619,38 @@ namespace JoshMathsUnitTest
 		// start of fast distance to collision functions
 		TEST_METHOD(VolIntersect_VolDistanceToCollideFastBox)
 		{
-			Assert::AreEqual(1,2);
+			BoundingBox bb;
+			bb.left = bb.bottom = -5.0f;
+			bb.right = bb.top = 5.0f;
+
+			Ray2D r;
+			r.pointOfOrigin.x = -10.0f;
+			r.pointOfOrigin.y = 0.0f;
+
+			r.direction.x = 1.0f;
+			r.direction.y = 0.0f;
+
+			float expected = 5.0f,
+				actual = Math::VolumeIntersection::rayDistanceToCollisionFast(r, bb);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolDistanceToCollideFastCircle)
 		{
-			Assert::AreEqual(1, 2);
+			BoundingCircle bc;
+			Ray2D r;
+			bc.position.x = bc.position.y = 0.0f;
+			bc.radius = 5.0f;
+			r.pointOfOrigin.x = -75.0f;
+			r.pointOfOrigin.y = 0.0f;
+			r.direction.x = 1.0f;
+			r.direction.y = 0.0f;
+
+			float expected = 70.0f,
+				actual = Math::VolumeIntersection::rayDistanceToCollisionFast(r, bc);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(VolIntersect_VolDistanceToCollideFastCube)
@@ -633,6 +659,46 @@ namespace JoshMathsUnitTest
 		}
 
 		TEST_METHOD(VolIntersect_VolDistanceToCollideFastSphere)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideReverseTraceBox)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideReverseTraceCircle)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideReverseTraceCube)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideReverseTraceSphere)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideForwardTraceBox)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideForwardTraceCircle)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideForwardTraceCube)
+		{
+			Assert::AreEqual(1, 2);
+		}
+
+		TEST_METHOD(VolIntersect_VolDistanceToCollideFowardTraceSphere)
 		{
 			Assert::AreEqual(1, 2);
 		}
