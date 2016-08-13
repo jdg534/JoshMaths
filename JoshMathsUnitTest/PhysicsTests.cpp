@@ -74,37 +74,133 @@ namespace JoshMathsUnitTest
 
 		TEST_METHOD(PhysicsMath_3D_NetForce)
 		{
-			Assert::AreEqual(1, 2);
+			const unsigned int numForces = 7;
+			Vector3D forces[numForces];
+			Vector3D expected, actual;
+			expected.x = expected.y = expected.z = 0.0f;
+			for (unsigned int i = 0; i < numForces; i++)
+			{
+				forces[i].x = 541.251f;
+				forces[i].y = -123.456;
+				forces[i].z = 98741.1f;
+				expected.x += forces[i].x;
+				expected.y += forces[i].y;
+				expected.z += forces[i].z;
+			}
+			actual = Math::Physics::netForce(forces, numForces);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(PhysicsMath_2D_Acceleration)
 		{
-			Assert::AreEqual(1, 2);
+			Vector2D netForce;
+			float mass = 0.5f;
+
+			netForce.x = 10.0f;
+			netForce.y = 20.0f;
+
+			Vector2D expected, actual;
+
+			expected.x = 20.0f;
+			expected.y = 40.0f;
+
+			actual = Math::Physics::acceleration(netForce, mass);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(PhysicsMath_3D_Acceleration)
 		{
-			Assert::AreEqual(1, 2);
+			Vector3D netForce;
+			float mass = 0.5f;
+
+			netForce.x = 10.0f;
+			netForce.y = 20.0f;
+			netForce.z = 30.0f;
+
+			Vector3D expected, actual;
+
+			expected.x = 20.0f;
+			expected.y = 40.0f;
+			expected.z = 60.0f;
+
+			actual = Math::Physics::acceleration(netForce, mass);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(PhysicsMath_2D_Velocity)
 		{
-			Assert::AreEqual(1, 2);
+			Vector2D initalVel, accel;
+			float time = 0.5f;
+
+			initalVel.x = initalVel.y = 0.0f;
+			accel.x = 1.0f;
+			accel.y = 15.0f;
+
+			Vector2D expected, actual;
+			expected.x = 0.5f;
+			expected.y = 7.5f;
+			actual = Math::Physics::velocity(initalVel, accel, time);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(PhysicsMath_3D_Velocity)
 		{
-			Assert::AreEqual(1, 2);
+			Vector3D initalVel, accel;
+			float time = 0.5f;
+
+			initalVel.x = initalVel.y = initalVel.z = 0.0f;
+			accel.x = 1.0f;
+			accel.y = 15.0f;
+			accel.z = 30.0f;
+
+			Vector3D expected, actual;
+			expected.x = 0.5f;
+			expected.y = 7.5f;
+			expected.z = 15.0f;
+			actual = Math::Physics::velocity(initalVel, accel, time);
+
+			Assert::AreEqual(expected, actual);
 		}
 
-		TEST_METHOD(PhysicsMath_2D_Monentum)
+		TEST_METHOD(PhysicsMath_2D_Momentum)
 		{
-			Assert::AreEqual(1, 2);
+			Vector2D vel;
+			vel.x = 1.0f;
+			vel.y = 5.0f;
+
+			float mass = 5.0f;
+
+			Vector2D expected, actual;
+
+			expected.x = 5.0f;
+			expected.y = 25.0f;
+
+			actual = Math::Physics::momentum(vel, mass);
+
+			Assert::AreEqual(expected, actual);
 		}
 
-		TEST_METHOD(PhysicsMath_3D_Monentum)
+		TEST_METHOD(PhysicsMath_3D_Momentum)
 		{
-			Assert::AreEqual(1, 2);
+			Vector3D vel;
+			vel.x = 1.0f;
+			vel.y = 5.0f;
+			vel.z = 10.0f;
+			float mass = 5.0f;
+
+			Vector3D expected, actual;
+
+			expected.x = 5.0f;
+			expected.y = 25.0f;
+			expected.z = 50.0f;
+
+			actual = Math::Physics::momentum(vel, mass);
+
+			Assert::AreEqual(expected, actual);
 		}
 
 		TEST_METHOD(PhysicsMath_2D_Speed)
@@ -122,7 +218,15 @@ namespace JoshMathsUnitTest
 
 		TEST_METHOD(PhysicsMath_3D_Speed)
 		{
-			Assert::AreEqual(1, 2);
+			Vector3D testVel;
+			testVel.x = 0.0f;
+			testVel.y = 1.0f;
+			testVel.z = 0.0f;
+			float expected, actual = 0.0f;
+			expected = 1.0f;
+			// actual = Math::Physics::speed(testVel);
+			actual = Math::Physics::speed(testVel);
+			Assert::AreEqual(expected, actual);
 		}
 	};
 }
