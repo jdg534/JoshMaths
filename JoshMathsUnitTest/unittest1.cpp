@@ -5,7 +5,7 @@
 #include "MathTypes.h"
 #include "JoshMath.h"
 
-#include <sstream>s
+#include <sstream>
 #include <string>
 
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;

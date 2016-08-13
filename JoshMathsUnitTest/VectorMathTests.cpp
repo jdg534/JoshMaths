@@ -129,7 +129,7 @@ namespace JoshMathsUnitTest
 			Vector2D pointOfOrigin, targetPoint, expectedResults, actualResults;
 			pointOfOrigin.x = 77.8271f;
 			pointOfOrigin.y = 151.561f;
-			targetPoint.x = 81.73;
+			targetPoint.x = 81.73f;
 			targetPoint.y = 123.456f;
 
 			expectedResults.x = targetPoint.x - pointOfOrigin.x;

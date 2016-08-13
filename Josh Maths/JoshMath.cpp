@@ -2249,6 +2249,92 @@ float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D & r, con
 	return -1.0f;
 }
 
+Vector2D Math::Physics::netForce(const Vector2D * forces, const unsigned int nForces)
+{
+	Vector2D netForce;
+	netForce.x = netForce.y = 0.0f;
+	for (unsigned int i = 0; i < nForces; i++)
+	{
+		netForce.x += forces[i].x;
+		netForce.y += forces[i].y;
+	}
+	return netForce;
+}
+
+Vector3D Math::Physics::netForce(const Vector3D * forces, const unsigned int nForces)
+{
+	Vector3D netForce;
+	netForce.x = netForce.y = netForce.z = 0.0f;
+	for (unsigned int i = 0; i < nForces; i++)
+	{
+		netForce.x += forces[i].x;
+		netForce.y += forces[i].y;
+		netForce.z += forces[i].z;
+	}
+	return netForce;
+}
+
+Vector2D Math::Physics::acceleration(const Vector2D & netForce, float mass)
+{
+	Vector2D accel;
+	accel.x = netForce.x / mass;
+	accel.y = netForce.y / mass;
+	return accel;
+}
+
+Vector3D Math::Physics::acceleration(const Vector3D & netForce, float mass)
+{
+	Vector3D accel;
+	accel.x = netForce.x / mass;
+	accel.y = netForce.y / mass;
+	accel.z = netForce.z / mass;
+	return accel;
+}
+
+Vector2D Math::Physics::velocity(const Vector2D & previousVelocity, const Vector2D & acceleration, float time)
+{
+	Vector2D currentVelocity;
+	currentVelocity.x = previousVelocity.x + (acceleration.x * time);
+	currentVelocity.y = previousVelocity.y + (acceleration.y * time);
+	return currentVelocity;
+}
+
+Vector3D Math::Physics::velocity(const Vector3D & previousVelocity, const Vector3D & acceleration, float time)
+{
+	Vector3D currentVelocity;
+	currentVelocity.x = previousVelocity.x + (acceleration.x * time);
+	currentVelocity.y = previousVelocity.y + (acceleration.y * time);
+	currentVelocity.z = previousVelocity.z + (acceleration.z * time);
+	return currentVelocity;
+}
+
+Vector2D Math::Physics::momentum(const Vector2D & velocity, float mass)
+{
+	Vector2D momentum;
+	momentum.x = mass * velocity.x;
+	momentum.y = mass * velocity.y;
+	return momentum;
+}
+
+Vector3D Math::Physics::momentum(const Vector3D & velocity, float mass)
+{
+	Vector3D momentum;
+	momentum.x = mass * velocity.x;
+	momentum.y = mass * velocity.y;
+	momentum.z = mass * velocity.z;
+	return momentum;
+}
+
+float Math::Physics::speed(const Vector2D & velocity)
+{
+	return Math::VectorMath::magnitude(velocity);
+}
+
+float Math::Physics::speed(const Vector3D & velocity)
+{
+	return Math::VectorMath::magnitude(velocity);
+}
+
 float Math::Miscellaneous::parabola(const Vector2D & questionCoord, const Vector2D & parabolaCentrePoint, float parabolaRadius)
 {
 	Vector2D toCentrePoint = VectorMath::wayToVector(questionCoord, parabolaCentrePoint);

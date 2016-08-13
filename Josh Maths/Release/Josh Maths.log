@@ -1,15 +1,16 @@
-﻿Build started 29/05/2016 01:01:16.
-     1>Project "C:\Users\user\Desktop\joshMaths\JoshMaths\Josh Maths\Josh Maths.vcxproj" on node 2 (Build target(s)).
+﻿Build started 13/08/2016 17:10:21.
+     1>Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\Josh Maths.vcxproj" on node 2 (Rebuild target(s)).
+     1>C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V120\Microsoft.CppBuild.targets(388,5): warning MSB8028: The intermediate directory (Release\) contains files shared from another project (Josh Maths.vcxproj).  This can lead to incorrect clean and rebuild behavior.
      1>ClCompile:
          C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /Zi /nologo /W3 /WX- /sdl /O2 /Oi /Oy- /GL /D _UNICODE /D UNICODE /Gm- /EHsc /MD /GS /Gy /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Release\\" /Fd"Release\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt JoshMath.cpp
          JoshMath.cpp
-     1>JoshMath.cpp(240): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
-     1>JoshMath.cpp(245): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>JoshMath.cpp(241): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
+     1>JoshMath.cpp(246): warning C4244: 'return' : conversion from 'double' to 'float', possible loss of data
        Lib:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\user\Desktop\joshMaths\JoshMaths\Release\Josh Maths.lib" /NOLOGO /LTCG Release\JoshMath.obj
-         Josh Maths.vcxproj -> C:\Users\user\Desktop\joshMaths\JoshMaths\Release\Josh Maths.lib
-     1>Done Building Project "C:\Users\user\Desktop\joshMaths\JoshMaths\Josh Maths\Josh Maths.vcxproj" (Build target(s)).
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\Lib.exe /OUT:"C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Release\JoshMaths.lib" /NOLOGO /LTCG Release\JoshMath.obj
+         Josh Maths.vcxproj -> C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Release\JoshMaths.lib
+     1>Done Building Project "C:\Users\Josh\Desktop\JoshMathsGitRepo\JoshMaths\Josh Maths\Josh Maths.vcxproj" (Rebuild target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.84
+Time Elapsed 00:00:00.35
