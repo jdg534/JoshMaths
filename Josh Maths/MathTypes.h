@@ -24,6 +24,8 @@ SOFTWARE.
 
 */
 
+#include <string>
+
 struct Vector2D
 {
 	float x, y;
@@ -295,5 +297,54 @@ struct BoundingSphere : public BoundingVolumeBase
 };
 // figure out how a cylender should be represented (currently low priorty)
 
+
+// start of graph theory stuff
+enum GraphNodeTypes
+{
+	GRAPH_NODE_UNKNOWN_TYPE = 0,
+	GRAPH_NODE_2D,
+	GRAPH_NODE_3D
+};
+
+struct GraphNodeBase
+{
+	GraphNodeTypes nodeType;
+	std::string nodeID;
+	GraphNodeBase()
+	{
+		nodeType = GRAPH_NODE_UNKNOWN_TYPE;
+		nodeID = "";
+	}
+};
+
+struct GraphNode2D : public GraphNodeBase
+{
+	Vector2D position;
+
+	GraphNode2D()
+	{
+		nodeType = GRAPH_NODE_2D;
+		nodeID = "";
+		position.x = position.y = 0.0f;
+	}
+};
+
+struct GraphNode3D : public GraphNodeBase
+{
+	Vector3D position;
+
+	GraphNode3D()
+	{
+		nodeType = GRAPH_NODE_3D;
+		nodeID = "";
+		position.x = position.y = position.z = 0.0f;
+	}
+};
+
+struct Graph
+{
+	unsigned int numGraphNodes;
+	GraphNodeBase ** nodes;
+};
 
 #endif
