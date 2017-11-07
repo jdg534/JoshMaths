@@ -1,8 +1,8 @@
-#include <Math.h>
-
-#include <iostream>
 #include "gtest/gtest.h"
 
+#include <iostream>
+
+#include <Math.h>
 
 
 TEST(FailTest, test)
