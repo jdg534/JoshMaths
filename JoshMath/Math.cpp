@@ -28,7 +28,7 @@ float Math::VectorMath::dotProduct(const Vector2D & vecA, const Vector2D & vecB)
 {
 	return (vecA.x * vecB.x) + (vecA.y * vecB.y);
 }
-	
+
 float Math::VectorMath::dotProduct(const Vector3D & vecA, const Vector3D & vecB)
 {
 	return (vecA.x * vecB.x) + (vecA.y * vecB.y) + (vecA.z * vecB.z);
@@ -101,7 +101,7 @@ float Math::VectorMath::magnitude (const Vector2D & a)
 	rv = sqrtf(rv);
 	return rv;
 }
-	
+
 float Math::VectorMath::magnitude (const Vector3D & a)
 {
 	float rv = (a.x * a.x) + (a.y * a.y) + (a.z * a.z);
@@ -114,7 +114,7 @@ Vector2D Math::VectorMath::scaled(float scale, const Vector2D & toScale)
 	Vector2D rv;
 	rv.x = toScale.x * scale;
 	rv.y = toScale.y * scale;
-	return toScale;
+	return rv;
 }
 
 Vector3D Math::VectorMath::scaled(float scale, const Vector3D & toScale)
@@ -132,7 +132,7 @@ Vector2D Math::VectorMath::unitVector(const Vector2D & a)
 	float unitScale = 1.0f / mag;
 	return scaled(unitScale, a);
 }
-	
+
 Vector3D Math::VectorMath::unitVector(const Vector3D & a)
 {
 	float mag = magnitude(a);
@@ -162,7 +162,7 @@ Matrix4x4 Math::VectorMath::lookAt3D(Vector3D & position, Vector3D & targetPosit
 	Vector3D yAxis = crossProduct(zAxis, xAxis);
 
 	Matrix4x4 rv;
-	
+
 	rv.r1c1 = xAxis.x;
 	rv.r2c1 = xAxis.y;
 	rv.r3c1 = xAxis.z;
@@ -222,7 +222,7 @@ Matrix2x1 Math::MatrixMath::add(const Matrix2x1 & a, const Matrix2x1 & b)
 	rv.r2c1 = a.r2c1 + b.r2c1;
 	return rv;
 }
-		
+
 Matrix2x2 Math::MatrixMath::add(const Matrix2x2 & a, const Matrix2x2 & b)
 {
 	Matrix2x2 rv;
@@ -232,7 +232,7 @@ Matrix2x2 Math::MatrixMath::add(const Matrix2x2 & a, const Matrix2x2 & b)
 	rv.r2c2 = a.r2c2 + b.r2c2;
 	return rv;
 }
-		
+
 Matrix3x1 Math::MatrixMath::add(const Matrix3x1 & a, const Matrix3x1 & b)
 {
 	Matrix3x1 rv;
@@ -241,24 +241,24 @@ Matrix3x1 Math::MatrixMath::add(const Matrix3x1 & a, const Matrix3x1 & b)
 	rv.r3c1 = a.r3c1 + b.r3c1;
 	return rv;
 }
-		
+
 Matrix3x3 Math::MatrixMath::add(const Matrix3x3 & a, const Matrix3x3 & b)
 {
 	Matrix3x3 rv;
 	rv.r1c1 = a.r1c1 + b.r1c1;
 	rv.r1c2 = a.r1c2 + b.r1c2;
 	rv.r1c3 = a.r1c3 + b.r1c3;
-	
+
 	rv.r2c1 = a.r2c1 + b.r2c1;
 	rv.r2c2 = a.r2c2 + b.r2c2;
 	rv.r2c3 = a.r2c3 + b.r2c3;
-	
+
 	rv.r3c1 = a.r3c1 + b.r3c1;
 	rv.r3c2 = a.r3c2 + b.r3c2;
 	rv.r3c3 = a.r3c3 + b.r3c3;
 	return rv;
 }
-		
+
 Matrix4x1 Math::MatrixMath::add(const Matrix4x1 & a, const Matrix4x1 & b)
 {
 	Matrix4x1 rv;
@@ -268,15 +268,15 @@ Matrix4x1 Math::MatrixMath::add(const Matrix4x1 & a, const Matrix4x1 & b)
 	rv.r4c1 = a.r4c1 + b.r4c1;
 	return rv;
 }
-		
+
 Matrix4x3 Math::MatrixMath::add(const Matrix4x3 & a, const Matrix4x3 & b)
 {
 	Matrix4x3 rv;
-	
+
 	rv.r1c1 = a.r1c1 + b.r1c1;
 	rv.r1c2 = a.r1c2 + b.r1c2;
 	rv.r1c3 = a.r1c3 + b.r1c3;
-	
+
 	rv.r2c1 = a.r2c1 + b.r2c1;
 	rv.r2c2 = a.r2c2 + b.r2c2;
 	rv.r2c3 = a.r2c3 + b.r2c3;
@@ -284,18 +284,18 @@ Matrix4x3 Math::MatrixMath::add(const Matrix4x3 & a, const Matrix4x3 & b)
 	rv.r3c1 = a.r3c1 + b.r3c1;
 	rv.r3c2 = a.r3c2 + b.r3c2;
 	rv.r3c3 = a.r3c3 + b.r3c3;
-	
+
 	rv.r4c1 = a.r4c1 + b.r4c1;
 	rv.r4c2 = a.r4c2 + b.r4c2;
 	rv.r4c3 = a.r4c3 + b.r4c3;
 
 	return rv;
 }
-	
+
 Matrix4x4 Math::MatrixMath::add(const Matrix4x4 & a, const Matrix4x4 & b)
 {
 	Matrix4x4 rv;
-	
+
 	rv.r1c1 = a.r1c1 + b.r1c1;
 	rv.r1c2 = a.r1c2 + b.r1c2;
 	rv.r1c3 = a.r1c3 + b.r1c3;
@@ -318,7 +318,7 @@ Matrix4x4 Math::MatrixMath::add(const Matrix4x4 & a, const Matrix4x4 & b)
 
 	return rv;
 }
-		
+
 
 Matrix2x1 Math::MatrixMath::subtract(const Matrix2x1 & a, const Matrix2x1 & b)
 {
@@ -327,7 +327,7 @@ Matrix2x1 Math::MatrixMath::subtract(const Matrix2x1 & a, const Matrix2x1 & b)
 	rv.r2c1 = a.r2c1 - b.r2c1;
 	return rv;
 }
-		
+
 Matrix2x2 Math::MatrixMath::subtract(const Matrix2x2 & a, const Matrix2x2 & b)
 {
 	Matrix2x2 rv;
@@ -337,7 +337,7 @@ Matrix2x2 Math::MatrixMath::subtract(const Matrix2x2 & a, const Matrix2x2 & b)
 	rv.r2c2 = a.r2c2 - b.r2c2;
 	return rv;
 }
-		
+
 Matrix3x1 Math::MatrixMath::subtract(const Matrix3x1 & a, const Matrix3x1 & b)
 {
 	Matrix3x1 rv;
@@ -346,7 +346,7 @@ Matrix3x1 Math::MatrixMath::subtract(const Matrix3x1 & a, const Matrix3x1 & b)
 	rv.r3c1 = a.r3c1 - b.r3c1;
 	return rv;
 }
-		
+
 Matrix3x3 Math::MatrixMath::subtract(const Matrix3x3 & a, const Matrix3x3 & b)
 {
 	Matrix3x3 rv;
@@ -364,7 +364,7 @@ Matrix3x3 Math::MatrixMath::subtract(const Matrix3x3 & a, const Matrix3x3 & b)
 
 	return rv;
 }
-		
+
 Matrix4x1 Math::MatrixMath::subtract(const Matrix4x1 & a, const Matrix4x1 & b)
 {
 	Matrix4x1 rv;
@@ -375,7 +375,7 @@ Matrix4x1 Math::MatrixMath::subtract(const Matrix4x1 & a, const Matrix4x1 & b)
 
 	return rv;
 }
-		
+
 Matrix4x3 Math::MatrixMath::subtract(const Matrix4x3 & a, const Matrix4x3 & b)
 {
 	Matrix4x3 rv;
@@ -398,11 +398,11 @@ Matrix4x3 Math::MatrixMath::subtract(const Matrix4x3 & a, const Matrix4x3 & b)
 
 	return rv;
 }
-		
+
 Matrix4x4 Math::MatrixMath::subtract(const Matrix4x4 & a, const Matrix4x4 & b)
 {
 	Matrix4x4 rv;
-	
+
 	rv.r1c1 = a.r1c1 - b.r1c1;
 	rv.r1c2 = a.r1c2 - b.r1c2;
 	rv.r1c3 = a.r1c3 - b.r1c3;
@@ -434,7 +434,7 @@ Matrix2x1 Math::MatrixMath::multiply(float scale, const Matrix2x1 & a)
 	rv.r2c1 = a.r2c1 * scale;
 	return rv;
 }
-		
+
 Matrix2x2 Math::MatrixMath::multiply(float scale, const Matrix2x2 & a)
 {
 	Matrix2x2 rv;
@@ -444,7 +444,7 @@ Matrix2x2 Math::MatrixMath::multiply(float scale, const Matrix2x2 & a)
 	rv.r2c2 = a.r2c2 * scale;
 	return rv;
 }
-		
+
 Matrix3x1 Math::MatrixMath::multiply(float scale, const Matrix3x1 & a)
 {
 	Matrix3x1 rv;
@@ -453,11 +453,11 @@ Matrix3x1 Math::MatrixMath::multiply(float scale, const Matrix3x1 & a)
 	rv.r3c1 = a.r3c1 * scale;
 	return rv;
 }
-		
+
 Matrix3x3 Math::MatrixMath::multiply(float scale, const Matrix3x3 & a)
 {
 	Matrix3x3 rv;
-	
+
 	rv.r1c1 = a.r1c1 * scale;
 	rv.r1c2 = a.r1c2 * scale;
 	rv.r1c3 = a.r1c3 * scale;
@@ -472,7 +472,7 @@ Matrix3x3 Math::MatrixMath::multiply(float scale, const Matrix3x3 & a)
 
 	return rv;
 }
-		
+
 Matrix4x1 Math::MatrixMath::multiply(float scale, const Matrix4x1 & a)
 {
 	Matrix4x1 rv;
@@ -482,11 +482,11 @@ Matrix4x1 Math::MatrixMath::multiply(float scale, const Matrix4x1 & a)
 	rv.r4c1 = a.r4c1 * scale;
 	return rv;
 }
-		
+
 Matrix4x3 Math::MatrixMath::multiply(float scale, const Matrix4x3 & a)
 {
 	Matrix4x3 rv;
-	
+
 	rv.r1c1 = a.r1c1 * scale;
 	rv.r1c2 = a.r1c2 * scale;
 	rv.r1c3 = a.r1c3 * scale;
@@ -505,7 +505,7 @@ Matrix4x3 Math::MatrixMath::multiply(float scale, const Matrix4x3 & a)
 
 	return rv;
 }
-		
+
 Matrix4x4 Math::MatrixMath::multiply(float scale, const Matrix4x4 & a)
 {
 	Matrix4x4 rv;
@@ -541,17 +541,17 @@ Matrix2x1 Math::MatrixMath::multiply(const Matrix2x2 & a, const Matrix2x1 & b)
 	rv.r2c1 = (a.r2c1 * b.r1c1) + (a.r2c2 * b.r2c1);
 	return rv;
 }
-		
+
 Matrix2x2 Math::MatrixMath::multiply(const Matrix2x2 & a, const Matrix2x2 & b)
 {
 	Matrix2x2 rv;
-	
+
 	rv.r1c1 = (a.r1c1 * b.r1c1) + (a.r1c2 * b.r2c1);
 	rv.r1c2 = (a.r1c1 * b.r1c2) + (a.r1c2 * b.r2c2);
-	
+
 	rv.r2c1 = (a.r2c1 * b.r1c1) + (a.r2c2 * b.r2c1);
 	rv.r2c2 = (a.r2c1 * b.r1c2) + (a.r2c2 * b.r2c2);
-	
+
 	return rv;
 }
 
@@ -564,19 +564,19 @@ Matrix3x1 Math::MatrixMath::multiply(const Matrix3x3 & a, const Matrix3x1 & b)
 	rv.r3c1 = (a.r3c1 * b.r1c1) + (a.r3c2 * b.r2c1) + (a.r3c3 * b.r3c1);
 	return rv;
 }
-		
+
 Matrix3x3 Math::MatrixMath::multiply(const Matrix3x3 & a, const Matrix3x3 & b)
 {
 	Matrix3x3 rv;
-	
+
 	rv.r1c1 = (a.r1c1 * b.r1c1) + (a.r1c2 * b.r2c1) + (a.r1c3 * b.r3c1);
 	rv.r1c2 = (a.r1c1 * b.r1c2) + (a.r1c2 * b.r2c2) + (a.r1c3 * b.r3c2);
 	rv.r1c3 = (a.r1c1 * b.r1c3) + (a.r1c2 * b.r2c3) + (a.r1c3 * b.r3c3);
-	
+
 	rv.r2c1 = (a.r2c1 * b.r1c1) + (a.r2c2 * b.r2c1) + (a.r2c3 * b.r3c1);
 	rv.r2c2 = (a.r2c1 * b.r1c2) + (a.r2c2 * b.r2c2) + (a.r2c3 * b.r3c2);
 	rv.r2c3 = (a.r2c1 * b.r1c3) + (a.r2c2 * b.r2c3) + (a.r2c3 * b.r3c3);
-	
+
 	rv.r3c1 = (a.r3c1 * b.r1c1) + (a.r3c2 * b.r2c1) + (a.r3c3 * b.r3c1);
 	rv.r3c2 = (a.r3c1 * b.r1c2) + (a.r3c2 * b.r2c2) + (a.r3c3 * b.r3c2);
 	rv.r3c3 = (a.r3c1 * b.r1c3) + (a.r3c2 * b.r2c3) + (a.r3c3 * b.r3c3);
@@ -606,7 +606,7 @@ Matrix4x3 Math::MatrixMath::multiply(const Matrix4x4 & a, const Matrix4x3 & b)
 	rv.r2c1 = (a.r2c1 * b.r1c1) + (a.r2c2 * b.r2c1) + (a.r2c3 * b.r3c1) + (a.r2c4 * b.r4c1);
 	rv.r2c2 = (a.r2c1 * b.r1c2) + (a.r2c2 * b.r2c2) + (a.r2c3 * b.r3c2) + (a.r2c4 * b.r4c2);
 	rv.r2c3 = (a.r2c1 * b.r1c3) + (a.r2c2 * b.r2c3) + (a.r2c3 * b.r3c3) + (a.r2c4 * b.r4c3);
-	
+
 	rv.r3c1 = (a.r3c1 * b.r1c1) + (a.r3c2 * b.r2c1) + (a.r3c3 * b.r3c1) + (a.r3c4 * b.r4c1);
 	rv.r3c2 = (a.r3c1 * b.r1c2) + (a.r3c2 * b.r2c2) + (a.r3c3 * b.r3c2) + (a.r3c4 * b.r4c2);
 	rv.r3c3 = (a.r3c1 * b.r1c3) + (a.r3c2 * b.r2c3) + (a.r3c3 * b.r3c3) + (a.r3c4 * b.r4c3);
@@ -617,7 +617,7 @@ Matrix4x3 Math::MatrixMath::multiply(const Matrix4x4 & a, const Matrix4x3 & b)
 
 	return rv;
 }
-	
+
 Matrix4x4 Math::MatrixMath::multiply(const Matrix4x4 & a, const Matrix4x4 & b)
 {
 	Matrix4x4 rv;
@@ -654,11 +654,11 @@ Matrix4x1 Math::MatrixMath::multiply(const Matrix4x3 & a, const Matrix3x1 & b)
 	rv.r4c1 = (a.r4c1 * b.r1c1) + (a.r4c2 * b.r2c1) + (a.r4c3 * b.r3c1);
 	return rv;
 }
-		
+
 Matrix4x3 Math::MatrixMath::multiply(const Matrix4x3 & a, const Matrix3x3 & b)
 {
 	Matrix4x3 rv;
-	
+
 	rv.r1c1 = (a.r1c1 * b.r1c1) + (a.r1c2 * b.r2c1) + (a.r1c3 * b.r3c1);
 	rv.r1c2 = (a.r1c1 * b.r1c2) + (a.r1c2 * b.r2c2) + (a.r1c3 * b.r3c2);
 	rv.r1c3 = (a.r1c1 * b.r1c3) + (a.r1c2 * b.r2c3) + (a.r1c3 * b.r3c3);
@@ -683,11 +683,11 @@ float Math::MatrixMath::determinant(const Matrix2x2 & a)
 {
 	return (a.r1c1 * a.r2c2) - (a.r1c2 * a.r2c1);
 }
-	
+
 float Math::MatrixMath::determinant(const Matrix3x3 & a)
 {
 	float aa, ab, ac, ba,bb, bc;
-	
+
 	aa = a.r1c1 * a.r2c2 * a.r3c3;
 	ab = a.r1c2 * a.r2c3 * a.r3c1;
 	ac = a.r1c3 * a.r2c1 * a.r3c2;
@@ -726,7 +726,7 @@ Matrix2x2 Math::MatrixMath::transpose(const Matrix2x2 & a)
 	rv.r2c2 = a.r2c2;
 	return rv;
 }
-		
+
 Matrix3x3 Math::MatrixMath::transpose(const Matrix3x3 & a)
 {
 	Matrix3x3 rv;
@@ -744,7 +744,7 @@ Matrix3x3 Math::MatrixMath::transpose(const Matrix3x3 & a)
 
 	return rv;
 }
-		
+
 Matrix4x4 Math::MatrixMath::transpose(const Matrix4x4 & a)
 {
 	Matrix4x4 rv;
@@ -805,7 +805,7 @@ Matrix4x4 Math::MatrixMath::inverse(const Matrix4x4 & a)
 {
 	float mul = 1.0f / determinant(a);
 	Matrix4x4 b;
-	
+
 	b.r1c1 = (a.r2c2 * a.r3c3 * a.r4c4) + (a.r2c3 * a.r3c4 * a.r4c2) + (a.r2c4 * a.r3c2 * a.r4c3)
 		- (a.r2c2 * a.r3c4 * a.r4c3) - (a.r2c3 * a.r3c2 * a.r4c4) - (a.r2c4 * a.r3c3 * a.r4c2);
 	b.r1c2 = (a.r1c2 * a.r3c4 * a.r4c3) + (a.r1c3 * a.r3c2 * a.r4c4) + (a.r1c4 * a.r3c3 * a.r4c2)
@@ -843,7 +843,7 @@ Matrix4x4 Math::MatrixMath::inverse(const Matrix4x4 & a)
 		- (a.r1c1 * a.r2c3 * a.r3c2) - (a.r1c2 * a.r2c1 * a.r3c3) - (a.r1c3 * a.r2c2 * a.r3c1);
 
 	return multiply(mul, b);
-} 
+}
 
 
 void Math::MatrixMath::makeIdentity(Matrix2x2 & a)
@@ -851,14 +851,14 @@ void Math::MatrixMath::makeIdentity(Matrix2x2 & a)
 	a.r1c1 = 1.0f; a.r1c2 = 0.0f;
 	a.r2c1 = 0.0f; a.r2c2 = 1.0f;
 }
-		
+
 void Math::MatrixMath::makeIdentity(Matrix3x3 & a)
 {
 	a.r1c1 = 1.0f; a.r1c2 = 0.0f; a.r1c3 = 0.0f;
 	a.r2c1 = 0.0f; a.r2c2 = 1.0f; a.r2c3 = 0.0f;
 	a.r3c1 = 0.0f; a.r3c2 = 0.0f; a.r3c3 = 1.0f;
 }
-		
+
 void Math::MatrixMath::makeIdentity(Matrix4x4 & a)
 {
 	a.r1c1 = 1.0f; a.r1c2 = 0.0f; a.r1c3 = 0.0f; a.r1c4 = 0.0f;
@@ -898,7 +898,7 @@ Quaternion Math::QuaternionMath::normalise(Quaternion & toNormalise)
 		rv.y = toNormalise.y * scale;
 		rv.z = toNormalise.z * scale;
 	}
-	
+
 	// rv.theta = toNormalise.theta * dev;
 	return rv;
 }
@@ -961,7 +961,7 @@ void Math::QuaternionMath::identityForAdd(Quaternion & a)
 
 float Math::QuaternionMath::norm(Quaternion & a)
 {
-	return sqrtf(a.x * a.x 
+	return sqrtf(a.x * a.x
 		+ a.y * a.y
 		+ a.z * a.z
 		+ a.theta * a.theta);
@@ -997,7 +997,7 @@ Matrix4x4 Math::QuaternionMath::toMatrix4x4(Quaternion & a)
 	rv.r2c2 = 1.0f - 2.0f * (xx + zz);
 	rv.r3c2 = 2.0f * (yz - tx);
 	rv.r4c2 = 0.0f;
-	
+
 	rv.r1c3 = 2.0f*(xz - ty);
 	rv.r2c3 = 2.0f*(yz + tx);
 	rv.r3c3 = 1.0f - 2.0f*(xx + yy);
@@ -1130,7 +1130,7 @@ void Math::transform::rotate3DZ(Matrix3x1 & toRotate, float thetaRads)
 	rot.r2c2 = cosTheta;
 	toRotate = Math::MatrixMath::multiply(rot, toRotate);
 }
-	
+
 void Math::transform::rotateCustomAxis(Vector3D & axis, float thetaRads, Matrix3x1 & toRotate) // axis must be unit lenght
 {
 	float cosTheta, sinTheta;
@@ -1226,7 +1226,7 @@ Matrix3x3 Math::transform::getRotationMatrixForCustomAxis(Vector3D & axis, float
 	Matrix3x3 rot;
 	cosTheta = cosf(thetaRads);
 	sinTheta = sinf(thetaRads);
-	
+
 	rot.r1c1 = cosTheta + (1.0f - cosTheta) * (axis.x * axis.x);
 	rot.r1c2 = (1.0f - cosTheta) * (axis.x * axis.y) - (sinTheta *  axis.z);
 	rot.r1c3 = (1.0f - cosTheta) * (axis.x * axis.z) + (sinTheta * axis.y);
@@ -1279,7 +1279,7 @@ Matrix2x2 Math::transform::get2x2ScalingMatrix(float x, float y)
 	rv.r2c2 = y;
 	return rv;
 }
-		
+
 Matrix3x3 get3x3ScalingMatrix(float x, float y, float z)
 {
 	Matrix3x3 rv;
@@ -1300,7 +1300,7 @@ Matrix4x4 Math::transform::get4x4ScalingMatrix(float x, float y, float z, float 
 	rv.r4c4 = w;
 	return rv;
 }
-		
+
 Matrix4x4 Math::transform::get4x4TranslationMatrix(Vector3D & trans)
 {
 	Matrix4x4 rv;
@@ -1328,7 +1328,7 @@ float Math::interpolation::lerp(float valueA, float valueB, float targetPoint) /
 {
 	return (1.0f - targetPoint) * valueA + targetPoint * valueB;
 }
-		
+
 
 Vector2D Math::interpolation::lerp(const Vector2D & vectorA, const Vector2D & vectorB, float targetPoint)
 {
@@ -1345,7 +1345,7 @@ Vector2D Math::interpolation::lerp(const Vector2D & vectorA, const Vector2D & ve
 	rv.y = lerp(vectorA.y, vectorB.y, targetPoint);
 	return rv;
 }
-		
+
 Vector3D Math::interpolation::lerp(const Vector3D & vectorA, const Vector3D & vectorB, float targetPoint)
 {
 	if (targetPoint <= 0.0f)
@@ -1396,7 +1396,7 @@ Quaternion Math::interpolation::slerp(const Quaternion & a, const Quaternion & b
 	{
 		return b;
 	}
-	
+
 
 	float dotProduct;
 	dotProduct = a.x * b.x
