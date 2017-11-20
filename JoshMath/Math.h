@@ -48,6 +48,9 @@ namespace Math
 		float magnitude (const Vector2D & a);
 		float magnitude (const Vector3D & a);
 
+		float magnitudeSquared(const Vector2D & a);
+		float magnitudeSquared(const Vector3D & a);
+
 		Vector2D scaled(float scale, const Vector2D & toScale);
 		Vector3D scaled(float scale, const Vector3D & toScale);
 

@@ -109,6 +109,16 @@ float Math::VectorMath::magnitude (const Vector3D & a)
 	return rv;
 }
 
+float Math::VectorMath::magnitudeSquared(const Vector2D & a)
+{
+	return (a.x * a.x) + (a.y * a.y);
+}
+
+float Math::VectorMath::magnitudeSquared(const Vector3D & a)
+{
+	return (a.x * a.x) + (a.y * a.y) + (a.z * a.z);
+}
+
 Vector2D Math::VectorMath::scaled(float scale, const Vector2D & toScale)
 {
 	Vector2D rv;
