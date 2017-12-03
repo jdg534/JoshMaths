@@ -1001,9 +1001,9 @@ TEST_METHOD(MatrixMath_Mul4x3With3x3)
 
 	Assert::AreEqual(exp, act);
 }
-
+*/
 // determinant
-TEST_METHOD(MatrixMath_determinant2x2)
+TEST(MatrixMath, determinant2x2)
 {
 	Matrix2x2 in;
 	in.r1c1 = 1;
@@ -1014,10 +1014,10 @@ TEST_METHOD(MatrixMath_determinant2x2)
 	float expected = -2.0f;
 	float actual = Math::MatrixMath::determinant(in);
 
-	Assert::AreEqual(expected, actual);
+	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST_METHOD(MatrixMath_determinant3x3)
+TEST(MatrixMath, determinant3x3)
 {
 	Matrix3x3 in;
 	float expected, actual;
@@ -1035,10 +1035,10 @@ TEST_METHOD(MatrixMath_determinant3x3)
 
 	actual = Math::MatrixMath::determinant(in);
 
-	Assert::AreEqual(expected, actual);
+	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST_METHOD(MatrixMath_determinant4x4)
+TEST(MatrixMath, determinant4x4)
 {
 	Matrix4x4 in;
 	float exp, act;
@@ -1062,11 +1062,11 @@ TEST_METHOD(MatrixMath_determinant4x4)
 	exp = 81788;
 	act = Math::MatrixMath::determinant(in);
 
-	Assert::AreEqual(exp, act);
+	EXPECT_FLOAT_EQ(exp, act);
 }
 
 // transpose
-TEST_METHOD(MatrixMath_Transpose2x2)
+TEST(MatrixMath, Transpose2x2)
 {
 	Matrix2x2 a, exp, act;
 	a.r1c1 = 1;
@@ -1081,10 +1081,18 @@ TEST_METHOD(MatrixMath_Transpose2x2)
 
 	act = Math::MatrixMath::transpose(a);
 
-	Assert::AreEqual(exp, act);
+	float * expIter = &exp.r1c1;
+	float * actIter = &act.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix2x2) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Transpose3x3)
+TEST(MatrixMath, Transpose3x3)
 {
 	Matrix3x3 a, exp, act;
 	a.r1c1 = 1;
@@ -1109,10 +1117,18 @@ TEST_METHOD(MatrixMath_Transpose3x3)
 
 	act = Math::MatrixMath::transpose(a);
 
-	Assert::AreEqual(exp, act);
+	float * expIter = &exp.r1c1;
+	float * actIter = &act.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix3x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Transpose4x4)
+TEST(MatrixMath, Transpose4x4)
 {
 	Matrix4x4 a, exp, act;
 
@@ -1155,12 +1171,19 @@ TEST_METHOD(MatrixMath_Transpose4x4)
 
 	act = Math::MatrixMath::transpose(a);
 
-	Assert::AreEqual(exp, act);
+	float * expIter = &exp.r1c1;
+	float * actIter = &act.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x4) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-
 // inverse
-TEST_METHOD(MatrixMath_Inverse2x2)
+TEST(MatrixMath, Inverse2x2)
 {
 	Matrix2x2 in;
 
@@ -1182,11 +1205,18 @@ TEST_METHOD(MatrixMath_Inverse2x2)
 	expected.r2c1 = -11.0f / 92.0f;
 	expected.r2c2 = 7.0f / 92.0f;
 
-	// Assert::AreEqual(expected, actual);
-	Assert::AreEqual(1, 1); // this ha been tested and only fails due to floating point rounding errors
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix2x2) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Inverse3x3)
+TEST(MatrixMath, Inverse3x3)
 {
 	Matrix3x3 in, expected, actual;
 
@@ -1214,14 +1244,17 @@ TEST_METHOD(MatrixMath_Inverse3x3)
 	expected.r3c2 = -45.0f / 1142.0f;
 	expected.r3c3 = 23.0f / 1713.0f;
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix3x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Inverse4x4)
-{
-	Assert::AreEqual(1, 0);
-}
-*/
 // identy matrix
 TEST(MatrixMath, Identity2x2)
 {
