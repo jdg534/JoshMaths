@@ -45,7 +45,7 @@ Vector2D Math::VectorMath::crossProduct(const Vector2D & vecA, const Vector2D & 
 Vector3D Math::VectorMath::crossProduct(const Vector3D & vecA, const Vector3D & vecB)
 {
 	Vector3D rv;
-	rv.x = (vecA.y * vecB.z) - (vecB.z * vecA.y);
+	rv.x = (vecA.y * vecB.z) - (vecA.z * vecB.y);
 	rv.y = (vecA.z * vecB.x) - (vecA.x * vecB.z);
 	rv.z = (vecA.x * vecB.y) - (vecA.y * vecB.x);
 	return rv;

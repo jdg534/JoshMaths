@@ -341,19 +341,19 @@ TEST(VectorMathTest, Cross3D)
 {
 	Vector3D a, b, exp, act;
 
-	a.x = 1;
-	a.y = 12;
-	a.z = 13;
+	a.x = 2.0f;
+	a.y = 2.0f;
+	a.z = 1.0f;
 
-	b.x = -3;
-	b.y = 27;
-	b.z = -7;
+	b.x = 1.0f;
+	b.y = -2.0f;
+	b.z = 0.0f;
 
 	act = Math::VectorMath::crossProduct(a, b);
 
-	exp.x = -435;
-	exp.y = -32;
-	exp.z = 63;
+	exp.x = 2.0f;
+	exp.y = 1.0f;
+	exp.z = -6.0f;
 
 	EXPECT_FLOAT_EQ(exp.x, act.x);
 	EXPECT_FLOAT_EQ(exp.y, act.y);
