@@ -36,9 +36,7 @@ struct Vector3D
 
 struct Quaternion
 {
-	
-	float theta,x, y, z;
-	// other way of writing it down, x, y, z, w
+	float w, x, y, z;
 };
 
 struct PolarCoordinate

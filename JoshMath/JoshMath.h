@@ -172,7 +172,7 @@ namespace Math
 		Matrix3x3 toMatrix3x3(Quaternion & a);
 	}
 
-	namespace transform
+	namespace Transform
 	{
 		void scale2D(Matrix2x1 & toScale, float xScale, float yScale);
 		void scale3D(Matrix3x1 & toScale, float xScale, float yScale, float zScale);
@@ -209,7 +209,7 @@ namespace Math
 		void translate3D(Matrix3x1 & toTranslate, Vector3D & translateBy);
 	}
 
-	namespace interpolation
+	namespace Interpolation
 	{
 		float lerp(float valueA, float valueB, float targetPoint); // target point should be between 0.0f & 1.0f
 		
@@ -228,6 +228,40 @@ namespace Math
 
 		// slep
 		Quaternion slerp(const Quaternion & a, const Quaternion & b, float t);
+
+		// biLerp
+		/*
+		b0--b1
+		|	|
+		a0--a1
+
+		*/
+		float biLerp(float a0, float a1, float b0, float b1, float tx, float ty);
+
+
+		// triLerp
+		/*
+		front
+		_010---_110
+		|		|
+		|		|
+		_000---_100
+
+		back
+		_011---_111
+		|		|
+		|		|
+		_001---_101
+		*/
+		float triLerp(float _000, float _100,
+			float _010, float _110,
+
+			float _001, float _101,
+			float _011, float _111,
+
+			float tx, float ty, float tz);
+
+		float interpolationWeight(float min, float max, float x);
 	}
 }
 
