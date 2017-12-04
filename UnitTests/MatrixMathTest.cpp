@@ -61,7 +61,6 @@ TEST(MatrixMath, Addition2x2)
 	}
 }
 
-
 TEST(MatrixMath, Addition3x1)
 {
 	Matrix3x1 a, b, expectedResults, actualResults;
@@ -239,9 +238,8 @@ TEST(MatrixMath, Addition4x4)
 	}
 }
 
-/*
 // Subtraction
-TEST_METHOD(MatrixMath_Subtract2x1)
+TEST(MatrixMath, Subtract2x1)
 {
 	Matrix2x1 a, b, expected, actual;
 
@@ -271,10 +269,18 @@ TEST_METHOD(MatrixMath_Subtract2x1)
 
 	actual = Math::MatrixMath::subtract(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix2x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Subtract2x2)
+TEST(MatrixMath, Subtract2x2)
 {
 	Matrix2x2 a, b, expected, actual;
 
@@ -304,10 +310,18 @@ TEST_METHOD(MatrixMath_Subtract2x2)
 
 	actual = Math::MatrixMath::subtract(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix2x2) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Subtract3x1)
+TEST(MatrixMath, Subtract3x1)
 {
 	Matrix3x1 a, b, expected, actual;
 
@@ -337,10 +351,18 @@ TEST_METHOD(MatrixMath_Subtract3x1)
 
 	actual = Math::MatrixMath::subtract(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix3x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Subtract3x3)
+TEST(MatrixMath, Subtract3x3)
 {
 	Matrix3x3 a, b, expected, actual;
 
@@ -370,10 +392,18 @@ TEST_METHOD(MatrixMath_Subtract3x3)
 
 	actual = Math::MatrixMath::subtract(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix3x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Subtract4x1)
+TEST(MatrixMath, Subtract4x1)
 {
 	Matrix4x1 a, b, expected, actual;
 
@@ -403,10 +433,18 @@ TEST_METHOD(MatrixMath_Subtract4x1)
 
 	actual = Math::MatrixMath::subtract(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Subtract4x3)
+TEST(MatrixMath, Subtract4x3)
 {
 	Matrix4x3 a, b, expected, actual;
 
@@ -436,10 +474,18 @@ TEST_METHOD(MatrixMath_Subtract4x3)
 
 	actual = Math::MatrixMath::subtract(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Subtract4x4)
+TEST(MatrixMath, Subtract4x4)
 {
 	Matrix4x4 a, b, expected, actual;
 
@@ -469,12 +515,20 @@ TEST_METHOD(MatrixMath_Subtract4x4)
 
 	actual = Math::MatrixMath::subtract(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x4) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
 // multiplication, (many functions to test)
 // scaler mul
-TEST_METHOD(MatrixMath_scale2x1Mat)
+TEST(MatrixMath, scale2x1Mat)
 {
 	Matrix2x1 a, expected, actual;
 	float scale = 2.0f;
@@ -486,10 +540,18 @@ TEST_METHOD(MatrixMath_scale2x1Mat)
 
 	actual = Math::MatrixMath::multiply(scale, a);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix2x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_scale2x2Mat)
+TEST(MatrixMath, scale2x2Mat)
 {
 	Matrix2x2 a, expected, actual;
 	float scale = 2.0f;
@@ -505,10 +567,18 @@ TEST_METHOD(MatrixMath_scale2x2Mat)
 
 	actual = Math::MatrixMath::multiply(scale, a);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix2x2) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_scale3x1Mat)
+TEST(MatrixMath, scale3x1Mat)
 {
 	Matrix3x1 a, expected, actual;
 	float scale = 2.0f;
@@ -522,10 +592,18 @@ TEST_METHOD(MatrixMath_scale3x1Mat)
 
 	actual = Math::MatrixMath::multiply(scale, a);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix3x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_scale3x3Mat)
+TEST(MatrixMath, scale3x3Mat)
 {
 	Matrix3x3 a, expected, actual;
 	float scale = 2.0f;
@@ -551,10 +629,18 @@ TEST_METHOD(MatrixMath_scale3x3Mat)
 
 	actual = Math::MatrixMath::multiply(scale, a);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix3x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_scale4x1Mat)
+TEST(MatrixMath, scale4x1Mat)
 {
 	Matrix4x1 a, expected, actual;
 	float scale = 2.0f;
@@ -570,10 +656,18 @@ TEST_METHOD(MatrixMath_scale4x1Mat)
 
 	actual = Math::MatrixMath::multiply(scale, a);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_scale4x3Mat)
+TEST(MatrixMath, scale4x3Mat)
 {
 	Matrix4x3 a, expected, actual;
 	float scale = 2.0f;
@@ -605,10 +699,18 @@ TEST_METHOD(MatrixMath_scale4x3Mat)
 
 	actual = Math::MatrixMath::multiply(scale, a);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_scale4x4Mat)
+TEST(MatrixMath, scale4x4Mat)
 {
 	Matrix4x4 a, expected, actual;
 	float scale = 2.0f;
@@ -648,11 +750,19 @@ TEST_METHOD(MatrixMath_scale4x4Mat)
 
 	actual = Math::MatrixMath::multiply(scale, a);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x4) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
 // multi with matrix mul
-TEST_METHOD(MartixMath_Mul2x2With2x1)
+TEST(MartixMath, Mul2x2With2x1)
 {
 	Matrix2x2 a;
 	Matrix2x1 b, expected, actual;
@@ -670,11 +780,18 @@ TEST_METHOD(MartixMath_Mul2x2With2x1)
 
 	actual = Math::MatrixMath::multiply(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
 
+	for (size_t i = 0; i < (sizeof(Matrix2x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Mul2x2With2x2)
+TEST(MatrixMath, Mul2x2With2x2)
 {
 	Matrix2x2 a, b, expected, actual;
 
@@ -695,10 +812,18 @@ TEST_METHOD(MatrixMath_Mul2x2With2x2)
 
 	actual = Math::MatrixMath::multiply(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix2x2) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Mul3x3With3x1)
+TEST(MatrixMath, Mul3x3With3x1)
 {
 	Matrix3x3 a;
 	Matrix3x1 b, expected, actual;
@@ -723,10 +848,18 @@ TEST_METHOD(MatrixMath_Mul3x3With3x1)
 
 	actual = Math::MatrixMath::multiply(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix3x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Mul3x3With3x3)
+TEST(MatrixMath, Mul3x3With3x3)
 {
 	Matrix3x3 a, b, expected, actual;
 
@@ -762,10 +895,18 @@ TEST_METHOD(MatrixMath_Mul3x3With3x3)
 
 	actual = Math::MatrixMath::multiply(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix3x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Mul4x4With4x1)
+TEST(MatrixMath, Mul4x4With4x1)
 {
 	Matrix4x4 a;
 	Matrix4x1 b, expected, actual;
@@ -799,10 +940,18 @@ TEST_METHOD(MatrixMath_Mul4x4With4x1)
 
 	actual = Math::MatrixMath::multiply(a, b);
 
-	Assert::AreEqual(expected, actual);
+	float * expIter = &expected.r1c1;
+	float * actIter = &actual.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Mul4x4With4x3)
+TEST(MatrixMath, Mul4x4With4x3)
 {
 	Matrix4x4 a;
 	Matrix4x3 b, exp, act;
@@ -852,10 +1001,18 @@ TEST_METHOD(MatrixMath_Mul4x4With4x3)
 
 	act = Math::MatrixMath::multiply(a, b);
 
-	Assert::AreEqual(exp, act);
+	float * expIter = &exp.r1c1;
+	float * actIter = &act.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Mul4x4With4x4)
+TEST(MatrixMath, Mul4x4With4x4)
 {
 	Matrix4x4 a, b, exp, act;
 
@@ -915,10 +1072,18 @@ TEST_METHOD(MatrixMath_Mul4x4With4x4)
 
 	act = Math::MatrixMath::multiply(a, b);
 
-	Assert::AreEqual(exp, act);
+	float * expIter = &exp.r1c1;
+	float * actIter = &act.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x4) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Mul4x3With3x1)
+TEST(MatrixMath, Mul4x3With3x1)
 {
 	Matrix4x3 a;
 	Matrix3x1 b;
@@ -950,10 +1115,19 @@ TEST_METHOD(MatrixMath_Mul4x3With3x1)
 	exp.r4c1 = 464;
 
 	act = Math::MatrixMath::multiply(a, b);
-	Assert::AreEqual(exp, act);
+	
+	float * expIter = &exp.r1c1;
+	float * actIter = &act.r1c1;
+
+	for (size_t i = 0; i < (sizeof(Matrix4x1) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
 
-TEST_METHOD(MatrixMath_Mul4x3With3x3)
+TEST(MatrixMath, Mul4x3With3x3)
 {
 	Matrix4x3 a, exp, act;
 	Matrix3x3 b;
@@ -998,10 +1172,17 @@ TEST_METHOD(MatrixMath_Mul4x3With3x3)
 
 	act = Math::MatrixMath::multiply(a, b);
 
+	float * expIter = &exp.r1c1;
+	float * actIter = &act.r1c1;
 
-	Assert::AreEqual(exp, act);
+	for (size_t i = 0; i < (sizeof(Matrix4x3) / sizeof(float)); ++i)
+	{
+		EXPECT_FLOAT_EQ(*expIter, *actIter);
+		++expIter;
+		++actIter;
+	}
 }
-*/
+
 // determinant
 TEST(MatrixMath, determinant2x2)
 {
