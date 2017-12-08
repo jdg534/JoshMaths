@@ -263,6 +263,51 @@ namespace Math
 
 		float interpolationWeight(float min, float max, float x);
 	}
+
+	namespace VolumeIntersection
+	{
+		bool volumesOverlap(const BoundingBox & a, const BoundingBox & b);
+		bool volumesOverlap(const BoundingCircle & a, const BoundingCircle & b);
+		bool volumesOverlap(const BoundingSphere & a, const BoundingSphere & b);
+		bool volumesOverlap(const BoundingCube & a, const BoundingCube & b);
+
+		bool pointInBoundingVolume(const Vector2D & a, const BoundingBox & vol);
+		bool pointInBoundingVolume(const Vector2D & a, const BoundingCircle & vol);
+		bool pointInBoundingVolume(const Vector3D & a, const BoundingSphere & vol);
+		bool pointInBoundingVolume(const Vector3D & a, const BoundingCube & vol);
+
+		bool volumeInRayPath(const Ray2D & r, const BoundingBox & vol);
+		bool volumeInRayPath(const Ray2D & r, const BoundingCircle & vol);
+		bool volumeInRayPath(const Ray3D & r, const BoundingSphere & vol);
+		bool volumeInRayPath(const Ray3D & r, const BoundingCube & vol);
+
+		// below assume that a volume is in the ray path, (defermined via above functions)
+		// these are designed for speed NOT percision
+		float rayDistanceToCollisionFast(const Ray2D & r, const BoundingBox & vol);
+		float rayDistanceToCollisionFast(const Ray2D & r, const BoundingCircle & vol);
+		float rayDistanceToCollisionFast(const Ray3D & r, const BoundingSphere & vol);
+		float rayDistanceToCollisionFast(const Ray3D & r, const BoundingCube & vol);
+
+		// these are designed for percision (down to the user) at the cost speed
+		// small step size = accurate & slow
+		// lager step size = inaccurate & fast*
+		float rayDistanceToCollisionReverseTrace(const Ray2D & r, const BoundingBox & vol, float stepSize);
+		float rayDistanceToCollisionReverseTrace(const Ray2D & r, const BoundingCircle & vol, float stepSize);
+		float rayDistanceToCollisionReverseTrace(const Ray3D & r, const BoundingSphere & vol, float stepSize);
+		float rayDistanceToCollisionReverseTrace(const Ray3D & r, const BoundingCube & vol, float stepSize);
+
+		float rayDistanceToCollisionTrace(const Ray2D & r, const BoundingBox & vol, float stepSize, float maxDist);
+		float rayDistanceToCollisionTrace(const Ray2D & r, const BoundingCircle & vol, float stepSize, float maxDist);
+		float rayDistanceToCollisionTrace(const Ray3D & r, const BoundingSphere & vol, float stepSize, float maxDist);
+		float rayDistanceToCollisionTrace(const Ray3D & r, const BoundingCube & vol, float stepSize, float maxDist);
+	}
+
+	namespace Miscellaneous
+	{
+		// returns an alterture relative to the parabola's centre point
+		float parabola(const Vector2D & questionCoord, const Vector2D & parabolaCentrePoint, float parabolaRadius); // based off: http://www.stuffwithstuff.com/robot-frog/3d/hills/hill.html
+		float diff(float x, float y);
+	}
 }
 
 #endif

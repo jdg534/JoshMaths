@@ -101,3 +101,71 @@ struct Matrix4x4
 };
 
 #endif
+
+struct Ray2D
+{
+	Vector2D pointOfOrigin;
+	Vector2D direction; // this MUST be a unit vector
+};
+
+struct Ray3D
+{
+	Vector3D pointOfOrigin;
+	Vector3D direction; // MUST be a unit vector
+};
+
+enum BoundingVolumeType
+{
+	BVT_UNDEFINED = 0,
+	BVT_BOX,
+	BVT_CUBE,
+	BVT_CIRCLE,
+	BVT_SPHERE
+};
+
+struct BoundingVolumeBase
+{
+	BoundingVolumeType bvType;
+	BoundingVolumeBase()
+	{
+		bvType = BVT_UNDEFINED;
+	}
+};
+
+struct BoundingBox : public BoundingVolumeBase
+{
+	float left, right, top, bottom;
+	BoundingBox()
+	{
+		bvType = BVT_BOX;
+	}
+};
+
+struct BoundingCube : public BoundingBox
+{
+	float front, back;
+	BoundingCube()
+	{
+		bvType = BVT_CUBE;
+	}
+};
+
+struct BoundingCircle : public BoundingVolumeBase
+{
+	Vector2D position;
+	float radius;
+	BoundingCircle()
+	{
+		bvType = BVT_CIRCLE;
+	}
+};
+
+struct BoundingSphere : public BoundingVolumeBase
+{
+	Vector3D position;
+	float radius;
+	BoundingSphere()
+	{
+		bvType = BVT_SPHERE;
+	}
+};
