@@ -6,6 +6,9 @@ project(${PROJECT_NAME_STR} C CXX)
 
 set(CMAKE_CXX_FLAGS "-g -Wall")
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRE ON)
+
 # force static runtime libraries for msvc builds
 if(MSVC)
   set(variables 
@@ -21,20 +24,6 @@ if(MSVC)
   endforeach()
 endif()
 
+add_subdirectory(Submodule)
 add_subdirectory(JoshMath)
-
-if (EnableUnitTesting)
-	if (APPLE)
-		add_definitions(-DGTEST_USE_OWN_TR1_TUPLE)
-		add_definitions(-D__GLIBCXX__)
-	endif(APPLE)
-	
-	add_subdirectory(ExternalLibs/gtest-1.6.0)
-	
-	enable_testing()
-	
-	include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
-	
-	add_subdirectory(UnitTests)
-	
-endif()
+add_subdirectory(UnitTests)	
