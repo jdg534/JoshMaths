@@ -193,7 +193,6 @@ namespace Math
 		Matrix3x3 get3x3Rotate3DXMatrix(float thetaRads);
 		Matrix3x3 get3x3Rotate3DYMatrix(float thetaRads);
 		Matrix3x3 get3x3Rotate3DZMatrix(float thetaRads);
-		
 
 		Matrix3x3 getRotationMatrixForCustomAxis(Vector3D & axis, float thetaRads);
 		Matrix4x4 get4x4RotationMatrixForCustomAxis(Vector3D & axis, float thetaRads);
@@ -207,6 +206,11 @@ namespace Math
 	
 		void translate2D(Matrix2x1 & toTranslate, Vector2D & translateBy);
 		void translate3D(Matrix3x1 & toTranslate, Vector3D & translateBy);
+
+		Matrix4x4 RightHandViewMatrix(Vector3D eye, Vector3D up, Vector3D at);
+		Matrix4x4 LeftHandViewMatrix(Vector3D eye, Vector3D up, Vector3D at);
+		Matrix4x4 OrthographicProjectionMatrix(float width, float height, float nearZ, float farZ);
+		Matrix4x4 PerspectiveProjectionMatrix(float fovInYDirection, float aspectRatio, float nearDepth, float farDepth);
 	}
 
 	namespace Interpolation
