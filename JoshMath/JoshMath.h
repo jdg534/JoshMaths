@@ -302,6 +302,26 @@ namespace Math
 		float rayDistanceToCollisionTrace(const Ray3D & r, const BoundingCube & vol, float stepSize, float maxDist);
 	}
 
+	namespace Physics
+	{
+		// pratical model for now
+		Vector2D netForce(const Vector2D* forces, const unsigned int nForces);
+		Vector3D netForce(const Vector3D* forces, const unsigned int nForces);
+
+		Vector2D acceleration(const Vector2D& netForce, float mass);
+		Vector3D acceleration(const Vector3D& netForce, float mass);
+
+		Vector2D velocity(const Vector2D& previousVelocity, const Vector2D& acceleration, float time);
+		Vector3D velocity(const Vector3D& previousVelocity, const Vector3D& acceleration, float time);
+
+		Vector2D momentum(const Vector2D& velocity, float mass);
+		Vector3D momentum(const Vector3D& velocity, float mass);
+
+		float speed(const Vector2D& velocity);
+		float speed(const Vector3D& velocity);
+	}
+
+
 	namespace Miscellaneous
 	{
 		// returns an alterture relative to the parabola's centre point
