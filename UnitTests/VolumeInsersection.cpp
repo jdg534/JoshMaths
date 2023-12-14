@@ -12,7 +12,7 @@ Bounding Sphere
 */
 
 // need to test, will collide and won't collide scenarios (for each collision check func)
-TEST(VolumeIntersection, BoxCheckWorks)
+GTEST_TEST(VolumeIntersection, BoxCheckWorks)
 {
 	BoundingBox a, b;
 	bool expected, actual;
@@ -33,7 +33,7 @@ TEST(VolumeIntersection, BoxCheckWorks)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,BoxCheckWorksWithYAxisGoingUp)
+GTEST_TEST(VolumeIntersection,BoxCheckWorksWithYAxisGoingUp)
 {
 	BoundingBox a, b;
 	bool expected, actual;
@@ -56,7 +56,7 @@ TEST(VolumeIntersection,BoxCheckWorksWithYAxisGoingUp)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,BoxCheckNoFalsePositive)
+GTEST_TEST(VolumeIntersection,BoxCheckNoFalsePositive)
 {
 	BoundingBox a, b;
 	bool expected, actual;
@@ -77,7 +77,7 @@ TEST(VolumeIntersection,BoxCheckNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,CircleCheckWorks)
+GTEST_TEST(VolumeIntersection,CircleCheckWorks)
 {
 	BoundingCircle a, b;
 
@@ -98,7 +98,7 @@ TEST(VolumeIntersection,CircleCheckWorks)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,CircleCheckNoFalsePositive)
+GTEST_TEST(VolumeIntersection,CircleCheckNoFalsePositive)
 {
 	BoundingCircle a, b;
 
@@ -119,7 +119,7 @@ TEST(VolumeIntersection,CircleCheckNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,CubeCheckWorksLH)
+GTEST_TEST(VolumeIntersection,CubeCheckWorksLH)
 {
 	BoundingCube a, b;
 	bool expected, actual;
@@ -146,7 +146,7 @@ TEST(VolumeIntersection,CubeCheckWorksLH)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,CubeCheckWorksRH)
+GTEST_TEST(VolumeIntersection,CubeCheckWorksRH)
 {
 	BoundingCube a, b;
 	bool expected, actual;
@@ -173,7 +173,7 @@ TEST(VolumeIntersection,CubeCheckWorksRH)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,CubeCheckNoFalsePositive)
+GTEST_TEST(VolumeIntersection,CubeCheckNoFalsePositive)
 {
 	BoundingCube a, b;
 	bool expected, actual;
@@ -200,7 +200,7 @@ TEST(VolumeIntersection,CubeCheckNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,SphereCheckWorks)
+GTEST_TEST(VolumeIntersection,SphereCheckWorks)
 {
 	BoundingSphere a, b;
 	a.position.x =
@@ -221,7 +221,7 @@ TEST(VolumeIntersection,SphereCheckWorks)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,SphereCheckNoFalsePositive)
+GTEST_TEST(VolumeIntersection,SphereCheckNoFalsePositive)
 {
 	BoundingSphere a, b;
 	a.position.x =
@@ -250,7 +250,7 @@ TEST(VolumeIntersection,SphereCheckNoFalsePositive)
 3D point in Sphere
 */
 
-TEST(VolumeIntersection,PointInSquare)
+GTEST_TEST(VolumeIntersection,PointInSquare)
 {
 	Vector2D testPoint;
 	BoundingBox box;
@@ -270,7 +270,7 @@ TEST(VolumeIntersection,PointInSquare)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,PointInSquareNoFalsePositive)
+GTEST_TEST(VolumeIntersection,PointInSquareNoFalsePositive)
 {
 	Vector2D testPoint;
 	BoundingBox box;
@@ -291,7 +291,7 @@ TEST(VolumeIntersection,PointInSquareNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,PointInCircle)
+GTEST_TEST(VolumeIntersection,PointInCircle)
 {
 	BoundingCircle bc;
 	Vector2D point;
@@ -312,7 +312,7 @@ TEST(VolumeIntersection,PointInCircle)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,PointInCircleNoFalsePositive)
+GTEST_TEST(VolumeIntersection,PointInCircleNoFalsePositive)
 {
 	BoundingCircle bc;
 	Vector2D point;
@@ -333,7 +333,7 @@ TEST(VolumeIntersection,PointInCircleNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,PointInCube)
+GTEST_TEST(VolumeIntersection,PointInCube)
 {
 	Vector3D point;
 	BoundingCube vol; // using left hand coord sys
@@ -348,7 +348,7 @@ TEST(VolumeIntersection,PointInCube)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,PointInCubeNoFalsePositive)
+GTEST_TEST(VolumeIntersection,PointInCubeNoFalsePositive)
 {
 	Vector3D point;
 	BoundingCube vol; // using left hand coord sys
@@ -363,7 +363,7 @@ TEST(VolumeIntersection,PointInCubeNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,PointInSphere)
+GTEST_TEST(VolumeIntersection,PointInSphere)
 {
 	BoundingSphere vol;
 	Vector3D point;
@@ -380,7 +380,7 @@ TEST(VolumeIntersection,PointInSphere)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,PointInSphereNoFalsePositive)
+GTEST_TEST(VolumeIntersection,PointInSphereNoFalsePositive)
 {
 	BoundingSphere vol;
 	Vector3D point;
@@ -404,7 +404,7 @@ float rayDistanceToCollisionReverseTrace()
 float rayDistanceToCollisionTrace()
 */
 
-TEST(VolumeIntersection,VolInPathBox)
+GTEST_TEST(VolumeIntersection,VolInPathBox)
 {
 	Ray2D ray;
 	BoundingBox box;
@@ -424,7 +424,7 @@ TEST(VolumeIntersection,VolInPathBox)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolInPathBoxNoFalsePositive)
+GTEST_TEST(VolumeIntersection,VolInPathBoxNoFalsePositive)
 {
 	Ray2D ray;
 	BoundingBox box;
@@ -444,7 +444,7 @@ TEST(VolumeIntersection,VolInPathBoxNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolInPathCircle)
+GTEST_TEST(VolumeIntersection,VolInPathCircle)
 {
 	Ray2D ray;
 	BoundingCircle vol;
@@ -465,7 +465,7 @@ TEST(VolumeIntersection,VolInPathCircle)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolInPathCircleNoFalsePositive)
+GTEST_TEST(VolumeIntersection,VolInPathCircleNoFalsePositive)
 {
 	Ray2D ray;
 	BoundingCircle vol;
@@ -489,7 +489,7 @@ TEST(VolumeIntersection,VolInPathCircleNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolInPathCube)
+GTEST_TEST(VolumeIntersection,VolInPathCube)
 {
 	Ray3D ray;
 	BoundingCube vol;
@@ -509,7 +509,7 @@ TEST(VolumeIntersection,VolInPathCube)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolInPathCubeNoFalsePositive)
+GTEST_TEST(VolumeIntersection,VolInPathCubeNoFalsePositive)
 {
 	Ray3D ray;
 	BoundingCube vol;
@@ -529,7 +529,7 @@ TEST(VolumeIntersection,VolInPathCubeNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolInPathSphere)
+GTEST_TEST(VolumeIntersection,VolInPathSphere)
 {
 	Ray3D r;
 	BoundingSphere bc;
@@ -550,7 +550,7 @@ TEST(VolumeIntersection,VolInPathSphere)
 	EXPECT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolInPathSphereNoFalsePositive)
+GTEST_TEST(VolumeIntersection,VolInPathSphereNoFalsePositive)
 {
 	Ray3D r;
 	BoundingSphere bc;
@@ -572,7 +572,7 @@ TEST(VolumeIntersection,VolInPathSphereNoFalsePositive)
 }
 
 // start of fast distance to collision functions
-TEST(VolumeIntersection,VolDistanceToCollideFastBox)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideFastBox)
 {
 	BoundingBox bb;
 	bb.left = bb.bottom = -5.0f;
@@ -591,7 +591,7 @@ TEST(VolumeIntersection,VolDistanceToCollideFastBox)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideFastCircle)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideFastCircle)
 {
 	BoundingCircle bc;
 	Ray2D r;
@@ -608,7 +608,7 @@ TEST(VolumeIntersection,VolDistanceToCollideFastCircle)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideFastCube)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideFastCube)
 {
 	BoundingCube bc;
 	Ray3D r;
@@ -629,7 +629,7 @@ TEST(VolumeIntersection,VolDistanceToCollideFastCube)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideFastSphere)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideFastSphere)
 {
 	BoundingSphere bs;
 	Ray3D r;
@@ -651,7 +651,7 @@ TEST(VolumeIntersection,VolDistanceToCollideFastSphere)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideReverseTraceBox)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceBox)
 {
 	BoundingBox bb;
 	bb.left = bb.bottom = -5.0f;
@@ -673,7 +673,7 @@ TEST(VolumeIntersection,VolDistanceToCollideReverseTraceBox)
 	// Assert::AreEqual(1, 1); // float rounding error?
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCircle)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCircle)
 {
 	BoundingCircle bc;
 	Ray2D r;
@@ -693,7 +693,7 @@ TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCircle)
 	// Assert::AreEqual(1, 1); // float rounding error, would "hang" with smaller step size?
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCube)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCube)
 {
 	BoundingCube bc;
 	Ray3D r;
@@ -718,7 +718,7 @@ TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCube)
 	// Assert::AreEqual(1, 1);
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideReverseTraceSphere)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceSphere)
 {
 	BoundingSphere bs;
 	Ray3D r;
@@ -743,7 +743,7 @@ TEST(VolumeIntersection,VolDistanceToCollideReverseTraceSphere)
 	// Assert::AreEqual(1, 1); // float value close enough
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideForwardTraceBox)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideForwardTraceBox)
 {
 	BoundingBox bb;
 	bb.left = bb.bottom = -5.0f;
@@ -767,7 +767,7 @@ TEST(VolumeIntersection,VolDistanceToCollideForwardTraceBox)
 	// Assert::AreEqual(1, 1); // close enough
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCircle)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCircle)
 {
 	BoundingCircle bc;
 	Ray2D r;
@@ -787,7 +787,7 @@ TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCircle)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCube)
+GTEST_TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCube)
 {
 	BoundingCube bc;
 	Ray3D r;
@@ -812,7 +812,7 @@ TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCube)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VolumeIntersection, DistanceToCollideFowardTraceSphere)
+GTEST_TEST(VolumeIntersection, DistanceToCollideFowardTraceSphere)
 {
 	BoundingCube bc;
 	Ray3D r;

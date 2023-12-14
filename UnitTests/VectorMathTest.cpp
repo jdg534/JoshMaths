@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../JoshMath/JoshMath.h"
 
-TEST(VectorMathTest, Adding2D)
+GTEST_TEST(VectorMathTest, Adding2D)
 {
 	Vector2D a, b;
 	Vector2D results;
@@ -18,7 +18,7 @@ TEST(VectorMathTest, Adding2D)
 	EXPECT_FLOAT_EQ(6.6f, results.y);
 }
 
-TEST(VectorMathTest, Adding3D)
+GTEST_TEST(VectorMathTest, Adding3D)
 {
 	Vector3D a, b;
 	Vector3D results;
@@ -38,7 +38,7 @@ TEST(VectorMathTest, Adding3D)
 	EXPECT_FLOAT_EQ(12.1f, results.z);
 }
 
-TEST(VectorMathTest, Subtraction2D)
+GTEST_TEST(VectorMathTest, Subtraction2D)
 {
 	Vector2D a, b, actual, expected;
 	a.x = b.x = 12.752f;
@@ -51,7 +51,7 @@ TEST(VectorMathTest, Subtraction2D)
 	EXPECT_FLOAT_EQ(expected.y, actual.y);
 }
 
-TEST(VectorMathTest, Subtraction3D)
+GTEST_TEST(VectorMathTest, Subtraction3D)
 {
 	Vector3D a, b, actual, expected;
 	a.x = b.x = 12.752f;
@@ -66,7 +66,7 @@ TEST(VectorMathTest, Subtraction3D)
 	EXPECT_FLOAT_EQ(expected.z, actual.z);
 }
 
-TEST(VectorMathTest, WayTo2D)
+GTEST_TEST(VectorMathTest, WayTo2D)
 {
 	Vector2D pointOfOrigin, targetPoint, expectedResults, actualResults;
 	pointOfOrigin.x = 77.8271f;
@@ -82,7 +82,7 @@ TEST(VectorMathTest, WayTo2D)
 	EXPECT_FLOAT_EQ(expectedResults.y, actualResults.y);
 }
 
-TEST(VectorMathTest, WayTo3D)
+GTEST_TEST(VectorMathTest, WayTo3D)
 {
 	Vector3D pointOfOrigin, targetPoint, expectedResults, actualResults;
 	pointOfOrigin.x = 77.8271f;
@@ -104,7 +104,7 @@ TEST(VectorMathTest, WayTo3D)
 }
 
 // mag
-TEST(VectorMathTest, Mag2D)
+GTEST_TEST(VectorMathTest, Mag2D)
 {
 	Vector2D in;
 
@@ -120,7 +120,7 @@ TEST(VectorMathTest, Mag2D)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VectorMathTest, Mag3D)
+GTEST_TEST(VectorMathTest, Mag3D)
 {
 	Vector3D in;
 
@@ -137,7 +137,7 @@ TEST(VectorMathTest, Mag3D)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VectorMathTest, MagSqurd2D)
+GTEST_TEST(VectorMathTest, MagSqurd2D)
 {
 	Vector2D in;
 
@@ -155,7 +155,7 @@ TEST(VectorMathTest, MagSqurd2D)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(VectorMathTest, MagSqurd3D)
+GTEST_TEST(VectorMathTest, MagSqurd3D)
 {
 	Vector3D in;
 
@@ -173,7 +173,7 @@ TEST(VectorMathTest, MagSqurd3D)
 }
 
 // scale
-TEST(VectorMathTest, Scale2D)
+GTEST_TEST(VectorMathTest, Scale2D)
 {
 	float scale = 2.0f;
 	Vector2D input, expected, actual;
@@ -189,7 +189,7 @@ TEST(VectorMathTest, Scale2D)
 	EXPECT_FLOAT_EQ(expected.y, actual.y);
 }
 
-TEST(VectorMathTest, Scale3D)
+GTEST_TEST(VectorMathTest, Scale3D)
 {
 	float scale = 2.0f;
 	Vector3D input, expected, actual;
@@ -209,7 +209,7 @@ TEST(VectorMathTest, Scale3D)
 }
 
 // unit vector
-TEST(VectorMathTest, UnitVec2D)
+GTEST_TEST(VectorMathTest, UnitVec2D)
 {
 	Vector2D in, expected, actual;
 	in.x = 100.0f;
@@ -231,7 +231,7 @@ TEST(VectorMathTest, UnitVec2D)
 	EXPECT_FLOAT_EQ(expected.y, actual.y);
 }
 
-TEST(VectorMathTest, UnitVec3D)
+GTEST_TEST(VectorMathTest, UnitVec3D)
 {
 	Vector3D in, exp, actual;
 
@@ -252,7 +252,7 @@ TEST(VectorMathTest, UnitVec3D)
 }
 
 // dot product
-TEST(VectorMathTest, DotProd2D)
+GTEST_TEST(VectorMathTest, DotProd2D)
 {
 	Vector2D a, b;
 
@@ -271,7 +271,7 @@ TEST(VectorMathTest, DotProd2D)
 	EXPECT_FLOAT_EQ(exp, act);
 }
 
-TEST(VectorMathTest, DotProd3D)
+GTEST_TEST(VectorMathTest, DotProd3D)
 {
 	Vector3D a, b;
 
@@ -294,7 +294,7 @@ TEST(VectorMathTest, DotProd3D)
 
 /* un comment once merged the altDotProduct back into this branch
 // alt dot product
-TEST(VectorMathTest, AltDotProd2D)
+GTEST_TEST(VectorMathTest, AltDotProd2D)
 {
 	Vector2D a, b;
 
@@ -313,7 +313,7 @@ TEST(VectorMathTest, AltDotProd2D)
 	EXPECT_FLOAT_EQ(exp, act);
 }
 
-TEST(VectorMath_AltDotProd3D)
+GTEST_TEST(VectorMath_AltDotProd3D)
 {
 	Vector3D a, b;
 
@@ -337,7 +337,7 @@ TEST(VectorMath_AltDotProd3D)
 */
 
 // cross product
-TEST(VectorMathTest, Cross3D)
+GTEST_TEST(VectorMathTest, Cross3D)
 {
 	Vector3D a, b, exp, act;
 
@@ -362,7 +362,7 @@ TEST(VectorMathTest, Cross3D)
 
 
 // look at
-TEST(VectorMathTest, LookAt2D)
+GTEST_TEST(VectorMathTest, LookAt2D)
 {
 	Vector2D lookFromPoint, currentLookAtPoint, nextLookAtPoint;
 

@@ -2,7 +2,7 @@
 #include "../JoshMath/JoshMath.h"
 
 // just diff and the parabola function
-TEST(MiscTest, diffWorks)
+GTEST_TEST(MiscTest, diffWorks)
 {
 	float a, b, expected, actual;
 	a = 10.0f;
@@ -14,7 +14,7 @@ TEST(MiscTest, diffWorks)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(MiscTest, parabolaWorks)
+GTEST_TEST(MiscTest, parabolaWorks)
 {
 	float expected, actual;
 

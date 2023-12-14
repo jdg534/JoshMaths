@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../JoshMath/JoshMath.h"
 
-TEST(Interpolation, Lerp)
+GTEST_TEST(Interpolation, Lerp)
 {
 	float min, max, weight, expected, actual;
 
@@ -14,7 +14,7 @@ TEST(Interpolation, Lerp)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(Interpolation, CalcWeightingValue)
+GTEST_TEST(Interpolation, CalcWeightingValue)
 {
 	float min, max, target, expected, actual;
 
@@ -28,7 +28,7 @@ TEST(Interpolation, CalcWeightingValue)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(Interpolatio, CalcWeightingValueGive1IfMinSameAsMax)
+GTEST_TEST(Interpolatio, CalcWeightingValueGive1IfMinSameAsMax)
 {
 	float min, max, target, expected, actual;
 
@@ -43,7 +43,7 @@ TEST(Interpolatio, CalcWeightingValueGive1IfMinSameAsMax)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(Interpolation, BiLerp)
+GTEST_TEST(Interpolation, BiLerp)
 {
 	float expected, actual,
 		a0, a1,
@@ -69,7 +69,7 @@ TEST(Interpolation, BiLerp)
 	// Assert::AreEqual(1, 1); // float rounding errors
 }
 
-TEST(Interpolation, TriLerp)
+GTEST_TEST(Interpolation, TriLerp)
 {
 	float exp, act;
 
@@ -103,7 +103,7 @@ TEST(Interpolation, TriLerp)
 	EXPECT_FLOAT_EQ(exp, act);
 }
 
-TEST(Interpolation, VectorLerp2D)
+GTEST_TEST(Interpolation, VectorLerp2D)
 {
 	Vector2D a, b,
 		exp, act;
@@ -124,7 +124,7 @@ TEST(Interpolation, VectorLerp2D)
 	EXPECT_FLOAT_EQ(exp.y, act.y);
 }
 
-TEST(Interpolation, VectorLerp3D)
+GTEST_TEST(Interpolation, VectorLerp3D)
 {
 	Vector3D a, b,
 		exp, act;
@@ -149,7 +149,7 @@ TEST(Interpolation, VectorLerp3D)
 	EXPECT_FLOAT_EQ(exp.z, act.z);
 }
 
-TEST(Interpolatio, QuaternionLerp)
+GTEST_TEST(Interpolatio, QuaternionLerp)
 {
 	Quaternion a, b, expected, actual;
 

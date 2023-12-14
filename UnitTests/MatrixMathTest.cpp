@@ -13,7 +13,7 @@ identity
 */
 
 // Additions
-TEST(MatrixMath, Addition2x1)
+GTEST_TEST(MatrixMath, Addition2x1)
 {
 	Matrix2x1 a, b, expectedResults, actualResults;
 	a.r1c1 = 5;
@@ -36,7 +36,7 @@ TEST(MatrixMath, Addition2x1)
 	}
 }
 
-TEST(MatrixMath, Addition2x2)
+GTEST_TEST(MatrixMath, Addition2x2)
 {
 	Matrix2x2 a, b, expectedResults, actualResults;
 	a.r1c1 = b.r1c1 = 5;
@@ -61,7 +61,7 @@ TEST(MatrixMath, Addition2x2)
 	}
 }
 
-TEST(MatrixMath, Addition3x1)
+GTEST_TEST(MatrixMath, Addition3x1)
 {
 	Matrix3x1 a, b, expectedResults, actualResults;
 	a.r1c1 = 5;
@@ -86,7 +86,7 @@ TEST(MatrixMath, Addition3x1)
 	}
 }
 
-TEST(MatrixMath, Addition3x3)
+GTEST_TEST(MatrixMath, Addition3x3)
 {
 	Matrix3x3 a, b, expectedResults, actualResults;
 
@@ -112,7 +112,7 @@ TEST(MatrixMath, Addition3x3)
 	}
 }
 
-TEST(MatrixMath, Addition4x1)
+GTEST_TEST(MatrixMath, Addition4x1)
 {
 	Matrix4x1 a, b, expected, actual;
 
@@ -154,7 +154,7 @@ TEST(MatrixMath, Addition4x1)
 	}
 }
 
-TEST(MatrixMath, Addition4x3)
+GTEST_TEST(MatrixMath, Addition4x3)
 {
 	Matrix4x3 a, b, expected, actual;
 
@@ -196,7 +196,7 @@ TEST(MatrixMath, Addition4x3)
 	}
 }
 
-TEST(MatrixMath, Addition4x4)
+GTEST_TEST(MatrixMath, Addition4x4)
 {
 	Matrix4x4 a, b, expected, actual;
 
@@ -239,7 +239,7 @@ TEST(MatrixMath, Addition4x4)
 }
 
 // Subtraction
-TEST(MatrixMath, Subtract2x1)
+GTEST_TEST(MatrixMath, Subtract2x1)
 {
 	Matrix2x1 a, b, expected, actual;
 
@@ -280,7 +280,7 @@ TEST(MatrixMath, Subtract2x1)
 	}
 }
 
-TEST(MatrixMath, Subtract2x2)
+GTEST_TEST(MatrixMath, Subtract2x2)
 {
 	Matrix2x2 a, b, expected, actual;
 
@@ -321,7 +321,7 @@ TEST(MatrixMath, Subtract2x2)
 	}
 }
 
-TEST(MatrixMath, Subtract3x1)
+GTEST_TEST(MatrixMath, Subtract3x1)
 {
 	Matrix3x1 a, b, expected, actual;
 
@@ -362,7 +362,7 @@ TEST(MatrixMath, Subtract3x1)
 	}
 }
 
-TEST(MatrixMath, Subtract3x3)
+GTEST_TEST(MatrixMath, Subtract3x3)
 {
 	Matrix3x3 a, b, expected, actual;
 
@@ -403,7 +403,7 @@ TEST(MatrixMath, Subtract3x3)
 	}
 }
 
-TEST(MatrixMath, Subtract4x1)
+GTEST_TEST(MatrixMath, Subtract4x1)
 {
 	Matrix4x1 a, b, expected, actual;
 
@@ -444,7 +444,7 @@ TEST(MatrixMath, Subtract4x1)
 	}
 }
 
-TEST(MatrixMath, Subtract4x3)
+GTEST_TEST(MatrixMath, Subtract4x3)
 {
 	Matrix4x3 a, b, expected, actual;
 
@@ -485,7 +485,7 @@ TEST(MatrixMath, Subtract4x3)
 	}
 }
 
-TEST(MatrixMath, Subtract4x4)
+GTEST_TEST(MatrixMath, Subtract4x4)
 {
 	Matrix4x4 a, b, expected, actual;
 
@@ -528,7 +528,7 @@ TEST(MatrixMath, Subtract4x4)
 
 // multiplication, (many functions to test)
 // scaler mul
-TEST(MatrixMath, scale2x1Mat)
+GTEST_TEST(MatrixMath, scale2x1Mat)
 {
 	Matrix2x1 a, expected, actual;
 	float scale = 2.0f;
@@ -551,7 +551,7 @@ TEST(MatrixMath, scale2x1Mat)
 	}
 }
 
-TEST(MatrixMath, scale2x2Mat)
+GTEST_TEST(MatrixMath, scale2x2Mat)
 {
 	Matrix2x2 a, expected, actual;
 	float scale = 2.0f;
@@ -578,7 +578,7 @@ TEST(MatrixMath, scale2x2Mat)
 	}
 }
 
-TEST(MatrixMath, scale3x1Mat)
+GTEST_TEST(MatrixMath, scale3x1Mat)
 {
 	Matrix3x1 a, expected, actual;
 	float scale = 2.0f;
@@ -603,7 +603,7 @@ TEST(MatrixMath, scale3x1Mat)
 	}
 }
 
-TEST(MatrixMath, scale3x3Mat)
+GTEST_TEST(MatrixMath, scale3x3Mat)
 {
 	Matrix3x3 a, expected, actual;
 	float scale = 2.0f;
@@ -640,7 +640,7 @@ TEST(MatrixMath, scale3x3Mat)
 	}
 }
 
-TEST(MatrixMath, scale4x1Mat)
+GTEST_TEST(MatrixMath, scale4x1Mat)
 {
 	Matrix4x1 a, expected, actual;
 	float scale = 2.0f;
@@ -667,7 +667,7 @@ TEST(MatrixMath, scale4x1Mat)
 	}
 }
 
-TEST(MatrixMath, scale4x3Mat)
+GTEST_TEST(MatrixMath, scale4x3Mat)
 {
 	Matrix4x3 a, expected, actual;
 	float scale = 2.0f;
@@ -710,7 +710,7 @@ TEST(MatrixMath, scale4x3Mat)
 	}
 }
 
-TEST(MatrixMath, scale4x4Mat)
+GTEST_TEST(MatrixMath, scale4x4Mat)
 {
 	Matrix4x4 a, expected, actual;
 	float scale = 2.0f;
@@ -762,7 +762,7 @@ TEST(MatrixMath, scale4x4Mat)
 }
 
 // multi with matrix mul
-TEST(MartixMath, Mul2x2With2x1)
+GTEST_TEST(MartixMath, Mul2x2With2x1)
 {
 	Matrix2x2 a;
 	Matrix2x1 b, expected, actual;
@@ -791,7 +791,7 @@ TEST(MartixMath, Mul2x2With2x1)
 	}
 }
 
-TEST(MatrixMath, Mul2x2With2x2)
+GTEST_TEST(MatrixMath, Mul2x2With2x2)
 {
 	Matrix2x2 a, b, expected, actual;
 
@@ -823,7 +823,7 @@ TEST(MatrixMath, Mul2x2With2x2)
 	}
 }
 
-TEST(MatrixMath, Mul3x3With3x1)
+GTEST_TEST(MatrixMath, Mul3x3With3x1)
 {
 	Matrix3x3 a;
 	Matrix3x1 b, expected, actual;
@@ -859,7 +859,7 @@ TEST(MatrixMath, Mul3x3With3x1)
 	}
 }
 
-TEST(MatrixMath, Mul3x3With3x3)
+GTEST_TEST(MatrixMath, Mul3x3With3x3)
 {
 	Matrix3x3 a, b, expected, actual;
 
@@ -906,7 +906,7 @@ TEST(MatrixMath, Mul3x3With3x3)
 	}
 }
 
-TEST(MatrixMath, Mul4x4With4x1)
+GTEST_TEST(MatrixMath, Mul4x4With4x1)
 {
 	Matrix4x4 a;
 	Matrix4x1 b, expected, actual;
@@ -951,7 +951,7 @@ TEST(MatrixMath, Mul4x4With4x1)
 	}
 }
 
-TEST(MatrixMath, Mul4x4With4x3)
+GTEST_TEST(MatrixMath, Mul4x4With4x3)
 {
 	Matrix4x4 a;
 	Matrix4x3 b, exp, act;
@@ -1012,7 +1012,7 @@ TEST(MatrixMath, Mul4x4With4x3)
 	}
 }
 
-TEST(MatrixMath, Mul4x4With4x4)
+GTEST_TEST(MatrixMath, Mul4x4With4x4)
 {
 	Matrix4x4 a, b, exp, act;
 
@@ -1083,7 +1083,7 @@ TEST(MatrixMath, Mul4x4With4x4)
 	}
 }
 
-TEST(MatrixMath, Mul4x3With3x1)
+GTEST_TEST(MatrixMath, Mul4x3With3x1)
 {
 	Matrix4x3 a;
 	Matrix3x1 b;
@@ -1127,7 +1127,7 @@ TEST(MatrixMath, Mul4x3With3x1)
 	}
 }
 
-TEST(MatrixMath, Mul4x3With3x3)
+GTEST_TEST(MatrixMath, Mul4x3With3x3)
 {
 	Matrix4x3 a, exp, act;
 	Matrix3x3 b;
@@ -1184,7 +1184,7 @@ TEST(MatrixMath, Mul4x3With3x3)
 }
 
 // determinant
-TEST(MatrixMath, determinant2x2)
+GTEST_TEST(MatrixMath, determinant2x2)
 {
 	Matrix2x2 in;
 	in.r1c1 = 1;
@@ -1198,7 +1198,7 @@ TEST(MatrixMath, determinant2x2)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(MatrixMath, determinant3x3)
+GTEST_TEST(MatrixMath, determinant3x3)
 {
 	Matrix3x3 in;
 	float expected, actual;
@@ -1219,7 +1219,7 @@ TEST(MatrixMath, determinant3x3)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-TEST(MatrixMath, determinant4x4)
+GTEST_TEST(MatrixMath, determinant4x4)
 {
 	Matrix4x4 in;
 	float exp, act;
@@ -1247,7 +1247,7 @@ TEST(MatrixMath, determinant4x4)
 }
 
 // transpose
-TEST(MatrixMath, Transpose2x2)
+GTEST_TEST(MatrixMath, Transpose2x2)
 {
 	Matrix2x2 a, exp, act;
 	a.r1c1 = 1;
@@ -1273,7 +1273,7 @@ TEST(MatrixMath, Transpose2x2)
 	}
 }
 
-TEST(MatrixMath, Transpose3x3)
+GTEST_TEST(MatrixMath, Transpose3x3)
 {
 	Matrix3x3 a, exp, act;
 	a.r1c1 = 1;
@@ -1309,7 +1309,7 @@ TEST(MatrixMath, Transpose3x3)
 	}
 }
 
-TEST(MatrixMath, Transpose4x4)
+GTEST_TEST(MatrixMath, Transpose4x4)
 {
 	Matrix4x4 a, exp, act;
 
@@ -1364,7 +1364,7 @@ TEST(MatrixMath, Transpose4x4)
 }
 
 // inverse
-TEST(MatrixMath, Inverse2x2)
+GTEST_TEST(MatrixMath, Inverse2x2)
 {
 	Matrix2x2 in;
 
@@ -1397,7 +1397,7 @@ TEST(MatrixMath, Inverse2x2)
 	}
 }
 
-TEST(MatrixMath, Inverse3x3)
+GTEST_TEST(MatrixMath, Inverse3x3)
 {
 	Matrix3x3 in, expected, actual;
 
@@ -1437,7 +1437,7 @@ TEST(MatrixMath, Inverse3x3)
 }
 
 // identy matrix
-TEST(MatrixMath, Identity2x2)
+GTEST_TEST(MatrixMath, Identity2x2)
 {
 	Matrix2x2 expected, actual;
 	Math::MatrixMath::makeIdentity(actual);
@@ -1458,7 +1458,7 @@ TEST(MatrixMath, Identity2x2)
 	}
 }
 
-TEST(MatrixMath, Identity3x3)
+GTEST_TEST(MatrixMath, Identity3x3)
 {
 	Matrix3x3 expected, actual;
 	Math::MatrixMath::makeIdentity(actual);
@@ -1484,7 +1484,7 @@ TEST(MatrixMath, Identity3x3)
 	}
 }
 
-TEST(MatrixMath, Identity4x4)
+GTEST_TEST(MatrixMath, Identity4x4)
 {
 	Matrix4x4 expected, actual;
 	Math::MatrixMath::makeIdentity(actual);

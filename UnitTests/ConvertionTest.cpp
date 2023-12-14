@@ -1,7 +1,7 @@
 #include <gtest/gtest.h>
 #include "../JoshMath/JoshMath.h"
 
-TEST(Convetion, DegreesToRadians)
+GTEST_TEST(Convetion, DegreesToRadians)
 {
 	float degreeValue = 57.62f;
 
@@ -12,7 +12,7 @@ TEST(Convetion, DegreesToRadians)
 	EXPECT_FLOAT_EQ(expectedResults, actualResults);
 }
 
-TEST(Convetion, RadiansToDegrees)
+GTEST_TEST(Convetion, RadiansToDegrees)
 {
 	// not exactly the same, but close enough (floating point rounding issues)
 	float radianValue = 5.372f;
@@ -24,7 +24,7 @@ TEST(Convetion, RadiansToDegrees)
 	EXPECT_FLOAT_EQ(expectedValue, actualResults);
 }
 
-TEST(Convetion, CartesianToPolar)
+GTEST_TEST(Convetion, CartesianToPolar)
 {
 	// not exactly the same, but close enough (floating point rounding issues)
 
@@ -48,7 +48,7 @@ TEST(Convetion, CartesianToPolar)
 	// https://www.mathsisfun.com/polar-cartesian-coordinates.html
 }
 
-TEST(Convetion, PolarToCartesian)
+GTEST_TEST(Convetion, PolarToCartesian)
 {
 	// angle in rads not degrees
 	PolarCoordinate input;
