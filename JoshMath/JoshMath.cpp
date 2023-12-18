@@ -24,17 +24,17 @@ SOFTWARE.
 
 */
 
-float Math::VectorMath::dotProduct(const Vector2D & vecA, const Vector2D & vecB)
+float Math::VectorMath::dotProduct(const Vector2D& vecA, const Vector2D& vecB)
 {
 	return (vecA.x * vecB.x) + (vecA.y * vecB.y);
 }
 
-float Math::VectorMath::dotProduct(const Vector3D & vecA, const Vector3D & vecB)
+float Math::VectorMath::dotProduct(const Vector3D& vecA, const Vector3D& vecB)
 {
 	return (vecA.x * vecB.x) + (vecA.y * vecB.y) + (vecA.z * vecB.z);
 }
 
-float Math::VectorMath::altDotProduct(const Vector2D & vecA, const Vector2D & vecB)
+float Math::VectorMath::altDotProduct(const Vector2D& vecA, const Vector2D& vecB)
 {
 	//  is |A| |B| cos(theta)
 	float aMag = magnitude(vecA);
@@ -47,7 +47,7 @@ float Math::VectorMath::altDotProduct(const Vector2D & vecA, const Vector2D & ve
 	return aMag * bMag * cosTheta;
 }
 
-float Math::VectorMath::altDotProduct(const Vector3D & vecA, const Vector3D & vecB)
+float Math::VectorMath::altDotProduct(const Vector3D& vecA, const Vector3D& vecB)
 {
 	//  is |A| |B| cos(theta)
 	float aMag = magnitude(vecA);
@@ -62,7 +62,7 @@ float Math::VectorMath::altDotProduct(const Vector3D & vecA, const Vector3D & ve
 	return aMag * bMag * cosTheta;
 }
 
-Vector2D Math::VectorMath::crossProduct(const Vector2D & vecA, const Vector2D & vecB)
+Vector2D Math::VectorMath::crossProduct(const Vector2D& vecA, const Vector2D& vecB)
 {
 	Vector2D rv;
 	rv.x = (vecA.y * 0.0f) - (0.0f * vecB.y);
@@ -70,7 +70,7 @@ Vector2D Math::VectorMath::crossProduct(const Vector2D & vecA, const Vector2D & 
 	return rv;
 }
 
-Vector3D Math::VectorMath::crossProduct(const Vector3D & vecA, const Vector3D & vecB)
+Vector3D Math::VectorMath::crossProduct(const Vector3D& vecA, const Vector3D& vecB)
 {
 	Vector3D rv;
 	rv.x = (vecA.y * vecB.z) - (vecA.z * vecB.y);
@@ -79,19 +79,19 @@ Vector3D Math::VectorMath::crossProduct(const Vector3D & vecA, const Vector3D & 
 	return rv;
 }
 
-float Math::VectorMath::angleBetween(const Vector2D & a, const Vector2D b)
+float Math::VectorMath::angleBetween(const Vector2D& a, const Vector2D& b)
 {
 	float cosTheta = (dotProduct(a,b)) / (magnitude(a) * magnitude(b));
 	return acosf(cosTheta);
 }
 
-float Math::VectorMath::angleBetween(const Vector3D & a, const Vector3D b)
+float Math::VectorMath::angleBetween(const Vector3D& a, const Vector3D& b)
 {
 	float cosTheta = (dotProduct(a, b)) / (magnitude(a) * magnitude(b));
 	return acosf(cosTheta);
 }
 
-Vector2D Math::VectorMath::add (const Vector2D & a, const Vector2D & b)
+Vector2D Math::VectorMath::add (const Vector2D& a, const Vector2D& b)
 {
 	Vector2D returnVal;
 	returnVal.x = a.x + b.x;
@@ -99,7 +99,7 @@ Vector2D Math::VectorMath::add (const Vector2D & a, const Vector2D & b)
 	return returnVal;
 }
 
-Vector2D Math::VectorMath::subtract (const Vector2D & a, const Vector2D & b)
+Vector2D Math::VectorMath::subtract (const Vector2D& a, const Vector2D& b)
 {
 	Vector2D rv;
 	rv.x = a.x - b.x;
@@ -107,7 +107,7 @@ Vector2D Math::VectorMath::subtract (const Vector2D & a, const Vector2D & b)
 	return rv;
 }
 
-Vector3D Math::VectorMath::add (const Vector3D & a, const Vector3D & b)
+Vector3D Math::VectorMath::add (const Vector3D& a, const Vector3D& b)
 {
 	Vector3D rv;
 	rv.x = a.x + b.x;
@@ -116,7 +116,7 @@ Vector3D Math::VectorMath::add (const Vector3D & a, const Vector3D & b)
 	return rv;
 }
 
-Vector3D Math::VectorMath::subtract (const Vector3D & a, const Vector3D & b)
+Vector3D Math::VectorMath::subtract (const Vector3D& a, const Vector3D& b)
 {
 	Vector3D rv;
 	rv.x = a.x - b.x;
@@ -125,41 +125,41 @@ Vector3D Math::VectorMath::subtract (const Vector3D & a, const Vector3D & b)
 	return rv;
 }
 
-Vector2D Math::VectorMath::wayToVector(const Vector2D & pointA, const Vector2D & pointB)
+Vector2D Math::VectorMath::wayToVector(const Vector2D& pointA, const Vector2D& pointB)
 {
 	return subtract(pointB, pointA);
 }
 
-Vector3D Math::VectorMath::wayToVector(const Vector3D & pointA, const Vector3D & pointB)
+Vector3D Math::VectorMath::wayToVector(const Vector3D& pointA, const Vector3D& pointB)
 {
 	return subtract(pointB, pointA);
 }
 
-float Math::VectorMath::magnitude (const Vector2D & a)
+float Math::VectorMath::magnitude (const Vector2D& a)
 {
 	float rv = (a.x * a.x) + (a.y * a.y);
 	rv = sqrtf(rv);
 	return rv;
 }
 
-float Math::VectorMath::magnitude (const Vector3D & a)
+float Math::VectorMath::magnitude (const Vector3D& a)
 {
 	float rv = (a.x * a.x) + (a.y * a.y) + (a.z * a.z);
 	rv = sqrtf(rv);
 	return rv;
 }
 
-float Math::VectorMath::magnitudeSquared(const Vector2D & a)
+float Math::VectorMath::magnitudeSquared(const Vector2D& a)
 {
 	return (a.x * a.x) + (a.y * a.y);
 }
 
-float Math::VectorMath::magnitudeSquared(const Vector3D & a)
+float Math::VectorMath::magnitudeSquared(const Vector3D& a)
 {
 	return (a.x * a.x) + (a.y * a.y) + (a.z * a.z);
 }
 
-Vector2D Math::VectorMath::scaled(float scale, const Vector2D & toScale)
+Vector2D Math::VectorMath::scaled(float scale, const Vector2D& toScale)
 {
 	Vector2D rv;
 	rv.x = toScale.x * scale;
@@ -167,7 +167,7 @@ Vector2D Math::VectorMath::scaled(float scale, const Vector2D & toScale)
 	return rv;
 }
 
-Vector3D Math::VectorMath::scaled(float scale, const Vector3D & toScale)
+Vector3D Math::VectorMath::scaled(float scale, const Vector3D& toScale)
 {
 	Vector3D rv; // rv = Return Value
 	rv.x = toScale.x * scale;
@@ -176,21 +176,21 @@ Vector3D Math::VectorMath::scaled(float scale, const Vector3D & toScale)
 	return rv;
 }
 
-Vector2D Math::VectorMath::unitVector(const Vector2D & a)
+Vector2D Math::VectorMath::unitVector(const Vector2D& a)
 {
 	float mag = magnitude(a);
 	float unitScale = 1.0f / mag;
 	return scaled(unitScale, a);
 }
 
-Vector3D Math::VectorMath::unitVector(const Vector3D & a)
+Vector3D Math::VectorMath::unitVector(const Vector3D& a)
 {
 	float mag = magnitude(a);
 	float unitScale = 1.0f / mag;
 	return scaled(unitScale, a);
 }
 
-float Math::VectorMath::lookAt2D(const Vector2D & currentlyLookingAtPos, const Vector2D & toLookAtPos, const Vector2D & currentPos)// note the parameters passed should be points to look at
+float Math::VectorMath::lookAt2D(const Vector2D& currentlyLookingAtPos, const Vector2D& toLookAtPos, const Vector2D& currentPos)
 {
 	// need unit vectors from eye position to currently facing position & eye position to position want to look at
 	Vector2D eye2OldAt = wayToVector(currentPos, currentlyLookingAtPos);
@@ -203,7 +203,7 @@ float Math::VectorMath::lookAt2D(const Vector2D & currentlyLookingAtPos, const V
 	return acosf(dp);
 }
 
-Matrix4x4 Math::VectorMath::lookAt3D(Vector3D & position, Vector3D & targetPosition, Vector3D & upVec)
+Matrix4x4 Math::VectorMath::lookAt3D(const Vector3D & position, const Vector3D & targetPosition, const Vector3D & upVec)
 {
 	Vector3D zAxis = subtract(position, targetPosition);
 	zAxis = unitVector(zAxis);
@@ -246,7 +246,7 @@ float Math::radiansToDegrees(float valueInRadians)
 	return valueInRadians * (180 / 3.14159265359);
 }
 
-PolarCoordinate Math::PolarCoordinateMath::CartesianToPolar(Vector2D & cartVal)
+PolarCoordinate Math::PolarCoordinateMath::CartesianToPolar(const Vector2D& cartVal)
 {
 	PolarCoordinate rv;
 	rv.radius = VectorMath::magnitude(cartVal);
@@ -255,7 +255,7 @@ PolarCoordinate Math::PolarCoordinateMath::CartesianToPolar(Vector2D & cartVal)
 	return rv;
 }
 
-Vector2D Math::PolarCoordinateMath::PolarToCartesian(PolarCoordinate & PolarVal)
+Vector2D Math::PolarCoordinateMath::PolarToCartesian(const PolarCoordinate& PolarVal)
 {
 	Vector2D rv;
 	// float angleAsRads = degreesToRadians(PolarVal.angle); 
@@ -265,7 +265,7 @@ Vector2D Math::PolarCoordinateMath::PolarToCartesian(PolarCoordinate & PolarVal)
 	return rv;
 }
 
-Matrix2x1 Math::MatrixMath::add(const Matrix2x1 & a, const Matrix2x1 & b)
+Matrix2x1 Math::MatrixMath::add(const Matrix2x1& a, const Matrix2x1& b)
 {
 	Matrix2x1 rv;
 	rv.r1c1 = a.r1c1 + b.r1c1;
@@ -273,7 +273,7 @@ Matrix2x1 Math::MatrixMath::add(const Matrix2x1 & a, const Matrix2x1 & b)
 	return rv;
 }
 
-Matrix2x2 Math::MatrixMath::add(const Matrix2x2 & a, const Matrix2x2 & b)
+Matrix2x2 Math::MatrixMath::add(const Matrix2x2& a, const Matrix2x2& b)
 {
 	Matrix2x2 rv;
 	rv.r1c1 = a.r1c1 + b.r1c1;
@@ -283,7 +283,7 @@ Matrix2x2 Math::MatrixMath::add(const Matrix2x2 & a, const Matrix2x2 & b)
 	return rv;
 }
 
-Matrix3x1 Math::MatrixMath::add(const Matrix3x1 & a, const Matrix3x1 & b)
+Matrix3x1 Math::MatrixMath::add(const Matrix3x1& a, const Matrix3x1& b)
 {
 	Matrix3x1 rv;
 	rv.r1c1 = a.r1c1 + b.r1c1;
@@ -292,7 +292,7 @@ Matrix3x1 Math::MatrixMath::add(const Matrix3x1 & a, const Matrix3x1 & b)
 	return rv;
 }
 
-Matrix3x3 Math::MatrixMath::add(const Matrix3x3 & a, const Matrix3x3 & b)
+Matrix3x3 Math::MatrixMath::add(const Matrix3x3& a, const Matrix3x3& b)
 {
 	Matrix3x3 rv;
 	rv.r1c1 = a.r1c1 + b.r1c1;
@@ -309,7 +309,7 @@ Matrix3x3 Math::MatrixMath::add(const Matrix3x3 & a, const Matrix3x3 & b)
 	return rv;
 }
 
-Matrix4x1 Math::MatrixMath::add(const Matrix4x1 & a, const Matrix4x1 & b)
+Matrix4x1 Math::MatrixMath::add(const Matrix4x1& a, const Matrix4x1& b)
 {
 	Matrix4x1 rv;
 	rv.r1c1 = a.r1c1 + b.r1c1;
@@ -319,7 +319,7 @@ Matrix4x1 Math::MatrixMath::add(const Matrix4x1 & a, const Matrix4x1 & b)
 	return rv;
 }
 
-Matrix4x3 Math::MatrixMath::add(const Matrix4x3 & a, const Matrix4x3 & b)
+Matrix4x3 Math::MatrixMath::add(const Matrix4x3& a, const Matrix4x3& b)
 {
 	Matrix4x3 rv;
 
@@ -342,7 +342,7 @@ Matrix4x3 Math::MatrixMath::add(const Matrix4x3 & a, const Matrix4x3 & b)
 	return rv;
 }
 
-Matrix4x4 Math::MatrixMath::add(const Matrix4x4 & a, const Matrix4x4 & b)
+Matrix4x4 Math::MatrixMath::add(const Matrix4x4& a, const Matrix4x4& b)
 {
 	Matrix4x4 rv;
 
@@ -369,7 +369,7 @@ Matrix4x4 Math::MatrixMath::add(const Matrix4x4 & a, const Matrix4x4 & b)
 	return rv;
 }
 
-Matrix2x1 Math::MatrixMath::subtract(const Matrix2x1 & a, const Matrix2x1 & b)
+Matrix2x1 Math::MatrixMath::subtract(const Matrix2x1& a, const Matrix2x1& b)
 {
 	Matrix2x1 rv;
 	rv.r1c1 = a.r1c1 - b.r1c1;
@@ -377,7 +377,7 @@ Matrix2x1 Math::MatrixMath::subtract(const Matrix2x1 & a, const Matrix2x1 & b)
 	return rv;
 }
 
-Matrix2x2 Math::MatrixMath::subtract(const Matrix2x2 & a, const Matrix2x2 & b)
+Matrix2x2 Math::MatrixMath::subtract(const Matrix2x2& a, const Matrix2x2& b)
 {
 	Matrix2x2 rv;
 	rv.r1c1 = a.r1c1 - b.r1c1;
@@ -387,7 +387,7 @@ Matrix2x2 Math::MatrixMath::subtract(const Matrix2x2 & a, const Matrix2x2 & b)
 	return rv;
 }
 
-Matrix3x1 Math::MatrixMath::subtract(const Matrix3x1 & a, const Matrix3x1 & b)
+Matrix3x1 Math::MatrixMath::subtract(const Matrix3x1& a, const Matrix3x1& b)
 {
 	Matrix3x1 rv;
 	rv.r1c1 = a.r1c1 - b.r1c1;
@@ -396,7 +396,7 @@ Matrix3x1 Math::MatrixMath::subtract(const Matrix3x1 & a, const Matrix3x1 & b)
 	return rv;
 }
 
-Matrix3x3 Math::MatrixMath::subtract(const Matrix3x3 & a, const Matrix3x3 & b)
+Matrix3x3 Math::MatrixMath::subtract(const Matrix3x3& a, const Matrix3x3& b)
 {
 	Matrix3x3 rv;
 	rv.r1c1 = a.r1c1 - b.r1c1;
@@ -414,7 +414,7 @@ Matrix3x3 Math::MatrixMath::subtract(const Matrix3x3 & a, const Matrix3x3 & b)
 	return rv;
 }
 
-Matrix4x1 Math::MatrixMath::subtract(const Matrix4x1 & a, const Matrix4x1 & b)
+Matrix4x1 Math::MatrixMath::subtract(const Matrix4x1& a, const Matrix4x1& b)
 {
 	Matrix4x1 rv;
 	rv.r1c1 = a.r1c1 - b.r1c1;
@@ -425,7 +425,7 @@ Matrix4x1 Math::MatrixMath::subtract(const Matrix4x1 & a, const Matrix4x1 & b)
 	return rv;
 }
 
-Matrix4x3 Math::MatrixMath::subtract(const Matrix4x3 & a, const Matrix4x3 & b)
+Matrix4x3 Math::MatrixMath::subtract(const Matrix4x3& a, const Matrix4x3& b)
 {
 	Matrix4x3 rv;
 
@@ -448,7 +448,7 @@ Matrix4x3 Math::MatrixMath::subtract(const Matrix4x3 & a, const Matrix4x3 & b)
 	return rv;
 }
 
-Matrix4x4 Math::MatrixMath::subtract(const Matrix4x4 & a, const Matrix4x4 & b)
+Matrix4x4 Math::MatrixMath::subtract(const Matrix4x4& a, const Matrix4x4& b)
 {
 	Matrix4x4 rv;
 
@@ -910,7 +910,7 @@ void Math::MatrixMath::makeIdentity(Matrix4x4 & a)
 	a.r4c1 = 0.0f; a.r4c2 = 0.0f; a.r4c3 = 0.0f; a.r4c4 = 1.0f;
 }
 
-Quaternion Math::QuaternionMath::create(float angle, Vector3D axis)
+Quaternion Math::QuaternionMath::create(float angle, const Vector3D& axis)
 {
 	Vector3D axisUnitVecForm = Math::VectorMath::unitVector(axis);
 
@@ -1017,7 +1017,7 @@ void Math::QuaternionMath::identityForAdd(Quaternion & a)
 	a.z = 0.0f;
 }
 
-float Math::QuaternionMath::norm(Quaternion & a)
+float Math::QuaternionMath::norm(const Quaternion& a)
 {
 	return sqrtf(a.x * a.x
 		+ a.y * a.y
@@ -1025,14 +1025,14 @@ float Math::QuaternionMath::norm(Quaternion & a)
 		+ a.w * a.w);
 }
 
-Quaternion Math::QuaternionMath::inverse(Quaternion & a)
+Quaternion Math::QuaternionMath::inverse(const Quaternion& a)
 {
 	Quaternion aConj = conjugate(a);
 	float n = norm(aConj);
 	return scale(aConj, 1.0f / n);
 }
 
-Matrix4x4 Math::QuaternionMath::toMatrix4x4(Quaternion & a)
+Matrix4x4 Math::QuaternionMath::toMatrix4x4(const Quaternion& a)
 {
 	Matrix4x4 rv;
 	float wx, wy, wz, xx, yy, yz, xy, xz, zz;
@@ -1069,7 +1069,7 @@ Matrix4x4 Math::QuaternionMath::toMatrix4x4(Quaternion & a)
 	return rv;
 }
 
-Matrix3x3 Math::QuaternionMath::toMatrix3x3(Quaternion & a)
+Matrix3x3 Math::QuaternionMath::toMatrix3x3(const Quaternion& a)
 {
 	Matrix3x3 rv;
 
@@ -1098,7 +1098,7 @@ Matrix3x3 Math::QuaternionMath::toMatrix3x3(Quaternion & a)
 	return rv;
 }
 
-void Math::Transform::scale2D(Matrix2x1 & toScale, float xScale, float yScale)
+void Math::Transform::scale2D(Matrix2x1& toScale, float xScale, float yScale)
 {
 	Matrix2x2 mul;
 	Math::MatrixMath::makeIdentity(mul);
@@ -1107,7 +1107,7 @@ void Math::Transform::scale2D(Matrix2x1 & toScale, float xScale, float yScale)
 	toScale = Math::MatrixMath::multiply(mul, toScale);
 }
 
-void Math::Transform::scale3D(Matrix3x1 & toScale, float xScale, float yScale, float zScale)
+void Math::Transform::scale3D(Matrix3x1& toScale, float xScale, float yScale, float zScale)
 {
 	Matrix3x3 mul;
 	Math::MatrixMath::makeIdentity(mul);
@@ -1117,7 +1117,7 @@ void Math::Transform::scale3D(Matrix3x1 & toScale, float xScale, float yScale, f
 	toScale = Math::MatrixMath::multiply(mul, toScale);
 }
 
-void Math::Transform::scale4D(Matrix4x1 & toScale, float xScale, float yScale, float zScale, float wScale)
+void Math::Transform::scale4D(Matrix4x1& toScale, float xScale, float yScale, float zScale, float wScale)
 {
 	Matrix4x4 mul;
 	Math::MatrixMath::makeIdentity(mul);
@@ -1129,7 +1129,7 @@ void Math::Transform::scale4D(Matrix4x1 & toScale, float xScale, float yScale, f
 	toScale = Math::MatrixMath::multiply(mul, toScale);
 }
 
-void Math::Transform::rotate2DClkWise(Matrix2x1 & toRot, float thetaRads)
+void Math::Transform::rotate2DClkWise(Matrix2x1& toRot, float thetaRads)
 {
 	float cosTheta = cosf(thetaRads);
 	float sinTheta = sinf(thetaRads);
@@ -1142,7 +1142,7 @@ void Math::Transform::rotate2DClkWise(Matrix2x1 & toRot, float thetaRads)
 	toRot = Math::MatrixMath::multiply(rot, toRot);
 }
 
-void Math::Transform::rotate2DAntiClkWise(Matrix2x1 & toRot, float thetaRads)
+void Math::Transform::rotate2DAntiClkWise(Matrix2x1& toRot, float thetaRads)
 {
 	float cosTheta = cosf(thetaRads);
 	float sinTheta = sinf(thetaRads);
@@ -1156,7 +1156,7 @@ void Math::Transform::rotate2DAntiClkWise(Matrix2x1 & toRot, float thetaRads)
 }
 
 // 3d rotation matrix versions
-void Math::Transform::rotate3DX(Matrix3x1 & toRotate, float thetaRads)
+void Math::Transform::rotate3DX(Matrix3x1& toRotate, float thetaRads)
 {
 	float cosTheta = cosf(thetaRads);
 	float sinTheta = sinf(thetaRads);
@@ -1170,7 +1170,7 @@ void Math::Transform::rotate3DX(Matrix3x1 & toRotate, float thetaRads)
 	toRotate = Math::MatrixMath::multiply(rot, toRotate);
 }
 
-void Math::Transform::rotate3DY(Matrix3x1 & toRotate, float thetaRads)
+void Math::Transform::rotate3DY(Matrix3x1& toRotate, float thetaRads)
 {
 	float cosTheta = cosf(thetaRads);
 	float sinTheta = sinf(thetaRads);
@@ -1184,7 +1184,7 @@ void Math::Transform::rotate3DY(Matrix3x1 & toRotate, float thetaRads)
 	toRotate = Math::MatrixMath::multiply(rot, toRotate);
 }
 
-void Math::Transform::rotate3DZ(Matrix3x1 & toRotate, float thetaRads)
+void Math::Transform::rotate3DZ(Matrix3x1& toRotate, float thetaRads)
 {
 	float cosTheta = cosf(thetaRads);
 	float sinTheta = sinf(thetaRads);
@@ -1198,23 +1198,25 @@ void Math::Transform::rotate3DZ(Matrix3x1 & toRotate, float thetaRads)
 	toRotate = Math::MatrixMath::multiply(rot, toRotate);
 }
 
-void Math::Transform::rotateCustomAxis(Vector3D & axis, float thetaRads, Matrix3x1 & toRotate) // axis must be unit lenght
+void Math::Transform::rotateCustomAxis(const Vector3D& axisUnitVector, float thetaRads, Matrix3x1 & toRotate)
 {
+	// TODO: add assert for axisUnitVector being an unit vector.
+
 	float cosTheta, sinTheta;
 	Matrix3x3 rot;
 	cosTheta = cosf(thetaRads);
 	sinTheta = sinf(thetaRads);
-	rot.r1c1 = cosTheta + (1.0f - cosTheta) * (axis.x * axis.x);
-	rot.r1c2 = (1.0f - cosTheta) * (axis.x * axis.y) - (sinTheta *  axis.z);
-	rot.r1c3 = (1.0f - cosTheta) * (axis.x * axis.z) + (sinTheta * axis.y);
+	rot.r1c1 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.x);
+	rot.r1c2 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.y) - (sinTheta * axisUnitVector.z);
+	rot.r1c3 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.z) + (sinTheta * axisUnitVector.y);
 
-	rot.r2c1 = (1.0f - cosTheta) * (axis.x * axis.y) + (sinTheta * axis.z);
-	rot.r2c2 = cosTheta + (1.0f - cosTheta) * (axis.y * axis.y);
-	rot.r2c3 = (1.0f - cosTheta) * (axis.y * axis.z) - (sinTheta * axis.z);
+	rot.r2c1 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.y) + (sinTheta * axisUnitVector.z);
+	rot.r2c2 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.y);
+	rot.r2c3 = (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.z) - (sinTheta * axisUnitVector.z);
 
-	rot.r3c1 = (1.0f - cosTheta) * (axis.x * axis.z) - (sinTheta * axis.y);
-	rot.r3c2 = (1.0f - cosTheta) * (axis.y * axis.z) + (sinTheta * axis.x);
-	rot.r3c3 = cosTheta + (1.0f - cosTheta) * (axis.z * axis.z);
+	rot.r3c1 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.z) - (sinTheta * axisUnitVector.y);
+	rot.r3c2 = (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.z) + (sinTheta * axisUnitVector.x);
+	rot.r3c3 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.z * axisUnitVector.z);
 
 	toRotate = Math::MatrixMath::multiply(rot, toRotate);
 }
@@ -1287,48 +1289,52 @@ Matrix3x3 Math::Transform::get3x3Rotate3DZMatrix(float thetaRads)
 	return rv;
 }
 
-Matrix3x3 Math::Transform::getRotationMatrixForCustomAxis(Vector3D & axis, float thetaRads)
+Matrix3x3 Math::Transform::getRotationMatrixForCustomAxis(const Vector3D& axisUnitVector, float thetaRads)
 {
+	// TODO: Add assert that axisUnitVector is a unit vector.
+
 	float cosTheta, sinTheta;
 	Matrix3x3 rot;
 	cosTheta = cosf(thetaRads);
 	sinTheta = sinf(thetaRads);
 
-	rot.r1c1 = cosTheta + (1.0f - cosTheta) * (axis.x * axis.x);
-	rot.r1c2 = (1.0f - cosTheta) * (axis.x * axis.y) - (sinTheta *  axis.z);
-	rot.r1c3 = (1.0f - cosTheta) * (axis.x * axis.z) + (sinTheta * axis.y);
+	rot.r1c1 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.x);
+	rot.r1c2 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.y) - (sinTheta * axisUnitVector.z);
+	rot.r1c3 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.z) + (sinTheta * axisUnitVector.y);
 
-	rot.r2c1 = (1.0f - cosTheta) * (axis.x * axis.y) + (sinTheta * axis.z);
-	rot.r2c2 = cosTheta + (1.0f - cosTheta) * (axis.y * axis.y);
-	rot.r2c3 = (1.0f - cosTheta) * (axis.y * axis.z) - (sinTheta * axis.z);
+	rot.r2c1 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.y) + (sinTheta * axisUnitVector.z);
+	rot.r2c2 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.y);
+	rot.r2c3 = (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.z) - (sinTheta * axisUnitVector.z);
 
-	rot.r3c1 = (1.0f - cosTheta) * (axis.x * axis.z) - (sinTheta * axis.y);
-	rot.r3c2 = (1.0f - cosTheta) * (axis.y * axis.z) + (sinTheta * axis.x);
-	rot.r3c3 = cosTheta + (1.0f - cosTheta) * (axis.z * axis.z);
+	rot.r3c1 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.z) - (sinTheta * axisUnitVector.y);
+	rot.r3c2 = (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.z) + (sinTheta * axisUnitVector.x);
+	rot.r3c3 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.z * axisUnitVector.z);
 
 	return rot;
 }
 
-Matrix4x4 Math::Transform::get4x4RotationMatrixForCustomAxis(Vector3D & axis, float thetaRads)
+Matrix4x4 Math::Transform::get4x4RotationMatrixForCustomAxis(const Vector3D& axisUnitVector, float thetaRads)
 {
+	// TODO: Add assert that axisUnitVector is a unit vector.
+
 	Matrix4x4 rv;
 	float cosTheta, sinTheta;
 	cosTheta = cosf(thetaRads);
 	sinTheta = sinf(thetaRads);
 
-	rv.r1c1 = cosTheta + (1.0f - cosTheta) * (axis.x * axis.x);
-	rv.r1c2 = (1.0f - cosTheta) * (axis.x * axis.y) - (sinTheta *  axis.z);
-	rv.r1c3 = (1.0f - cosTheta) * (axis.x * axis.z) + (sinTheta * axis.y);
+	rv.r1c1 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.x);
+	rv.r1c2 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.y) - (sinTheta * axisUnitVector.z);
+	rv.r1c3 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.z) + (sinTheta * axisUnitVector.y);
 	rv.r1c4 = 0.0f;
 
-	rv.r2c1 = (1.0f - cosTheta) * (axis.x * axis.y) + (sinTheta * axis.z);
-	rv.r2c2 = cosTheta + (1.0f - cosTheta) * (axis.y * axis.y);
-	rv.r2c3 = (1.0f - cosTheta) * (axis.y * axis.z) - (sinTheta * axis.z);
+	rv.r2c1 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.y) + (sinTheta * axisUnitVector.z);
+	rv.r2c2 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.y);
+	rv.r2c3 = (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.z) - (sinTheta * axisUnitVector.z);
 	rv.r2c4 = 0.0f;
 
-	rv.r3c1 = (1.0f - cosTheta) * (axis.x * axis.z) - (sinTheta * axis.y);
-	rv.r3c2 = (1.0f - cosTheta) * (axis.y * axis.z) + (sinTheta * axis.x);
-	rv.r3c3 = cosTheta + (1.0f - cosTheta) * (axis.z * axis.z);
+	rv.r3c1 = (1.0f - cosTheta) * (axisUnitVector.x * axisUnitVector.z) - (sinTheta * axisUnitVector.y);
+	rv.r3c2 = (1.0f - cosTheta) * (axisUnitVector.y * axisUnitVector.z) + (sinTheta * axisUnitVector.x);
+	rv.r3c3 = cosTheta + (1.0f - cosTheta) * (axisUnitVector.z * axisUnitVector.z);
 	rv.r3c4 = 0.0f;
 
 	rv.r4c1 = 0.0f;
@@ -1368,30 +1374,30 @@ Matrix4x4 Math::Transform::get4x4ScalingMatrix(float x, float y, float z, float 
 	return rv;
 }
 
-Matrix4x4 Math::Transform::get4x4TranslationMatrix(Vector3D & trans)
+Matrix4x4 Math::Transform::get4x4TranslationMatrix(const Vector3D& translation)
 {
 	Matrix4x4 rv;
 	Math::MatrixMath::makeIdentity(rv);
-	rv.r1c4 = trans.x;
-	rv.r2c4 = trans.y;
-	rv.r3c4 = trans.z;
+	rv.r1c4 = translation.x;
+	rv.r2c4 = translation.y;
+	rv.r3c4 = translation.z;
 	return rv;
 }
 
-void Math::Transform::translate2D(Matrix2x1 & toTranslate, Vector2D & translateBy)
+void Math::Transform::translate2D(Matrix2x1& toTranslate, const Vector2D& translateBy)
 {
 	toTranslate.r1c1 += translateBy.x;
 	toTranslate.r2c1 += translateBy.y;
 }
 
-void Math::Transform::translate3D(Matrix3x1 & toTranslate, Vector3D & translateBy)
+void Math::Transform::translate3D(Matrix3x1& toTranslate, const Vector3D& translateBy)
 {
 	toTranslate.r1c1 += translateBy.x;
 	toTranslate.r2c1 += translateBy.y;
 	toTranslate.r3c1 += translateBy.z;
 }
 
-Matrix4x4 Math::Transform::RightHandViewMatrix(Vector3D eye, Vector3D up, Vector3D at)
+Matrix4x4 Math::Transform::RightHandViewMatrix(const Vector3D& eye, const Vector3D& up, const Vector3D& at)
 {
 	// http://www.gamedev.net/page/resources/_/technical/graphics-programming-and-theory/perspective-projections-in-lh-and-rh-systems-r3598
 
@@ -1426,7 +1432,7 @@ Matrix4x4 Math::Transform::RightHandViewMatrix(Vector3D eye, Vector3D up, Vector
 	return rv;
 }
 
-Matrix4x4 Math::Transform::LeftHandViewMatrix(Vector3D eye, Vector3D up, Vector3D at)
+Matrix4x4 Math::Transform::LeftHandViewMatrix(const Vector3D& eye, const Vector3D& up, const Vector3D& at)
 {
 	// http://www.gamedev.net/page/resources/_/technical/graphics-programming-and-theory/perspective-projections-in-lh-and-rh-systems-r3598
 
@@ -1501,7 +1507,7 @@ float Math::Interpolation::lerp(float valueA, float valueB, float targetPoint) /
 	return (1.0f - targetPoint) * valueA + targetPoint * valueB;
 }
 
-Vector2D Math::Interpolation::lerp(const Vector2D & vectorA, const Vector2D & vectorB, float targetPoint)
+Vector2D Math::Interpolation::lerp(const Vector2D& vectorA, const Vector2D& vectorB, float targetPoint)
 {
 	if (targetPoint <= 0.0f)
 	{
@@ -1517,7 +1523,7 @@ Vector2D Math::Interpolation::lerp(const Vector2D & vectorA, const Vector2D & ve
 	return rv;
 }
 
-Vector3D Math::Interpolation::lerp(const Vector3D & vectorA, const Vector3D & vectorB, float targetPoint)
+Vector3D Math::Interpolation::lerp(const Vector3D& vectorA, const Vector3D& vectorB, float targetPoint)
 {
 	if (targetPoint <= 0.0f)
 	{
@@ -1534,7 +1540,7 @@ Vector3D Math::Interpolation::lerp(const Vector3D & vectorA, const Vector3D & ve
 	return rv;
 }
 
-Quaternion Math::Interpolation::lerp(const Quaternion & qa, const Quaternion & qb, float targetPoint)
+Quaternion Math::Interpolation::lerp(const Quaternion& qa, const Quaternion& qb, float targetPoint)
 {
 	if(targetPoint <= 0.0f)
 	{
@@ -1557,7 +1563,7 @@ Quaternion Math::Interpolation::lerp(const Quaternion & qa, const Quaternion & q
 }
 
 // slep
-Quaternion Math::Interpolation::slerp(const Quaternion & a, const Quaternion & b, float t)
+Quaternion Math::Interpolation::slerp(const Quaternion& a, const Quaternion& b, float t)
 {
 	if (t <= 0.0f)
 	{
@@ -1633,7 +1639,7 @@ float Math::Interpolation::interpolationWeight(float min, float max, float x)
 	return diffMinX / diffMinMax;
 }
 
-bool Math::VolumeIntersection::volumesOverlap(const BoundingBox & a, const BoundingBox & b)
+bool Math::VolumeIntersection::volumesOverlap(const BoundingBox& a, const BoundingBox& b)
 {
 	// use the top and bottom to determine if y axis points down or up
 
@@ -1684,7 +1690,7 @@ bool Math::VolumeIntersection::volumesOverlap(const BoundingBox & a, const Bound
 	return true;
 }
 
-bool Math::VolumeIntersection::volumesOverlap(const BoundingCircle & a, const BoundingCircle & b)
+bool Math::VolumeIntersection::volumesOverlap(const BoundingCircle& a, const BoundingCircle& b)
 {
 	Vector2D aToB = Math::VectorMath::wayToVector(a.position, b.position);
 	float distSqurd = Math::VectorMath::magnitudeSquared(aToB);
@@ -1692,7 +1698,7 @@ bool Math::VolumeIntersection::volumesOverlap(const BoundingCircle & a, const Bo
 	return combinedRadiusSqurd > distSqurd; // if combined radius is larger than the distance, then there must be an over lap (collision)
 }
 
-bool Math::VolumeIntersection::volumesOverlap(const BoundingSphere & a, const BoundingSphere & b)
+bool Math::VolumeIntersection::volumesOverlap(const BoundingSphere& a, const BoundingSphere& b)
 {
 	// same logic as 2D, just using 3D vectors instead
 	Vector3D aToB = Math::VectorMath::wayToVector(a.position, b.position);
@@ -1701,7 +1707,7 @@ bool Math::VolumeIntersection::volumesOverlap(const BoundingSphere & a, const Bo
 	return combinedRadiusSqurd > distSqurd; // if combined radius is larger than the distance, then there must be an over lap (collision)
 }
 
-bool Math::VolumeIntersection::volumesOverlap(const BoundingCube & a, const BoundingCube & b)
+bool Math::VolumeIntersection::volumesOverlap(const BoundingCube& a, const BoundingCube& b)
 {
 	// use the front and back of the cube to determine is it's right handed or left handed
 	bool isLeftHanded = a.front < a.back; // the front would have a higher value if in RH coord sys
@@ -1766,7 +1772,7 @@ bool Math::VolumeIntersection::volumesOverlap(const BoundingCube & a, const Boun
 	return true;
 }
 
-bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D & a, const BoundingBox & vol)
+bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D& a, const BoundingBox& vol)
 {
 	// figure out Y axis up or down
 	bool yAxisPointsUp = vol.top > vol.bottom;
@@ -1799,7 +1805,7 @@ bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D & a, const B
 	return inVolXAxis && inVolYAxis;
 }
 
-bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D & a, const BoundingCircle & vol)
+bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D& a, const BoundingCircle& vol)
 {
 	Vector2D aToVol = Math::VectorMath::wayToVector(a, vol.position);
 	float magSqurd = Math::VectorMath::magnitudeSquared(aToVol),
@@ -1807,7 +1813,7 @@ bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D & a, const B
 	return radiusSqurd > magSqurd;
 }
 
-bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D & a, const BoundingSphere & vol)
+bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D& a, const BoundingSphere& vol)
 {
 	Vector3D aToVol = Math::VectorMath::wayToVector(a, vol.position);
 	float magSqurd = Math::VectorMath::magnitudeSquared(aToVol),
@@ -1815,7 +1821,7 @@ bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D & a, const B
 	return radiusSqurd > magSqurd;
 }
 
-bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D & a, const BoundingCube & vol)
+bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D& a, const BoundingCube& vol)
 {
 	// figure out RH or LH
 	bool aInVolXAxis = false,
@@ -1841,7 +1847,7 @@ bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D & a, const B
 	return aInVolXAxis && aInVolYAxis && aInVolZAxis;
 }
 
-bool Math::VolumeIntersection::volumeInRayPath(const Ray2D & r, const BoundingBox & vol)
+bool Math::VolumeIntersection::volumeInRayPath(const Ray2D& r, const BoundingBox& vol)
 {
 	Vector2D volumeMidPoint;
 	volumeMidPoint.x = Math::Interpolation::lerp(vol.left, vol.right, 0.5f);
@@ -1855,7 +1861,7 @@ bool Math::VolumeIntersection::volumeInRayPath(const Ray2D & r, const BoundingBo
 	return pointInBoundingVolume(testPoint, vol);
 }
 
-bool Math::VolumeIntersection::volumeInRayPath(const Ray2D & r, const BoundingCircle & vol)
+bool Math::VolumeIntersection::volumeInRayPath(const Ray2D& r, const BoundingCircle& vol)
 {
 	using namespace Math::VectorMath;
 
@@ -1867,7 +1873,7 @@ bool Math::VolumeIntersection::volumeInRayPath(const Ray2D & r, const BoundingCi
 	return pointInBoundingVolume(testPoint, vol);
 }
 
-bool Math::VolumeIntersection::volumeInRayPath(const Ray3D & r, const BoundingSphere & vol)
+bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingSphere& vol)
 {
 	using namespace Math::VectorMath;
 
@@ -1879,7 +1885,7 @@ bool Math::VolumeIntersection::volumeInRayPath(const Ray3D & r, const BoundingSp
 	return pointInBoundingVolume(testPoint, vol);
 }
 
-bool Math::VolumeIntersection::volumeInRayPath(const Ray3D & r, const BoundingCube & vol)
+bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingCube& vol)
 {
 	Vector3D volumeMidPoint;
 	volumeMidPoint.x = Math::Interpolation::lerp(vol.left, vol.right, 0.5f);
@@ -1896,7 +1902,7 @@ bool Math::VolumeIntersection::volumeInRayPath(const Ray3D & r, const BoundingCu
 	return pointInBoundingVolume(testPoint, vol);
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D & r, const BoundingBox & vol)
+float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D& r, const BoundingBox& vol)
 {
 	using namespace Math::Interpolation;
 	using namespace Math::Miscellaneous;
@@ -1931,7 +1937,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D & r, cons
 	return magnitude(toVolRadius); // returns the dist to
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D & r, const BoundingCircle & vol)
+float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D& r, const BoundingCircle& vol)
 {
 	using namespace Math::VectorMath;
 
@@ -1943,7 +1949,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D & r, cons
 	return magnitude(toAproximateIntersectionPoint);
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D & r, const BoundingSphere & vol)
+float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D& r, const BoundingSphere& vol)
 {
 	using namespace Math::VectorMath;
 
@@ -1955,7 +1961,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D & r, cons
 	return magnitude(toAproximateIntersectionPoint);
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D & r, const BoundingCube & vol)
+float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D& r, const BoundingCube& vol)
 {
 	using namespace Math::Interpolation;
 	using namespace Math::Miscellaneous;
@@ -1992,7 +1998,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D & r, cons
 	return magnitude(toVolRadius); // returns the dist to
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D & r, const BoundingBox & vol, float stepSize)
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingBox& vol, float stepSize)
 {
 	using namespace Math::VectorMath;
 	using namespace Math::Interpolation;
@@ -2028,7 +2034,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D &
 	return 0.0f; // the ray's starting point is in the bounding volume
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D & r, const BoundingCircle & vol, float stepSize)
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCircle& vol, float stepSize)
 {
 	using namespace Math::VectorMath;
 	using namespace Math::Interpolation;
@@ -2060,7 +2066,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D &
 	return 0.0f; // the ray's starting point is in the bounding volume
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D & r, const BoundingSphere & vol, float stepSize)
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingSphere& vol, float stepSize)
 {
 	using namespace Math::VectorMath;
 	using namespace Math::Interpolation;
@@ -2092,7 +2098,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D &
 	return 0.0f; // the ray's starting point is in the bounding volume
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D & r, const BoundingCube & vol, float stepSize)
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCube& vol, float stepSize)
 {
 	using namespace Math::VectorMath;
 	using namespace Math::Interpolation;
@@ -2130,7 +2136,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D &
 	return 0.0f; // the ray's starting point is in the bounding volume
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D & r, const BoundingBox & vol, float stepSize, float maxDist)
+float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D& r, const BoundingBox& vol, float stepSize, float maxDist)
 {
 	using namespace Math::VectorMath;
 	// the normal raycasting approach
@@ -2152,7 +2158,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D & r, con
 	return -1.0f;
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D & r, const BoundingCircle & vol, float stepSize, float maxDist)
+float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D& r, const BoundingCircle& vol, float stepSize, float maxDist)
 {
 	using namespace Math::VectorMath;
 	// the normal raycasting approach
@@ -2175,7 +2181,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D & r, con
 	return -1.0f;
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D & r, const BoundingSphere & vol, float stepSize, float maxDist)
+float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, const BoundingSphere& vol, float stepSize, float maxDist)
 {
 	using namespace Math::VectorMath;
 	// the normal raycasting approach
@@ -2198,7 +2204,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D & r, con
 	return -1.0f;
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D & r, const BoundingCube & vol, float stepSize, float maxDist)
+float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, const BoundingCube& vol, float stepSize, float maxDist)
 {
 	using namespace Math::VectorMath;
 	// the normal raycasting approach
@@ -2307,7 +2313,7 @@ float Math::Physics::speed(const Vector3D& velocity)
 	return Math::VectorMath::magnitude(velocity);
 }
 
-float Math::Miscellaneous::parabola(const Vector2D & questionCoord, const Vector2D & parabolaCentrePoint, float parabolaRadius)
+float Math::Miscellaneous::parabola(const Vector2D& questionCoord, const Vector2D& parabolaCentrePoint, float parabolaRadius)
 {
 	Vector2D toCentrePoint = VectorMath::wayToVector(questionCoord, parabolaCentrePoint);
 	float magSqurd = VectorMath::magnitudeSquared(toCentrePoint);
