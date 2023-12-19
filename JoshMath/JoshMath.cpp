@@ -1102,6 +1102,7 @@ Matrix3x3 Math::QuaternionMath::toMatrix3x3(const Quaternion& a)
 
 Plane Math::Planes::createPlane(const Vector3D& axisAsUnit, float dictanceFromOrigin)
 {
+	assert(Math::VectorMath::magnitude(axisAsUnit) == 1.0f);
 	Plane Results;
 	Results.normal = axisAsUnit;
 	Results.distanceFromOrigin = dictanceFromOrigin;
