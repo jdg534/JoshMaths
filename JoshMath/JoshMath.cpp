@@ -1,6 +1,8 @@
 #include "JoshMath.h"
 #include <cmath>
 
+#include <cassert>
+
 /*
 Copyright (c) 2015 Joshua Gibson
 
@@ -1096,6 +1098,48 @@ Matrix3x3 Math::QuaternionMath::toMatrix3x3(const Quaternion& a)
 	rv.r3c2 = 2.0f * yz + 2.0f *wx;
 	rv.r3c3 = 1.0f - (2.0f * xx) - (2.0f * yy);
 	return rv;
+}
+
+Plane Math::Planes::createPlane(const Vector3D& axisAsUnit, float dictanceFromOrigin)
+{
+	Plane Results;
+	Results.normal = axisAsUnit;
+	Results.distanceFromOrigin = dictanceFromOrigin;
+	return Results;
+}
+
+float Math::Planes::dotProductAsVector(const Plane& plane, const Vector3D& vector)
+{
+	return (plane.normal.x * vector.x)
+		+ (plane.normal.y * vector.y)
+		+ (plane.normal.z * vector.z)
+		+ (plane.distanceFromOrigin * 0.0f);
+}
+
+float Math::Planes::dotProductAsPosition(const Plane& plane, const Vector3D& vector)
+{
+	return (plane.normal.x * vector.x)
+		+ (plane.normal.y * vector.y)
+		+ (plane.normal.z * vector.z)
+		+ (plane.distanceFromOrigin * 1.0f);
+}
+
+float Math::Planes::distanceFromPlane(const Plane& plane, const Vector3D& point)
+{
+	return dotProductAsPosition(plane, point);
+}
+
+Vector3D Math::Planes::reflectVector(const Vector3D& vectorToReflect, const Plane& reflectIn)
+{
+	const Vector3D PlaneNormalScaled = Math::VectorMath::scaled(2 * Math::Planes::dotProductAsVector(reflectIn, vectorToReflect), reflectIn.normal);
+	return Math::VectorMath::subtract(vectorToReflect, PlaneNormalScaled);
+}
+
+Vector3D Math::Planes::reflectPosition(const Vector3D& positionToReflect, const Plane& reflectIn)
+{
+	using namespace Math::VectorMath;
+	const float ScaleNormalBy = 2 * (dotProduct(positionToReflect, reflectIn.normal) - reflectIn.distanceFromOrigin);
+	return subtract(positionToReflect, scaled(ScaleNormalBy, reflectIn.normal));
 }
 
 void Math::Transform::scale2D(Matrix2x1& toScale, float xScale, float yScale)

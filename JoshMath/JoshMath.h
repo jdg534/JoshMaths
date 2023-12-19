@@ -178,6 +178,16 @@ namespace Math
 		Matrix3x3 toMatrix3x3(const Quaternion& a);
 	}
 
+	namespace Planes
+	{
+		Plane createPlane(const Vector3D& axisAsUnit, float dictanceFromOrigin);
+		float dotProductAsVector(const Plane& plane, const Vector3D& vector);
+		float dotProductAsPosition(const Plane& plane, const Vector3D& vector);
+		float distanceFromPlane(const Plane& plane, const Vector3D& point);
+		Vector3D reflectVector(const Vector3D& vectorToReflect, const Plane& reflectIn);
+		Vector3D reflectPosition(const Vector3D& positionToReflect, const Plane& reflectIn);
+	}
+
 	namespace Transform
 	{
 		void scale2D(Matrix2x1& toScale, float xScale, float yScale);

@@ -220,6 +220,11 @@ struct Matrix4x4
 	}
 };
 
+struct Plane
+{
+	Vector3D normal;
+	float distanceFromOrigin;
+};
 
 // bounding volumes, ray object intersection tests to be done, via maths library
 // won't deal with BVH yet
