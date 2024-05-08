@@ -1684,6 +1684,13 @@ float Math::Interpolation::interpolationWeight(float min, float max, float x)
 	return diffMinX / diffMinMax;
 }
 
+float Math::Interpolation::smoothStep(float min, float max, float x)
+{
+	float clampedX = std::max(min, std::min(max, x));
+	float normalisedX = (clampedX - min) / (max - min);
+	return normalisedX * normalisedX * (3 - 2 * normalisedX);
+}
+
 bool Math::VolumeIntersection::volumesOverlap(const BoundingBox& a, const BoundingBox& b)
 {
 	// use the top and bottom to determine if y axis points down or up
