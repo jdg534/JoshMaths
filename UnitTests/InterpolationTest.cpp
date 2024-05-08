@@ -149,7 +149,7 @@ GTEST_TEST(Interpolation, VectorLerp3D)
 	EXPECT_FLOAT_EQ(exp.z, act.z);
 }
 
-GTEST_TEST(Interpolatio, QuaternionLerp)
+GTEST_TEST(Interpolation, QuaternionLerp)
 {
 	Quaternion a, b, expected, actual;
 
@@ -176,4 +176,42 @@ GTEST_TEST(Interpolatio, QuaternionLerp)
 	EXPECT_FLOAT_EQ(expected.x, actual.x);
 	EXPECT_FLOAT_EQ(expected.y, actual.y);
 	EXPECT_FLOAT_EQ(expected.z, actual.z);
+}
+
+GTEST_TEST(Interpolation, SmoothstepClampsMin)
+{
+	const float x = -5.0f;
+	const float min = 0.0f;
+	const float max = 1.0f;
+	const float xSmoothStep = Math::Interpolation::smoothStep(min, max, x);
+	EXPECT_TRUE(xSmoothStep >= min);
+}
+
+GTEST_TEST(Interpolation, SmoothstepClampsMax)
+{
+	const float x = -5.0f;
+	const float min = 0.0f;
+	const float max = 1.0f;
+	const float xSmoothStep = Math::Interpolation::smoothStep(min, max, x);
+	EXPECT_TRUE(xSmoothStep <= max);
+}
+
+GTEST_TEST(Interpolation, SmoothstepLessThanLerpPreMidPoint)
+{
+	const float x = 0.25f;
+	const float min = 0.0f;
+	const float max = 1.0f;
+	const float xSmoothStep = Math::Interpolation::smoothStep(min, max, x);
+	const float xLerp = Math::Interpolation::lerp(min, max, x);
+	EXPECT_TRUE(xSmoothStep < xLerp);
+}
+
+GTEST_TEST(Interpolation, SmoothstepGreaterThanLerpPostMidPoint)
+{
+	const float x = 0.75f;
+	const float min = 0.0f;
+	const float max = 1.0f;
+	const float xSmoothStep = Math::Interpolation::smoothStep(min, max, x);
+	const float xLerp = Math::Interpolation::lerp(min, max, x);
+	EXPECT_TRUE(xSmoothStep > xLerp);
 }

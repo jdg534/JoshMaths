@@ -280,6 +280,8 @@ namespace Math
 			float tx, float ty, float tz);
 
 		float interpolationWeight(float min, float max, float x);
+
+		float smoothStep(float min, float max, float x);
 	}
 
 	namespace VolumeIntersection
