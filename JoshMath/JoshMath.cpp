@@ -1686,7 +1686,9 @@ float Math::Interpolation::interpolationWeight(float min, float max, float x)
 
 float Math::Interpolation::smoothStep(float min, float max, float x)
 {
-	return 0.0f; // CODE ME!
+	float clampedX = std::max(min, std::min(max, x));
+	float normalisedX = (clampedX - min) / (max - min);
+	return normalisedX * normalisedX * (3 - 2 * normalisedX);
 }
 
 bool Math::VolumeIntersection::volumesOverlap(const BoundingBox& a, const BoundingBox& b)
