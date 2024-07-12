@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <string>
-#include "../JoshMath/JoshMath.h"
+#include <JoshMath.h>
 
 GTEST_TEST(PlaneMathTests, CreateValidPlaneWorks)
 {

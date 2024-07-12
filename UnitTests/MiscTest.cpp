@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../JoshMath/JoshMath.h"
+#include <JoshMath.h>
 
 // just diff and the parabola function
 GTEST_TEST(MiscTest, diffWorks)

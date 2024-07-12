@@ -1,5 +1,5 @@
 #include <gtest/gtest.h>
-#include "../JoshMath/JoshMath.h"
+#include <JoshMath.h>
 
 GTEST_TEST(VectorMathTest, Adding2D)
 {

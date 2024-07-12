@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include "../JoshMath/JoshMath.h"
+
+#include <JoshMath.h>
 
 GTEST_TEST(Interpolation, Lerp)
 {
