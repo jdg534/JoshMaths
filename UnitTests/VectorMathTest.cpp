@@ -368,7 +368,7 @@ GTEST_TEST(VectorMathTest, LookAt2D)
 
 	float expected, actual;
 
-	lookFromPoint.x = lookFromPoint.y = 10.0f;
+	lookFromPoint.x = lookFromPoint.y = 0.0f;
 
 	currentLookAtPoint.x = 90.0f;
 	currentLookAtPoint.y = 0.0f;
@@ -379,7 +379,7 @@ GTEST_TEST(VectorMathTest, LookAt2D)
 	expected = 90.0f; // need to convert to radians
 	expected = Math::degreesToRadians(expected);
 
-	actual = Math::VectorMath::lookAt2D(currentLookAtPoint, nextLookAtPoint, currentLookAtPoint);
+	actual = Math::VectorMath::lookAt2D(currentLookAtPoint, nextLookAtPoint, lookFromPoint);
 
 	EXPECT_FLOAT_EQ(expected, actual);
 }
