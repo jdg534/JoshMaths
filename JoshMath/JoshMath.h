@@ -343,8 +343,6 @@ namespace Math
 
 	namespace Miscellaneous
 	{
-		// returns an alterture relative to the parabola's centre point
-		float parabola(const Vector2D& questionCoord, const Vector2D& parabolaCentrePoint, float parabolaRadius); // based off: http://www.stuffwithstuff.com/robot-frog/3d/hills/hill.html
 		float diff(float x, float y);
 	}
 }

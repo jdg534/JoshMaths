@@ -2365,14 +2365,6 @@ float Math::Physics::speed(const Vector3D& velocity)
 	return Math::VectorMath::magnitude(velocity);
 }
 
-float Math::Miscellaneous::parabola(const Vector2D& questionCoord, const Vector2D& parabolaCentrePoint, float parabolaRadius)
-{
-	Vector2D toCentrePoint = VectorMath::wayToVector(questionCoord, parabolaCentrePoint);
-	float magSqurd = VectorMath::magnitudeSquared(toCentrePoint);
-
-	return parabolaRadius * parabolaRadius - magSqurd;
-}
-
 float Math::Miscellaneous::diff(float x, float y)
 {
 	if (x > y)
