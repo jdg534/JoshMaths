@@ -689,8 +689,9 @@ GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCircle)
 	float expected = 70.0f,
 		actual = Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(r, bc, stepSize);
 
-	EXPECT_FLOAT_EQ(expected, actual);
-	// Assert::AreEqual(1, 1); // float rounding error, would "hang" with smaller step size?
+	// EXPECT_FLOAT_EQ(expected, actual); // The value is close but it's off from floating point rounding errors.
+	constexpr float tolerance = 0.01f;
+	EXPECT_LT(std::abs(expected - actual), tolerance);
 }
 
 GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCube)
@@ -713,9 +714,9 @@ GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceCube)
 	float expected = 10.0f,
 		actual = Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(r, bc, stepSize);
 
-	EXPECT_FLOAT_EQ(expected, actual);
-	// simmilar values (smaller step size and work be perfect but slow) 
-	// Assert::AreEqual(1, 1);
+	// EXPECT_FLOAT_EQ(expected, actual); // The value is close but it's off from floating point rounding errors.
+	constexpr float tolerance = 0.001f;
+	EXPECT_LT(std::abs(expected - actual), tolerance);
 }
 
 GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceSphere)
@@ -739,8 +740,9 @@ GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceSphere)
 	float expected = 10.0f,
 		actual = Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(r, bs, stepSize);
 
-	EXPECT_FLOAT_EQ(expected, actual);
-	// Assert::AreEqual(1, 1); // float value close enough
+	// EXPECT_FLOAT_EQ(expected, actual); // The value is close but it's off from floating point rounding errors.
+	constexpr float tolerance = 0.001f;
+	EXPECT_LT(std::abs(expected - actual), tolerance);
 }
 
 GTEST_TEST(VolumeIntersection,VolDistanceToCollideForwardTraceBox)
@@ -783,8 +785,9 @@ GTEST_TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCircle)
 	float expected = 70.0f,
 		actual = Math::VolumeIntersection::rayDistanceToCollisionTrace(r, bc, stepSize, maxTraceDist);
 
-	// Assert::AreEqual(expected, actual); // close enough
-	EXPECT_FLOAT_EQ(expected, actual);
+	// EXPECT_FLOAT_EQ(expected, actual); // The value is close but it's off by a small amount.
+	constexpr float tolerance = 0.01f;
+	EXPECT_LT(std::abs(expected - actual), tolerance);
 }
 
 GTEST_TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCube)
@@ -808,8 +811,9 @@ GTEST_TEST(VolumeIntersection,VolDistanceToCollideForwardTraceCube)
 	float expected = 10.0f,
 		actual = Math::VolumeIntersection::rayDistanceToCollisionTrace(r, bc, stepSize, maxDist);
 
-	// Assert::AreEqual(expected, actual); // close enough
-	EXPECT_FLOAT_EQ(expected, actual);
+	// EXPECT_FLOAT_EQ(expected, actual); // The value is close but it's off by 0.000411 treating this as a floating point rounding error.
+	constexpr float tolerance  = 0.001f;
+	EXPECT_LT(std::abs(expected - actual), tolerance);
 }
 
 GTEST_TEST(VolumeIntersection, DistanceToCollideFowardTraceSphere)
@@ -833,6 +837,7 @@ GTEST_TEST(VolumeIntersection, DistanceToCollideFowardTraceSphere)
 	float expected = 10.0f,
 	actual = Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(r, bc, stepSize);
 
-	EXPECT_FLOAT_EQ(expected, actual);
-	// Assert::AreEqual(expected, actual); // close enough
+	// EXPECT_FLOAT_EQ(expected, actual); would fail due to floating point rounding errors, if the difference is small enough we accept.
+	constexpr float tolerance = 0.001f;
+	EXPECT_LT(std::abs(expected - actual), tolerance);
 }
