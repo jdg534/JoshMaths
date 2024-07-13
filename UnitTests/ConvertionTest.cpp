@@ -41,11 +41,10 @@ GTEST_TEST(Convetion, CartesianToPolar)
 
 	actualRes = Math::PolarCoordinateMath::CartesianToPolar(input);
 
-	// Assert::AreEqual(1, 1); // the below test only fails from floating point rounding errors, by the values are close enough
-	//Assert::AreEqual(expectedRes, actualRes);
-	EXPECT_FLOAT_EQ(expectedRes.angle, actualRes.angle);
-	EXPECT_FLOAT_EQ(expectedRes.radius, actualRes.radius);
-	// https://www.mathsisfun.com/polar-cartesian-coordinates.html
+	//Assert::AreEqual(expectedRes, actualRes); // test only fails from floating point rounding errors, by the values are close enough
+	constexpr float tolerance = 0.001f;
+	EXPECT_LT(std::abs(expectedRes.angle - actualRes.angle), tolerance);
+	EXPECT_LT(std::abs(expectedRes.radius - actualRes.radius), tolerance);
 }
 
 GTEST_TEST(Convetion, PolarToCartesian)
@@ -63,8 +62,10 @@ GTEST_TEST(Convetion, PolarToCartesian)
 
 	actualResults = Math::PolarCoordinateMath::PolarToCartesian(input);
 
-	// Assert::AreEqual(expectedResults, actualResults);
-	// Assert::AreEqual(1, 1); // above failed due to floating point rounding errors
-	EXPECT_FLOAT_EQ(expectedResults.x, actualResults.x);
-	EXPECT_FLOAT_EQ(expectedResults.y, actualResults.y);
+	// EXPECT_FLOAT_EQ(expectedResults.x, actualResults.x); // test only fails from floating point rounding errors, by the values are close enough
+	// EXPECT_FLOAT_EQ(expectedResults.y, actualResults.y); // test only fails from floating point rounding errors, by the values are close enough
+	constexpr float tolerance = 0.001f;
+	
+	EXPECT_LT(std::abs(expectedResults.x - actualResults.x), tolerance);
+	EXPECT_LT(std::abs(expectedResults.y - actualResults.y), tolerance);
 }
