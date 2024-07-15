@@ -1824,6 +1824,18 @@ bool Math::VolumeIntersection::volumesOverlap(const BoundingCube& a, const Bound
 	return true;
 }
 
+bool Math::VolumeIntersection::volumesOverlap(const BoundingCapsule2D& a, const BoundingCapsule2D& b, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return false;
+}
+
+bool Math::VolumeIntersection::volumesOverlap(const BoundingCapsule3D& a, const BoundingCapsule3D& b, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return false;
+}
+
 bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D& a, const BoundingBox& vol)
 {
 	// figure out Y axis up or down
@@ -1899,6 +1911,18 @@ bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D& a, const Bo
 	return aInVolXAxis && aInVolYAxis && aInVolZAxis;
 }
 
+bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D& a, const BoundingCapsule2D& vol, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return false;
+
+}
+bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D& a, const BoundingCapsule3D& vol, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return false;
+}
+
 bool Math::VolumeIntersection::volumeInRayPath(const Ray2D& r, const BoundingBox& vol)
 {
 	Vector2D volumeMidPoint;
@@ -1952,6 +1976,17 @@ bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingCub
 	Vector3D rayDirScaledToVolMidPointDist = Math::VectorMath::scaled(scaleRayBy, r.direction);
 	Vector3D testPoint = Math::VectorMath::add(r.pointOfOrigin, rayDirScaledToVolMidPointDist);
 	return pointInBoundingVolume(testPoint, vol);
+}
+
+bool Math::VolumeIntersection::volumeInRayPath(const Ray2D& r, const BoundingCapsule2D& vol, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return false;
+}
+bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingCapsule3D& vol, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return false;
 }
 
 float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D& r, const BoundingBox& vol)
@@ -2048,6 +2083,18 @@ float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D& r, const
 	volMidPointToRayOri = scaled(destToCompair, volMidPointToRayOri); // to approx vol radius
 	Vector3D toVolRadius = wayToVector(r.pointOfOrigin, volMidPointToRayOri);
 	return magnitude(toVolRadius); // returns the dist to
+}
+
+float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D& r, const BoundingCapsule2D& vol, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return -1.0f;
+}
+
+float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D& r, const BoundingCapsule3D& vol, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return -1.0f;
 }
 
 float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingBox& vol, float stepSize)
@@ -2188,6 +2235,17 @@ float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& 
 	return 0.0f; // the ray's starting point is in the bounding volume
 }
 
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return -1.0f;
+}
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return -1.0f;
+}
+
 float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D& r, const BoundingBox& vol, float stepSize, float maxDist)
 {
 	using namespace Math::VectorMath;
@@ -2276,6 +2334,18 @@ float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, cons
 		dirScaled = scaled(traceDist, r.direction);
 		testPoint = add(r.pointOfOrigin, dirScaled);
 	}
+	return -1.0f;
+}
+
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, float maxDist, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
+	return -1.0f;
+}
+
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, float maxDist, uint32_t numSegments)
+{
+	throw std::exception("Not implemented");
 	return -1.0f;
 }
 
