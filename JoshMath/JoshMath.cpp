@@ -2337,13 +2337,13 @@ float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, cons
 	return -1.0f;
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, float maxDist, uint32_t numSegments)
+float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, float maxDist, uint32_t numSegments)
 {
 	throw std::exception("Not implemented");
 	return -1.0f;
 }
 
-float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, float maxDist, uint32_t numSegments)
+float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, float maxDist, uint32_t numSegments)
 {
 	throw std::exception("Not implemented");
 	return -1.0f;

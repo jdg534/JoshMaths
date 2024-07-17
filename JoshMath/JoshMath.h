@@ -330,8 +330,8 @@ namespace Math
 		float rayDistanceToCollisionTrace(const Ray2D& r, const BoundingCircle& vol, float stepSize, float maxDist);
 		float rayDistanceToCollisionTrace(const Ray3D& r, const BoundingSphere& vol, float stepSize, float maxDist);
 		float rayDistanceToCollisionTrace(const Ray3D& r, const BoundingCube& vol, float stepSize, float maxDist);
-		float rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, float maxDist, uint32_t numSegments = 10);
-		float rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, float maxDist, uint32_t numSegments = 10);
+		float rayDistanceToCollisionTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, float maxDist, uint32_t numSegments = 10);
+		float rayDistanceToCollisionTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, float maxDist, uint32_t numSegments = 10);
 	}
 
 	namespace Physics
