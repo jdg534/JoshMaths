@@ -1953,13 +1953,41 @@ bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D& a, const Bo
 
 bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D& a, const BoundingCapsule2D& vol, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float collisionRadiiSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	for (uint32_t aSeg = 0; aSeg <= numSegments; ++aSeg, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		pointToPointSquaredDistance = magnitudeSquared(wayToVector(a, Math::Interpolation::lerp(vol.start, vol.finish, weight)));
+		if (collisionRadiiSquared > pointToPointSquaredDistance)
+		{
+			return true;
+		}
+	}
 	return false;
-
 }
+
 bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D& a, const BoundingCapsule3D& vol, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float collisionRadiiSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	for (uint32_t aSeg = 0; aSeg <= numSegments; ++aSeg, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		pointToPointSquaredDistance = magnitudeSquared(wayToVector(a, Math::Interpolation::lerp(vol.start, vol.finish, weight)));
+		if (collisionRadiiSquared > pointToPointSquaredDistance)
+		{
+			return true;
+		}
+	}
 	return false;
 }
 
