@@ -271,8 +271,8 @@ GTEST_TEST(VolumeIntersection, Capsule2DCheckWorksFinishWithFinish)
 	b.radius = 10.0f;
 
 	a.finish = b.finish = { 0.0f, 0.0f };
-	a.start = { -100.0, 50.0f };
-	b.start = { 100.0, -50.0f };
+	a.start = { -100.0f, 50.0f };
+	b.start = { 100.0f, -50.0f };
 
 	const bool expected = true;
 	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
@@ -286,9 +286,9 @@ GTEST_TEST(VolumeIntersection, Capsule2DCheckWorksMiddleWithMiddle)
 	a.radius = 5.0f;
 	b.radius = 10.0f;
 	
-	a.start = { -100.0, 50.0f };
-	a.finish = { 100.0, -50.0f };
-	b.start = { -100.0, -50.0f };
+	a.start = { -100.0f, 50.0f };
+	a.finish = { 100.0f, -50.0f };
+	b.start = { -100.0f, -50.0f };
 	b.finish = { 100.0f, 50.0f };
 
 	const bool expected = true;
@@ -303,9 +303,9 @@ GTEST_TEST(VolumeIntersection, Capsule2DCheckNoFalsePositive)
 	a.radius = 5.0f;
 	b.radius = 10.0f;
 
-	a.start = { -100.0, 0.0f };
-	a.finish = { -100.0, 50.0f };
-	b.start = { 100.0, -50.0f };
+	a.start = { -100.0f, 0.0f };
+	a.finish = { -100.0f, 50.0f };
+	b.start = { 100.0f, -50.0f };
 	b.finish = { 100.0f, 0.0f };
 
 	const bool expected = false;
