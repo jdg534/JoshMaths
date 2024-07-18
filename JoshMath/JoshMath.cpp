@@ -1852,7 +1852,27 @@ bool Math::VolumeIntersection::volumesOverlap(const BoundingCapsule2D& a, const 
 
 bool Math::VolumeIntersection::volumesOverlap(const BoundingCapsule3D& a, const BoundingCapsule3D& b, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float collisionRadiiSquared = (a.radius + b.radius) * (a.radius + b.radius);
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	Vector3D testPointA = { 0.0f,0.0f, 0.0f }; // done to avoid thrashing the stack
+	float aWeight = 0.0f, bWeight = 0.0f;
+	float pointToPointSquaredDistance = 0.0f;
+	for (uint32_t aSeg = 0; aSeg <= numSegments; ++aSeg, aWeight = std::min(aWeight + lerpWeightStepSize, 1.0f))
+	{
+		testPointA = Math::Interpolation::lerp(a.start, a.finish, aWeight);
+		bWeight = 0.0f;
+		for (uint32_t bSeg = 0; bSeg <= numSegments; ++bSeg, bWeight = std::min(bWeight + lerpWeightStepSize, 1.0f))
+		{
+			pointToPointSquaredDistance = magnitudeSquared(wayToVector(testPointA, Math::Interpolation::lerp(b.start, b.finish, bWeight)));
+			if (collisionRadiiSquared > pointToPointSquaredDistance)
+			{
+				return true;
+			}
+		}
+	}
 	return false;
 }
 
