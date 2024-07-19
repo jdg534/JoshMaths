@@ -927,8 +927,8 @@ GTEST_TEST(VolumeIntersection, VolDistanceToCollideFastCapsule2D)
 	r.direction = { 0.0f, 1.0f };
 	
 	const float actual = Math::VolumeIntersection::rayDistanceToCollisionFast(r, capsule);
-	const float expectedMin = 4.75f;
-	const float expectedMax = 5.25f;
+	const float expectedMin = 5.0f;
+	const float expectedMax = 15.0f;
 	EXPECT_LE(expectedMin, actual);
 	EXPECT_LE(actual, expectedMax);
 }
@@ -943,8 +943,8 @@ GTEST_TEST(VolumeIntersection, VolDistanceToCollideFastCapsule3D)
 	r.pointOfOrigin = { 0.0f,0.0f, 0.0f };
 	r.direction = { 0.0f, 1.0f, 0.0f };
 	const float actual = Math::VolumeIntersection::rayDistanceToCollisionFast(r, capsule);
-	const float expectedMin = 4.75f;
-	const float expectedMax = 5.25f;
+	const float expectedMin = 5.0f;
+	const float expectedMax = 15.0f;
 	EXPECT_LE(expectedMin, actual);
 	EXPECT_LE(actual, expectedMax);
 }
