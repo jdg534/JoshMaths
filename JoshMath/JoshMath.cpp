@@ -2048,12 +2048,50 @@ bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingCub
 
 bool Math::VolumeIntersection::volumeInRayPath(const Ray2D& r, const BoundingCapsule2D& vol, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float radiusSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	Vector2D capsuleTestPoint = vol.start;
+	Vector2D rayTestPoint = r.pointOfOrigin;
+	float rayOriginDistanceFromCapsuleTestPoint = 0.0f; magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+	for (uint32_t segment = 0; segment <= numSegments; ++segment, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		capsuleTestPoint = lerp(vol.start, vol.finish, weight);
+		rayOriginDistanceFromCapsuleTestPoint = magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+		rayTestPoint = add(r.pointOfOrigin, scaled(rayOriginDistanceFromCapsuleTestPoint, r.direction));
+		if (radiusSquared > magnitudeSquared(wayToVector(capsuleTestPoint, rayTestPoint)))
+		{
+			return true;
+		}
+	}
 	return false;
 }
 bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingCapsule3D& vol, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float radiusSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	Vector3D capsuleTestPoint = vol.start;
+	Vector3D rayTestPoint = r.pointOfOrigin;
+	float rayOriginDistanceFromCapsuleTestPoint = 0.0f; magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+	for (uint32_t segment = 0; segment <= numSegments; ++segment, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		capsuleTestPoint = lerp(vol.start, vol.finish, weight);
+		rayOriginDistanceFromCapsuleTestPoint = magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+		rayTestPoint = add(r.pointOfOrigin, scaled(rayOriginDistanceFromCapsuleTestPoint, r.direction));
+		if (radiusSquared > magnitudeSquared(wayToVector(capsuleTestPoint, rayTestPoint)))
+		{
+			return true;
+		}
+	}
 	return false;
 }
 
