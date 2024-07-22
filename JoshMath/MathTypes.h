@@ -247,7 +247,9 @@ enum BoundingVolumeType
 	BVT_BOX,
 	BVT_CUBE,
 	BVT_CIRCLE,
-	BVT_SPHERE
+	BVT_SPHERE,
+	BVT_CAPULE_2D,
+	BVT_CAPULE_3D
 };
 
 struct BoundingVolumeBase
@@ -296,7 +298,30 @@ struct BoundingSphere : public BoundingVolumeBase
 		bvType = BVT_SPHERE;
 	}
 };
-// figure out how a cylender should be represented (currently low priorty)
+
+struct BoundingCapsule2D : public BoundingVolumeBase
+{
+	Vector2D start, finish;
+	float radius;
+	BoundingCapsule2D()
+	{
+		bvType = BVT_CAPULE_2D;
+		start = finish = { 0.0f,0.0f };
+		radius = 0.0f;
+	}
+};
+
+struct BoundingCapsule3D : public BoundingVolumeBase
+{
+	Vector3D start, finish;
+	float radius;
+	BoundingCapsule3D()
+	{
+		bvType = BVT_CAPULE_3D;
+		start = finish = { 0.0f,0.0f, 0.0f };
+		radius = 0.0f;
+	}
+};
 
 
 // start of graph theory stuff

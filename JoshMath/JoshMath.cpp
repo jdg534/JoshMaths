@@ -1824,6 +1824,58 @@ bool Math::VolumeIntersection::volumesOverlap(const BoundingCube& a, const Bound
 	return true;
 }
 
+bool Math::VolumeIntersection::volumesOverlap(const BoundingCapsule2D& a, const BoundingCapsule2D& b, uint32_t numSegments)
+{
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float collisionRadiiSquared = (a.radius + b.radius) * (a.radius + b.radius);
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	Vector2D testPointA = {0.0f,0.0f}; // done to avoid thrashing the stack
+	float aWeight = 0.0f, bWeight = 0.0f;
+	float pointToPointSquaredDistance = 0.0f;
+	for (uint32_t aSeg = 0; aSeg <= numSegments; ++aSeg, aWeight = std::min(aWeight + lerpWeightStepSize, 1.0f))
+	{
+		testPointA = Math::Interpolation::lerp(a.start, a.finish, aWeight);
+		bWeight = 0.0f;
+		for (uint32_t bSeg = 0; bSeg <= numSegments; ++bSeg, bWeight = std::min(bWeight + lerpWeightStepSize, 1.0f))
+		{
+			pointToPointSquaredDistance = magnitudeSquared(wayToVector(testPointA, Math::Interpolation::lerp(b.start, b.finish, bWeight)));
+			if (collisionRadiiSquared > pointToPointSquaredDistance)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+bool Math::VolumeIntersection::volumesOverlap(const BoundingCapsule3D& a, const BoundingCapsule3D& b, uint32_t numSegments)
+{
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float collisionRadiiSquared = (a.radius + b.radius) * (a.radius + b.radius);
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	Vector3D testPointA = { 0.0f,0.0f, 0.0f }; // done to avoid thrashing the stack
+	float aWeight = 0.0f, bWeight = 0.0f;
+	float pointToPointSquaredDistance = 0.0f;
+	for (uint32_t aSeg = 0; aSeg <= numSegments; ++aSeg, aWeight = std::min(aWeight + lerpWeightStepSize, 1.0f))
+	{
+		testPointA = Math::Interpolation::lerp(a.start, a.finish, aWeight);
+		bWeight = 0.0f;
+		for (uint32_t bSeg = 0; bSeg <= numSegments; ++bSeg, bWeight = std::min(bWeight + lerpWeightStepSize, 1.0f))
+		{
+			pointToPointSquaredDistance = magnitudeSquared(wayToVector(testPointA, Math::Interpolation::lerp(b.start, b.finish, bWeight)));
+			if (collisionRadiiSquared > pointToPointSquaredDistance)
+			{
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
 bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D& a, const BoundingBox& vol)
 {
 	// figure out Y axis up or down
@@ -1899,6 +1951,46 @@ bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D& a, const Bo
 	return aInVolXAxis && aInVolYAxis && aInVolZAxis;
 }
 
+bool Math::VolumeIntersection::pointInBoundingVolume(const Vector2D& a, const BoundingCapsule2D& vol, uint32_t numSegments)
+{
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float collisionRadiiSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	for (uint32_t aSeg = 0; aSeg <= numSegments; ++aSeg, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		pointToPointSquaredDistance = magnitudeSquared(wayToVector(a, Math::Interpolation::lerp(vol.start, vol.finish, weight)));
+		if (collisionRadiiSquared > pointToPointSquaredDistance)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+bool Math::VolumeIntersection::pointInBoundingVolume(const Vector3D& a, const BoundingCapsule3D& vol, uint32_t numSegments)
+{
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float collisionRadiiSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	for (uint32_t aSeg = 0; aSeg <= numSegments; ++aSeg, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		pointToPointSquaredDistance = magnitudeSquared(wayToVector(a, Math::Interpolation::lerp(vol.start, vol.finish, weight)));
+		if (collisionRadiiSquared > pointToPointSquaredDistance)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 bool Math::VolumeIntersection::volumeInRayPath(const Ray2D& r, const BoundingBox& vol)
 {
 	Vector2D volumeMidPoint;
@@ -1952,6 +2044,55 @@ bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingCub
 	Vector3D rayDirScaledToVolMidPointDist = Math::VectorMath::scaled(scaleRayBy, r.direction);
 	Vector3D testPoint = Math::VectorMath::add(r.pointOfOrigin, rayDirScaledToVolMidPointDist);
 	return pointInBoundingVolume(testPoint, vol);
+}
+
+bool Math::VolumeIntersection::volumeInRayPath(const Ray2D& r, const BoundingCapsule2D& vol, uint32_t numSegments)
+{
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float radiusSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	Vector2D capsuleTestPoint = vol.start;
+	Vector2D rayTestPoint = r.pointOfOrigin;
+	float rayOriginDistanceFromCapsuleTestPoint = 0.0f; magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+	for (uint32_t segment = 0; segment <= numSegments; ++segment, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		capsuleTestPoint = lerp(vol.start, vol.finish, weight);
+		rayOriginDistanceFromCapsuleTestPoint = magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+		rayTestPoint = add(r.pointOfOrigin, scaled(rayOriginDistanceFromCapsuleTestPoint, r.direction));
+		if (radiusSquared > magnitudeSquared(wayToVector(capsuleTestPoint, rayTestPoint)))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingCapsule3D& vol, uint32_t numSegments)
+{
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float radiusSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	Vector3D capsuleTestPoint = vol.start;
+	Vector3D rayTestPoint = r.pointOfOrigin;
+	float rayOriginDistanceFromCapsuleTestPoint = 0.0f; magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+	for (uint32_t segment = 0; segment <= numSegments; ++segment, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		capsuleTestPoint = lerp(vol.start, vol.finish, weight);
+		rayOriginDistanceFromCapsuleTestPoint = magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+		rayTestPoint = add(r.pointOfOrigin, scaled(rayOriginDistanceFromCapsuleTestPoint, r.direction));
+		if (radiusSquared > magnitudeSquared(wayToVector(capsuleTestPoint, rayTestPoint)))
+		{
+			return true;
+		}
+	}
+	return false;
 }
 
 float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D& r, const BoundingBox& vol)
@@ -2048,6 +2189,60 @@ float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D& r, const
 	volMidPointToRayOri = scaled(destToCompair, volMidPointToRayOri); // to approx vol radius
 	Vector3D toVolRadius = wayToVector(r.pointOfOrigin, volMidPointToRayOri);
 	return magnitude(toVolRadius); // returns the dist to
+}
+
+float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray2D& r, const BoundingCapsule2D& vol, uint32_t numSegments)
+{
+	// assumes will hit
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float radiusSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	Vector2D capsuleTestPoint = vol.start;
+	Vector2D rayTestPoint = r.pointOfOrigin;
+	float rayOriginDistanceFromCapsuleTestPoint = 0.0f; magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+	float closestDistance = FLT_MAX; // refactor to numeric_limits
+	for (uint32_t segment = 0; segment <= numSegments; ++segment, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		capsuleTestPoint = lerp(vol.start, vol.finish, weight);
+		rayOriginDistanceFromCapsuleTestPoint = magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+		rayTestPoint = add(r.pointOfOrigin, scaled(rayOriginDistanceFromCapsuleTestPoint, r.direction));
+		if (radiusSquared > magnitudeSquared(wayToVector(capsuleTestPoint, rayTestPoint)))
+		{
+			closestDistance = std::min(closestDistance, rayOriginDistanceFromCapsuleTestPoint);
+		}
+	}
+	return closestDistance;
+}
+
+float Math::VolumeIntersection::rayDistanceToCollisionFast(const Ray3D& r, const BoundingCapsule3D& vol, uint32_t numSegments)
+{
+	// assumes will hit
+	using namespace Math::Interpolation;
+	using namespace Math::VectorMath; // refactor to Math::Vector
+	assert(numSegments > 0);
+	const float radiusSquared = vol.radius * vol.radius;
+	const float lerpWeightStepSize = 1.0f / static_cast<float>(numSegments);
+	float weight = 0.0;
+	float pointToPointSquaredDistance = 0.0f;
+	Vector3D capsuleTestPoint = vol.start;
+	Vector3D rayTestPoint = r.pointOfOrigin;
+	float rayOriginDistanceFromCapsuleTestPoint = 0.0f; magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+	float closestDistance = FLT_MAX; // refactor to numeric_limits
+	for (uint32_t segment = 0; segment <= numSegments; ++segment, weight = std::min(weight + lerpWeightStepSize, 1.0f))
+	{
+		capsuleTestPoint = lerp(vol.start, vol.finish, weight);
+		rayOriginDistanceFromCapsuleTestPoint = magnitude(wayToVector(capsuleTestPoint, r.pointOfOrigin));
+		rayTestPoint = add(r.pointOfOrigin, scaled(rayOriginDistanceFromCapsuleTestPoint, r.direction));
+		if (radiusSquared > magnitudeSquared(wayToVector(capsuleTestPoint, rayTestPoint)))
+		{
+			closestDistance = std::min(closestDistance, rayOriginDistanceFromCapsuleTestPoint);
+		}
+	}
+	return closestDistance;
 }
 
 float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingBox& vol, float stepSize)
@@ -2188,6 +2383,63 @@ float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& 
 	return 0.0f; // the ray's starting point is in the bounding volume
 }
 
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, uint32_t numSegments)
+{
+	using namespace std;
+	using namespace VectorMath; // refactor.
+	assert(volumeInRayPath(r, vol, numSegments));
+	// back trace unti we get a hit, from furtherest distance, then keep walking back until we're outside of the bounds.
+	float distance = std::max(magnitude(wayToVector(r.pointOfOrigin, vol.start)),
+		magnitude(wayToVector(r.pointOfOrigin, vol.finish)));
+	Vector2D testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+
+	// step back into the capsule
+	while (!pointInBoundingVolume(testPoint, vol, numSegments))
+	{
+		distance -= stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	}
+	// point will be in the bounding volume.
+	while (distance > 0.0f)
+	{
+		distance -= stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+		if (!pointInBoundingVolume(testPoint, vol, numSegments))
+		{
+			return distance + stepSize;
+		}
+	}
+	return -1.0f;
+}
+float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, uint32_t numSegments)
+{
+	using namespace std;
+	using namespace VectorMath; // refactor.
+	assert(volumeInRayPath(r, vol, numSegments));
+	// back trace unti we get a hit, from furtherest distance, then keep walking back until we're outside of the bounds.
+	float distance = std::max(magnitude(wayToVector(r.pointOfOrigin, vol.start)),
+		magnitude(wayToVector(r.pointOfOrigin, vol.finish)));
+	Vector3D testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+
+	// step back into the capsule
+	while (!pointInBoundingVolume(testPoint, vol, numSegments))
+	{
+		distance -= stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	}
+	// point will be in the bounding volume.
+	while (distance > 0.0f)
+	{
+		distance -= stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+		if (!pointInBoundingVolume(testPoint, vol, numSegments))
+		{
+			return distance + stepSize;
+		}
+	}
+	return -1.0f;
+}
+
 float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D& r, const BoundingBox& vol, float stepSize, float maxDist)
 {
 	using namespace Math::VectorMath;
@@ -2275,6 +2527,40 @@ float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, cons
 		traceDist += stepSize;
 		dirScaled = scaled(traceDist, r.direction);
 		testPoint = add(r.pointOfOrigin, dirScaled);
+	}
+	return -1.0f;
+}
+
+float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, float maxDist, uint32_t numSegments)
+{
+	using namespace Math::VectorMath;
+	float distance = stepSize;
+	Vector2D testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	while (distance < maxDist)
+	{
+		if (pointInBoundingVolume(testPoint, vol, numSegments))
+		{
+			return distance;
+		}
+		distance += stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	}
+	return -1.0f;
+}
+
+float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, float maxDist, uint32_t numSegments)
+{
+	using namespace Math::VectorMath;
+	float distance = stepSize;
+	Vector3D testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	while (distance < maxDist)
+	{
+		if (pointInBoundingVolume(testPoint, vol, numSegments))
+		{
+			return distance;
+		}
+		distance += stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
 	}
 	return -1.0f;
 }

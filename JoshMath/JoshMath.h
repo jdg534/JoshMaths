@@ -290,16 +290,22 @@ namespace Math
 		bool volumesOverlap(const BoundingCircle& a, const BoundingCircle& b);
 		bool volumesOverlap(const BoundingSphere& a, const BoundingSphere& b);
 		bool volumesOverlap(const BoundingCube& a, const BoundingCube& b);
+		bool volumesOverlap(const BoundingCapsule2D& a, const BoundingCapsule2D& b, uint32_t numSegments = 10);
+		bool volumesOverlap(const BoundingCapsule3D& a, const BoundingCapsule3D& b, uint32_t numSegments = 10);
 
 		bool pointInBoundingVolume(const Vector2D& a, const BoundingBox& vol);
 		bool pointInBoundingVolume(const Vector2D& a, const BoundingCircle& vol);
 		bool pointInBoundingVolume(const Vector3D& a, const BoundingSphere& vol);
 		bool pointInBoundingVolume(const Vector3D& a, const BoundingCube& vol);
+		bool pointInBoundingVolume(const Vector2D& a, const BoundingCapsule2D& vol, uint32_t numSegments = 10);
+		bool pointInBoundingVolume(const Vector3D& a, const BoundingCapsule3D& vol, uint32_t numSegments = 10);
 
 		bool volumeInRayPath(const Ray2D& r, const BoundingBox& vol);
 		bool volumeInRayPath(const Ray2D& r, const BoundingCircle& vol);
 		bool volumeInRayPath(const Ray3D& r, const BoundingSphere& vol);
 		bool volumeInRayPath(const Ray3D& r, const BoundingCube& vol);
+		bool volumeInRayPath(const Ray2D& r, const BoundingCapsule2D& vol, uint32_t numSegments = 10);
+		bool volumeInRayPath(const Ray3D& r, const BoundingCapsule3D& vol, uint32_t numSegments = 10);
 
 		// below assume that a volume is in the ray path, (defermined via above functions)
 		// these are designed for speed NOT percision
@@ -307,6 +313,8 @@ namespace Math
 		float rayDistanceToCollisionFast(const Ray2D& r, const BoundingCircle& vol);
 		float rayDistanceToCollisionFast(const Ray3D& r, const BoundingSphere& vol);
 		float rayDistanceToCollisionFast(const Ray3D& r, const BoundingCube& vol);
+		float rayDistanceToCollisionFast(const Ray2D& r, const BoundingCapsule2D& vol, uint32_t numSegments = 10);
+		float rayDistanceToCollisionFast(const Ray3D& r, const BoundingCapsule3D& vol, uint32_t numSegments = 10);
 
 		// these are designed for percision (down to the user) at the cost speed
 		// small step size = accurate & slow
@@ -315,11 +323,15 @@ namespace Math
 		float rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCircle& vol, float stepSize);
 		float rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingSphere& vol, float stepSize);
 		float rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCube& vol, float stepSize);
+		float rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, uint32_t numSegments = 10);
+		float rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, uint32_t numSegments = 10);
 
 		float rayDistanceToCollisionTrace(const Ray2D& r, const BoundingBox& vol, float stepSize, float maxDist);
 		float rayDistanceToCollisionTrace(const Ray2D& r, const BoundingCircle& vol, float stepSize, float maxDist);
 		float rayDistanceToCollisionTrace(const Ray3D& r, const BoundingSphere& vol, float stepSize, float maxDist);
 		float rayDistanceToCollisionTrace(const Ray3D& r, const BoundingCube& vol, float stepSize, float maxDist);
+		float rayDistanceToCollisionTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, float maxDist, uint32_t numSegments = 10);
+		float rayDistanceToCollisionTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, float maxDist, uint32_t numSegments = 10);
 	}
 
 	namespace Physics

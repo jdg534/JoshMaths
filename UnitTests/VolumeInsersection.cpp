@@ -1,17 +1,6 @@
 #include <gtest/gtest.h>
 #include <JoshMath.h>
 
-/*
-Volume Types:
-2D
-Bounding Box (Axis Aligned)
-Bounding Circle
-3D
-Bounding Cube (Axis Aligned)
-Bounding Sphere
-*/
-
-// need to test, will collide and won't collide scenarios (for each collision check func)
 GTEST_TEST(VolumeIntersection, BoxCheckWorks)
 {
 	BoundingBox a, b;
@@ -242,13 +231,169 @@ GTEST_TEST(VolumeIntersection,SphereCheckNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
-// point on bounding volume tests, plus check for false positives
-/* cover:
-2D point in square
-2D point in circle
-3D point in Cube
-3D point in Sphere
-*/
+GTEST_TEST(VolumeIntersection, Capsule2DCheckWorksStartWithStart)
+{
+	BoundingCapsule2D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.start = b.start = { 0.0f, 0.0f };
+	a.finish = { -100.0, 50.0f };
+	b.finish = { 100.0, -50.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule2DCheckWorksStartWithFinish)
+{
+	BoundingCapsule2D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.start = b.finish = { 0.0f, 0.0f };
+	a.finish = { -100.0, 50.0f };
+	b.start = { 100.0, -50.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule2DCheckWorksFinishWithFinish)
+{
+	BoundingCapsule2D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.finish = b.finish = { 0.0f, 0.0f };
+	a.start = { -100.0f, 50.0f };
+	b.start = { 100.0f, -50.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule2DCheckWorksMiddleWithMiddle)
+{
+	BoundingCapsule2D a, b;
+	
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+	
+	a.start = { -100.0f, 50.0f };
+	a.finish = { 100.0f, -50.0f };
+	b.start = { -100.0f, -50.0f };
+	b.finish = { 100.0f, 50.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule2DCheckNoFalsePositive)
+{
+	BoundingCapsule2D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.start = { -100.0f, 0.0f };
+	a.finish = { -100.0f, 50.0f };
+	b.start = { 100.0f, -50.0f };
+	b.finish = { 100.0f, 0.0f };
+
+	const bool expected = false;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule3DCheckWorksStartWithStart)
+{
+	BoundingCapsule3D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.start = b.start = { 0.0f, 0.0f, 0.0f };
+	a.finish = { -100.0, 50.0f, 0.0f };
+	b.finish = { 100.0, -50.0f, 0.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule3DCheckWorksStartWithFinish)
+{
+	BoundingCapsule3D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.start = b.finish = { 0.0f, 0.0f, 0.0f };
+	a.finish = { -100.0, 50.0f, 0.0f };
+	b.start = { 100.0, -50.0f, 0.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule3DCheckWorksFinishWithFinish)
+{
+	BoundingCapsule3D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.finish = b.finish = { 0.0f, 0.0f, 0.0f };
+	a.start = { -100.0, 50.0f, 0.0f };
+	b.start = { 100.0, -50.0f, 0.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule3DCheckWorksMiddleWithMiddle)
+{
+	BoundingCapsule3D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.start = { -100.0, 50.0f, 0.0f };
+	a.finish = { 100.0, -50.0f, 0.0f };
+	b.start = { -100.0, -50.0f, 0.0f };
+	b.finish = { 100.0f, 50.0f, 0.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, Capsule3DCheckNoFalsePositive)
+{
+	BoundingCapsule3D a, b;
+
+	a.radius = 5.0f;
+	b.radius = 10.0f;
+
+	a.start = { -100.0, 0.0f, 0.0f };
+	a.finish = { -100.0, 50.0f, 0.0f };
+	b.start = { 100.0, -50.0f, 0.0f };
+	b.finish = { 100.0f, 0.0f, 0.0f };
+
+	const bool expected = false;
+	const bool actual = Math::VolumeIntersection::volumesOverlap(a, b);
+	EXPECT_EQ(expected, actual);
+}
 
 GTEST_TEST(VolumeIntersection,PointInSquare)
 {
@@ -393,6 +538,66 @@ GTEST_TEST(VolumeIntersection,PointInSphereNoFalsePositive)
 	bool expected = false,
 		actual = Math::VolumeIntersection::pointInBoundingVolume(point, vol);
 
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, PointInCapsule2D)
+{
+	BoundingCapsule2D capsule;
+	capsule.radius = 5.0f;
+
+	capsule.start = { 10.0f, 10.0f };
+	capsule.finish = {-1.0f, -1.0f};
+
+	const Vector2D testPoint = {0.0f,0.0f};
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::pointInBoundingVolume(testPoint, capsule);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, PointInCapsule2DNoFalsePositive)
+{
+	BoundingCapsule2D capsule;
+	capsule.radius = 5.0f;
+
+	capsule.start = { 10.0f, 10.0f };
+	capsule.finish = { -10.0f, 10.0f };
+
+	const Vector2D testPoint = { 0.0f,0.0f };
+
+	const bool expected = false;
+	const bool actual = Math::VolumeIntersection::pointInBoundingVolume(testPoint, capsule);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, PointInCapsule3D)
+{
+	BoundingCapsule3D capsule;
+	capsule.radius = 5.0f;
+
+	capsule.start = { 10.0f, 10.0f, 0.0f };
+	capsule.finish = { -1.0f, -1.0f, 0.0f };
+
+	const Vector3D testPoint = { 0.0f,0.0f, 0.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::pointInBoundingVolume(testPoint, capsule);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, PointInCapsule3DNoFalsePositive)
+{
+	BoundingCapsule3D capsule;
+	capsule.radius = 5.0f;
+
+	capsule.start = { 10.0f, 10.0f, 0.0f };
+	capsule.finish = { -10.0f, 10.0f, 0.0f };
+
+	const Vector3D testPoint = { 0.0f,0.0f, 0.0f };
+
+	const bool expected = false;
+	const bool actual = Math::VolumeIntersection::pointInBoundingVolume(testPoint, capsule);
 	EXPECT_EQ(expected, actual);
 }
 
@@ -571,6 +776,66 @@ GTEST_TEST(VolumeIntersection,VolInPathSphereNoFalsePositive)
 	EXPECT_EQ(expected, actual);
 }
 
+GTEST_TEST(VolumeIntersection, VolInPathCapsule2D)
+{
+	BoundingCapsule2D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f };
+	capsule.finish = { 5.0f, 10.0f };
+	Ray2D r;
+	r.pointOfOrigin = { 0.0f,0.0f };
+	r.direction = {0.0f, 1.0f};
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumeInRayPath(r, capsule);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, VolInPathCapsule2DNoFalsePositive)
+{
+	BoundingCapsule2D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f };
+	capsule.finish = { 5.0f, 10.0f };
+	Ray2D r;
+	r.pointOfOrigin = { 0.0f,20.0f };
+	r.direction = { 0.0f, 1.0f };
+
+	const bool expected = false;
+	const bool actual = Math::VolumeIntersection::volumeInRayPath(r, capsule);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, VolInPathCapsule3D)
+{
+	BoundingCapsule3D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f, 0.0f };
+	capsule.finish = { 5.0f, 10.0f, 0.0f };
+	Ray3D r;
+	r.pointOfOrigin = { 0.0f,0.0f, 0.0f };
+	r.direction = { 0.0f, 1.0f, 0.0f };
+
+	const bool expected = true;
+	const bool actual = Math::VolumeIntersection::volumeInRayPath(r, capsule);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, VolInPathCapsule3DNoFalsePositive)
+{
+	BoundingCapsule3D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f, 50.0f };
+	capsule.finish = { 5.0f, 10.0f, 50.0f };
+	Ray3D r;
+	r.pointOfOrigin = { 0.0f,0.0f, 0.0f };
+	r.direction = { 0.0f, 1.0f, 0.0f };
+
+	const bool expected = false;
+	const bool actual = Math::VolumeIntersection::volumeInRayPath(r, capsule);
+	EXPECT_EQ(expected, actual);
+}
+
 // start of fast distance to collision functions
 GTEST_TEST(VolumeIntersection,VolDistanceToCollideFastBox)
 {
@@ -649,6 +914,39 @@ GTEST_TEST(VolumeIntersection,VolDistanceToCollideFastSphere)
 		actual = Math::VolumeIntersection::rayDistanceToCollisionFast(r, bs);
 
 	EXPECT_FLOAT_EQ(expected, actual);
+}
+
+GTEST_TEST(VolumeIntersection, VolDistanceToCollideFastCapsule2D)
+{
+	BoundingCapsule2D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f };
+	capsule.finish = { 5.0f, 10.0f };
+	Ray2D r;
+	r.pointOfOrigin = { 0.0f,0.0f };
+	r.direction = { 0.0f, 1.0f };
+	
+	const float actual = Math::VolumeIntersection::rayDistanceToCollisionFast(r, capsule);
+	const float expectedMin = 5.0f;
+	const float expectedMax = 15.0f;
+	EXPECT_LE(expectedMin, actual);
+	EXPECT_LE(actual, expectedMax);
+}
+
+GTEST_TEST(VolumeIntersection, VolDistanceToCollideFastCapsule3D)
+{
+	BoundingCapsule3D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f, 0.0f };
+	capsule.finish = { 5.0f, 10.0f, 0.0f };
+	Ray3D r;
+	r.pointOfOrigin = { 0.0f,0.0f, 0.0f };
+	r.direction = { 0.0f, 1.0f, 0.0f };
+	const float actual = Math::VolumeIntersection::rayDistanceToCollisionFast(r, capsule);
+	const float expectedMin = 5.0f;
+	const float expectedMax = 15.0f;
+	EXPECT_LE(expectedMin, actual);
+	EXPECT_LE(actual, expectedMax);
 }
 
 GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceBox)
@@ -743,6 +1041,39 @@ GTEST_TEST(VolumeIntersection,VolDistanceToCollideReverseTraceSphere)
 	// EXPECT_FLOAT_EQ(expected, actual); // The value is close but it's off from floating point rounding errors.
 	constexpr float tolerance = 0.001f;
 	EXPECT_LT(std::abs(expected - actual), tolerance);
+}
+
+GTEST_TEST(VolumeIntersection, VolDistanceToCollideReverseTraceCapsule2D)
+{
+	BoundingCapsule2D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f };
+	capsule.finish = { 5.0f, 10.0f };
+	Ray2D r;
+	r.pointOfOrigin = { 0.0f,0.0f };
+	r.direction = { 0.0f, 1.0f };
+
+	const float actual = Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(r, capsule, 0.001f);
+	const float expectedMin = 4.75f;
+	const float expectedMax = 5.25f;
+	EXPECT_LE(expectedMin, actual);
+	EXPECT_LE(actual, expectedMax);
+}
+
+GTEST_TEST(VolumeIntersection, VolDistanceToCollideReverseTraceCapsule3D)
+{
+	BoundingCapsule3D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f, 0.0f };
+	capsule.finish = { 5.0f, 10.0f, 0.0f };
+	Ray3D r;
+	r.pointOfOrigin = { 0.0f,0.0f, 0.0f };
+	r.direction = { 0.0f, 1.0f, 0.0f };
+	const float actual = Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(r, capsule, 0.001f);
+	const float expectedMin = 4.75f;
+	const float expectedMax = 5.25f;
+	EXPECT_LE(expectedMin, actual);
+	EXPECT_LE(actual, expectedMax);
 }
 
 GTEST_TEST(VolumeIntersection,VolDistanceToCollideForwardTraceBox)
@@ -840,4 +1171,38 @@ GTEST_TEST(VolumeIntersection, DistanceToCollideFowardTraceSphere)
 	// EXPECT_FLOAT_EQ(expected, actual); would fail due to floating point rounding errors, if the difference is small enough we accept.
 	constexpr float tolerance = 0.001f;
 	EXPECT_LT(std::abs(expected - actual), tolerance);
+}
+
+GTEST_TEST(VolumeIntersection, DistanceToCollideFowardTraceCapsule2D)
+{
+	BoundingCapsule2D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f };
+	capsule.finish = { 5.0f, 10.0f };
+	Ray2D r;
+	r.pointOfOrigin = { 0.0f,0.0f };
+	r.direction = { 0.0f, 1.0f };
+
+	const float actual = Math::VolumeIntersection::rayDistanceToCollisionTrace(r, capsule, 0.001f, 50.0f);
+	const float expectedMin = 4.75f;
+	const float expectedMax = 5.25f;
+	EXPECT_LE(expectedMin, actual);
+	EXPECT_LE(actual, expectedMax);
+}
+
+GTEST_TEST(VolumeIntersection, DistanceToCollideFowardTraceCapsule3D)
+{
+	BoundingCapsule3D capsule;
+	capsule.radius = 5.0f;
+	capsule.start = { -5.0f, 10.0f, 0.0f };
+	capsule.finish = { 5.0f, 10.0f, 0.0f };
+	Ray3D r;
+	r.pointOfOrigin = { 0.0f,0.0f,0.0f };
+	r.direction = { 0.0f, 1.0f, 0.0f };
+
+	const float actual = Math::VolumeIntersection::rayDistanceToCollisionTrace(r, capsule, 0.001f, 50.0f);
+	const float expectedMin = 4.75f;
+	const float expectedMax = 5.25f;
+	EXPECT_LE(expectedMin, actual);
+	EXPECT_LE(actual, expectedMax);
 }
