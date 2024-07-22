@@ -2385,12 +2385,58 @@ float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& 
 
 float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace std;
+	using namespace VectorMath; // refactor.
+	assert(volumeInRayPath(r, vol, numSegments));
+	// back trace unti we get a hit, from furtherest distance, then keep walking back until we're outside of the bounds.
+	float distance = std::max(magnitude(wayToVector(r.pointOfOrigin, vol.start)),
+		magnitude(wayToVector(r.pointOfOrigin, vol.finish)));
+	Vector2D testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+
+	// step back into the capsule
+	while (!pointInBoundingVolume(testPoint, vol, numSegments))
+	{
+		distance -= stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	}
+	// point will be in the bounding volume.
+	while (distance > 0.0f)
+	{
+		distance -= stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+		if (!pointInBoundingVolume(testPoint, vol, numSegments))
+		{
+			return distance + stepSize;
+		}
+	}
 	return -1.0f;
 }
 float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace std;
+	using namespace VectorMath; // refactor.
+	assert(volumeInRayPath(r, vol, numSegments));
+	// back trace unti we get a hit, from furtherest distance, then keep walking back until we're outside of the bounds.
+	float distance = std::max(magnitude(wayToVector(r.pointOfOrigin, vol.start)),
+		magnitude(wayToVector(r.pointOfOrigin, vol.finish)));
+	Vector3D testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+
+	// step back into the capsule
+	while (!pointInBoundingVolume(testPoint, vol, numSegments))
+	{
+		distance -= stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	}
+	// point will be in the bounding volume.
+	while (distance > 0.0f)
+	{
+		distance -= stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+		if (!pointInBoundingVolume(testPoint, vol, numSegments))
+		{
+			return distance + stepSize;
+		}
+	}
 	return -1.0f;
 }
 
