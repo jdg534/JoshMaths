@@ -2487,13 +2487,35 @@ float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, cons
 
 float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray2D& r, const BoundingCapsule2D& vol, float stepSize, float maxDist, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace Math::VectorMath;
+	float distance = stepSize;
+	Vector2D testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	while (distance < maxDist)
+	{
+		if (pointInBoundingVolume(testPoint, vol, numSegments))
+		{
+			return distance;
+		}
+		distance += stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	}
 	return -1.0f;
 }
 
 float Math::VolumeIntersection::rayDistanceToCollisionTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, float maxDist, uint32_t numSegments)
 {
-	throw std::exception("Not implemented");
+	using namespace Math::VectorMath;
+	float distance = stepSize;
+	Vector3D testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	while (distance < maxDist)
+	{
+		if (pointInBoundingVolume(testPoint, vol, numSegments))
+		{
+			return distance;
+		}
+		distance += stepSize;
+		testPoint = add(r.pointOfOrigin, scaled(distance, r.direction));
+	}
 	return -1.0f;
 }
 
