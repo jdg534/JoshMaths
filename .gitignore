@@ -43,4 +43,5 @@ Temporary Items
 .apdisk
 
 # Dev env dir
-DEV_ENV
+DEV_ENV/
+CTEST_UNIT_TEST_ENV/
