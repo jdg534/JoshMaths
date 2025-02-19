@@ -18,13 +18,15 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-
+    - name: Checkout google test
+      run: git submodule update --init
+      
     - name: Configure CMake
       run: cmake -G "Unix Makefiles" -DBuildToRunWithCTest=ON
 
     - name: Build With CMake
       run: cmake --build ./ --target RunUnitTests --config Release
 
-    - name: Tes
+    - name: Run all unit tests
       run: ctest ./ --rerun-failed --output-on-failure
 
