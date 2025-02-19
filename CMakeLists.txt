@@ -9,21 +9,6 @@ if(BuildToRunWithCTest)
 	include(CTest)
 endif()
 
-# force static runtime libraries for msvc builds
-if(MSVC)
-  set(variables 
-    CMAKE_CXX_FLAGS_DEBUG
-    CMAKE_CXX_FLAGS_RELEASE
-	CMAKE_CXX_FLAGS_RELWITHDEBINFO
-	CMAKE_CXX_FLAGS_MINSIZEREL
-  )
-  foreach(variable ${variables})
-	if(${variable} MATCHES "/MD")
-	  string(REGEX REPLACE "/MD" "/MT" ${variable} "${${variable}}")
-	endif()
-  endforeach()
-endif()
-
 add_subdirectory(Submodule)
 add_subdirectory(JoshMath)
 add_subdirectory(UnitTests)	
