@@ -1,0 +1,30 @@
+# Based off the starter workflow is for a CMake project running on a single platform. There is a different starter workflow if you need cross-platform coverage.
+# See: https://github.com/actions/starter-workflows/blob/main/ci/cmake-multi-platform.yml
+name: CMake on a single platform
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  # Customize the CMake build type here (Release, Debug, RelWithDebInfo, etc.)
+  BUILD_TYPE: Release
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Configure CMake
+      run: cmake ../ -G "Unix Makefiles" -DBuildToRunWithCTest=ON
+
+    - name: Build With CMake
+      run: cmake --build ./ --target RunUnitTests --config Release
+
+    - name: Tes
+      run: ctest ./ --rerun-failed --output-on-failure
+
