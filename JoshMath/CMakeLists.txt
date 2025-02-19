@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9.0)
+cmake_minimum_required(VERSION 3.30.0)
 
 file(GLOB_RECURSE JOSH_MATH_SOURCE_FILES *.cpp)
 file(GLOB_RECURSE JOSH_MATH_HEADER_FILES *.h)

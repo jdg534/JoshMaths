@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9.0)
+cmake_minimum_required(VERSION 3.30.0)
 set(PROJECT_NAME_STR JoshMaths)
 project(${PROJECT_NAME_STR} C CXX)
 
