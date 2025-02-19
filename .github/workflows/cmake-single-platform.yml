@@ -20,7 +20,7 @@ jobs:
     - uses: actions/checkout@v4
 
     - name: Configure CMake
-      run: cmake ../ -G "Unix Makefiles" -DBuildToRunWithCTest=ON
+      run: cmake -G "Unix Makefiles" -DBuildToRunWithCTest=ON
 
     - name: Build With CMake
       run: cmake --build ./ --target RunUnitTests --config Release
