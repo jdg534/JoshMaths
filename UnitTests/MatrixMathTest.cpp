@@ -1,5 +1,9 @@
-#include <gtest/gtest.h>
 #include <JoshMath.h>
+
+#include <gtest/gtest.h>
+
+#include <cstring> // for std:memcpy
+
 
 /*
 TODO:
