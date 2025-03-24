@@ -2,6 +2,7 @@
 #include <cmath>
 
 #include <cassert>
+#include <cfloat>
 
 /*
 Copyright (c) 2015 Joshua Gibson

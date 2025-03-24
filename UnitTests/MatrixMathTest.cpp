@@ -1,16 +1,8 @@
-#include <gtest/gtest.h>
 #include <JoshMath.h>
 
-/*
-TODO:
-addition
-subtraction
-multerplication
-determinant
-transpose
-inverse
-identity
-*/
+#include <gtest/gtest.h>
+
+#include <cstring> // for std:memcpy
 
 // Additions
 GTEST_TEST(MatrixMath, Addition2x1)
@@ -100,16 +92,26 @@ GTEST_TEST(MatrixMath, Addition3x3)
 	a.r3c2 = b.r3c2 = 3.2f;
 	a.r3c3 = b.r3c3 = 3.3f;
 
+	actualResults = Math::MatrixMath::add(a, b);
+	expectedResults.r1c1 = 1.1f + 1.1f;
+	expectedResults.r1c2 = 1.2f + 1.2f;
+	expectedResults.r1c3 = 1.3f + 1.3f;
+	expectedResults.r2c1 = 2.1f + 2.1f;
+	expectedResults.r2c2 = 2.2f + 2.2f;
+	expectedResults.r2c3 = 2.3f + 2.3f;
+	expectedResults.r3c1 = 3.1f + 3.1f;
+	expectedResults.r3c2 = 3.2f + 3.2f;
+	expectedResults.r3c3 = 3.3f + 3.3f;
 
-	float * expIter = &expectedResults.r1c1;
-	float * actIter = &actualResults.r1c1;
-
-	for (size_t i = 0; i < (sizeof(Matrix3x3) / sizeof(float)); ++i)
-	{
-		EXPECT_FLOAT_EQ(*expIter, *actIter);
-		++expIter;
-		++actIter;
-	}
+	EXPECT_FLOAT_EQ(actualResults.r1c1, expectedResults.r1c1);
+	EXPECT_FLOAT_EQ(actualResults.r1c2, expectedResults.r1c2);
+	EXPECT_FLOAT_EQ(actualResults.r1c3, expectedResults.r1c3);
+	EXPECT_FLOAT_EQ(actualResults.r2c1, expectedResults.r2c1);
+	EXPECT_FLOAT_EQ(actualResults.r2c2, expectedResults.r2c2);
+	EXPECT_FLOAT_EQ(actualResults.r2c3, expectedResults.r2c3);
+	EXPECT_FLOAT_EQ(actualResults.r3c1, expectedResults.r3c1);
+	EXPECT_FLOAT_EQ(actualResults.r3c2, expectedResults.r3c2);
+	EXPECT_FLOAT_EQ(actualResults.r3c3, expectedResults.r3c3);
 }
 
 GTEST_TEST(MatrixMath, Addition4x1)
@@ -1224,23 +1226,24 @@ GTEST_TEST(MatrixMath, determinant4x4)
 	Matrix4x4 in;
 	float exp, act;
 
-	in.r1c1 = 7;
-	in.r1c2 = 8;
-	in.r1c3 = 9;
-	in.r1c4 = 4;
-	in.r2c1 = 50;
-	in.r2c2 = 58;
-	in.r2c3 = 81;
-	in.r2c4 = 3;
-	in.r3c1 = 64;
-	in.r3c2 = 21;
-	in.r3c3 = 5;
-	in.r3c4 = 9;
-	in.r4c1 = 8;
-	in.r4c2 = 2;
-	in.r4c3 = 7;
-	in.r4c4 = 3;
-	exp = 81788;
+	in.r1c1 = 7.0f;
+	in.r1c2 = 8.0f;
+	in.r1c3 = 9.0f;
+	in.r1c4 = 4.0f;
+	in.r2c1 = 50.0f;
+	in.r2c2 = 58.0f;
+	in.r2c3 = 81.0f;
+	in.r2c4 = 3.0f;
+	in.r3c1 = 64.0f;
+	in.r3c2 = 21.0f;
+	in.r3c3 = 5.0f;
+	in.r3c4 = 9.0f;
+	in.r4c1 = 8.0f;
+	in.r4c2 = 2.0f;
+	in.r4c3 = 7.0f;
+	in.r4c4 = 3.0f;
+
+	exp = 81788.0f;
 	act = Math::MatrixMath::determinant(in);
 
 	EXPECT_FLOAT_EQ(exp, act);
@@ -1425,15 +1428,17 @@ GTEST_TEST(MatrixMath, Inverse3x3)
 	expected.r3c2 = -45.0f / 1142.0f;
 	expected.r3c3 = 23.0f / 1713.0f;
 
-	float * expIter = &expected.r1c1;
-	float * actIter = &actual.r1c1;
+	EXPECT_FLOAT_EQ(expected.r1c1, expected.r1c1);
+	EXPECT_FLOAT_EQ(expected.r1c2, expected.r1c2);
+	EXPECT_FLOAT_EQ(expected.r1c3, expected.r1c3);
 
-	for (size_t i = 0; i < (sizeof(Matrix3x3) / sizeof(float)); ++i)
-	{
-		EXPECT_FLOAT_EQ(*expIter, *actIter);
-		++expIter;
-		++actIter;
-	}
+	EXPECT_FLOAT_EQ(expected.r2c1, expected.r2c1);
+	EXPECT_FLOAT_EQ(expected.r2c2, expected.r2c2);
+	EXPECT_FLOAT_EQ(expected.r2c3, expected.r2c3);
+
+	EXPECT_FLOAT_EQ(expected.r3c1, expected.r3c1);
+	EXPECT_FLOAT_EQ(expected.r3c2, expected.r3c2);
+	EXPECT_FLOAT_EQ(expected.r3c3, expected.r3c3);
 }
 
 // identy matrix
