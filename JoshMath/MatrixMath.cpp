@@ -1,6 +1,7 @@
 #include "MatrixMath.h"
 
 #include <cfloat>
+#include <cstring> // for std::memset
 
 /*
 Copyright (c) 2015 Joshua Gibson
