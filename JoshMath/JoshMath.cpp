@@ -748,19 +748,18 @@ float Math::MatrixMath::determinant(const Matrix3x3 & a)
 
 float Math::MatrixMath::determinant(const Matrix4x4 & a)
 {
-	// https://www.khanacademy.org/math/linear-algebra/matrix_Transformations/determinant_depth/v/linear-algebra--simpler-4x4-determinant
-	float aa, ab, ac, ad,
-		ba, bb, bc, bd;
-	aa = a.r1c1 * a.r2c2 * a.r3c3 * a.r4c4;
-	ab = a.r1c2 * a.r2c3 * a.r3c4 * a.r4c1;
-	ac = a.r1c3 * a.r2c4 * a.r3c1 * a.r4c2;
-	ad = a.r1c4 * a.r2c1 * a.r3c2 * a.r4c3;
+	const float PosA = a.r1c1 * a.r2c2 * a.r3c3 * a.r4c4;
+	const float PosB = a.r1c2 * a.r2c3 * a.r3c4 * a.r4c1;
+	const float PosC = a.r1c3 * a.r2c4 * a.r3c1 * a.r4c2;
+	const float PosD = a.r1c4 * a.r2c1 * a.r3c2 * a.r4c3;
 
-	ba = a.r1c4 * a.r2c3 * a.r3c2 * a.r4c1;
-	bb = a.r1c3 * a.r2c2 * a.r3c1 * a.r4c4;
-	bc = a.r1c2 * a.r2c1 * a.r3c4 * a.r4c3;
-	bd = a.r1c1 * a.r2c4 * a.r3c3 * a.r4c2;
-	return (aa + ab + ac + ad) - (ba + bb + bc + bd);
+	const float NegA = a.r1c4 * a.r2c3 * a.r3c2 * a.r4c1;
+	const float NegB = a.r1c3 * a.r2c2 * a.r3c1 * a.r4c4;
+	const float NegC = a.r1c2 * a.r2c1 * a.r3c4 * a.r4c3;
+	const float NegD = a.r1c1 * a.r2c4 * a.r3c3 * a.r4c2;
+
+	return PosA + PosB + PosC + PosD
+		 - NegA - NegB - NegC - NegD;
 }
 
 Matrix2x2 Math::MatrixMath::transpose(const Matrix2x2 & a)

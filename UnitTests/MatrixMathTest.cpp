@@ -1224,29 +1224,26 @@ GTEST_TEST(MatrixMath, determinant3x3)
 GTEST_TEST(MatrixMath, determinant4x4)
 {
 	Matrix4x4 in;
-	float exp, act;
 
-	in.r1c1 = 7.0f;
-	in.r1c2 = 8.0f;
-	in.r1c3 = 9.0f;
-	in.r1c4 = 4.0f;
-	in.r2c1 = 50.0f;
-	in.r2c2 = 58.0f;
-	in.r2c3 = 81.0f;
-	in.r2c4 = 3.0f;
-	in.r3c1 = 64.0f;
-	in.r3c2 = 21.0f;
-	in.r3c3 = 5.0f;
-	in.r3c4 = 9.0f;
-	in.r4c1 = 8.0f;
-	in.r4c2 = 2.0f;
-	in.r4c3 = 7.0f;
-	in.r4c4 = 3.0f;
+	in.r1c1 = 1.0f; in.r1c2 = 2.0f; in.r1c3 = 3.0f; in.r1c4 = 4.0f;
+	in.r2c1 = 5.0f; in.r2c2 = 6.0f; in.r2c3 = 7.0f; in.r2c4 = 8.0f;
+	in.r3c1 = 9.0f; in.r3c2 = 10.0f; in.r3c3 = 11.0f; in.r3c4 = 12.0f;
+	in.r4c1 = 13.0f; in.r4c2 = 14.0f; in.r4c3 = 15.0f; in.r4c4 = 16.0f;
+	
+	const float ExpectedPosA = in.r1c1 * in.r2c2 * in.r3c3 * in.r4c4;
+	const float ExpectedPosB = in.r1c2 * in.r2c3 * in.r3c4 * in.r4c1;
+	const float ExpectedPosC = in.r1c3 * in.r2c4 * in.r3c1 * in.r4c2;
+	const float ExpectedPosD = in.r1c4 * in.r2c1 * in.r3c2 * in.r4c3;
+	const float ExpectedNegA = in.r1c4 * in.r2c3 * in.r3c2 * in.r4c1;
+	const float ExpectedNegB = in.r1c3 * in.r2c2 * in.r3c1 * in.r4c4;
+	const float ExpectedNegC = in.r1c2 * in.r2c1 * in.r3c4 * in.r4c3;
+	const float ExpectedNegD = in.r1c1 * in.r2c4 * in.r3c3 * in.r4c2;
 
-	exp = 81788.0f;
-	act = Math::MatrixMath::determinant(in);
+	const float expected = ExpectedPosA + ExpectedPosB + ExpectedPosC + ExpectedPosD
+		- ExpectedNegA -  ExpectedNegB - ExpectedNegC - ExpectedNegD;
 
-	EXPECT_FLOAT_EQ(exp, act);
+	const float actual = Math::MatrixMath::determinant(in);
+	EXPECT_FLOAT_EQ(expected, actual);
 }
 
 // transpose
