@@ -1,16 +1,6 @@
 #pragma once
 
-#include "VectorMath.h"
-#include "ConversionFunctions.h"
-#include "InterpolationFunctions.h"
-#include "MatrixMath.h"
-#include "MiscellaneousFunctions.h"
-#include "PhysicsSolvers.h"
-#include "PlaneMath.h"
-#include "QuaternionMath.h"
-#include "TransformationMath.h"
-#include "VolumeIntersectionMaths.h"
-
+#include "MathTypes.h"
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -35,3 +25,14 @@ SOFTWARE.
 
 */
 
+namespace Math
+{
+	namespace Conversion
+	{
+		float degreesToRadians(float valueInDegrees);
+		float radiansToDegrees(float valueInRadians);
+
+		Types::PolarCoordinate CartesianToPolar(const Types::Vector2D& cartVal);
+		Types::Vector2D PolarToCartesian(const Types::PolarCoordinate& Polarval);
+	}
+}

@@ -1,16 +1,8 @@
 #pragma once
 
-#include "VectorMath.h"
-#include "ConversionFunctions.h"
-#include "InterpolationFunctions.h"
-#include "MatrixMath.h"
-#include "MiscellaneousFunctions.h"
-#include "PhysicsSolvers.h"
-#include "PlaneMath.h"
-#include "QuaternionMath.h"
-#include "TransformationMath.h"
-#include "VolumeIntersectionMaths.h"
+#include "MathTypes.h"
 
+#include <cstdint>
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -35,3 +27,24 @@ SOFTWARE.
 
 */
 
+namespace Math
+{
+	namespace Physics
+	{
+		// pratical model for now
+		Types::Vector2D netForce(const Types::Vector2D* forces, const unsigned int nForces);
+		Types::Vector3D netForce(const Types::Vector3D* forces, const unsigned int nForces);
+
+		Types::Vector2D acceleration(const Types::Vector2D& netForce, float mass);
+		Types::Vector3D acceleration(const Types::Vector3D& netForce, float mass);
+
+		Types::Vector2D velocity(const Types::Vector2D& previousVelocity, const Types::Vector2D& acceleration, float time);
+		Types::Vector3D velocity(const Types::Vector3D& previousVelocity, const Types::Vector3D& acceleration, float time);
+
+		Types::Vector2D momentum(const Types::Vector2D& velocity, float mass);
+		Types::Vector3D momentum(const Types::Vector3D& velocity, float mass);
+
+		float speed(const Types::Vector2D& velocity);
+		float speed(const Types::Vector3D& velocity);
+	}
+}

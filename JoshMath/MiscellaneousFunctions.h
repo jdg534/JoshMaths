@@ -1,16 +1,5 @@
 #pragma once
-
-#include "VectorMath.h"
-#include "ConversionFunctions.h"
-#include "InterpolationFunctions.h"
-#include "MatrixMath.h"
-#include "MiscellaneousFunctions.h"
-#include "PhysicsSolvers.h"
-#include "PlaneMath.h"
-#include "QuaternionMath.h"
-#include "TransformationMath.h"
-#include "VolumeIntersectionMaths.h"
-
+#include <cstdint>
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -35,3 +24,10 @@ SOFTWARE.
 
 */
 
+namespace Math
+{
+	namespace Miscellaneous
+	{
+		float diff(float x, float y);
+	}
+}

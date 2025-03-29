@@ -1,16 +1,8 @@
 #pragma once
 
-#include "VectorMath.h"
-#include "ConversionFunctions.h"
-#include "InterpolationFunctions.h"
-#include "MatrixMath.h"
-#include "MiscellaneousFunctions.h"
-#include "PhysicsSolvers.h"
-#include "PlaneMath.h"
-#include "QuaternionMath.h"
-#include "TransformationMath.h"
-#include "VolumeIntersectionMaths.h"
+#include "MathTypes.h"
 
+#include <cstdint>
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -35,3 +27,15 @@ SOFTWARE.
 
 */
 
+namespace Math
+{
+	namespace Plane
+	{
+		Types::Plane createPlane(const Types::Vector3D& axisAsUnit, float dictanceFromOrigin);
+		float dotProductAsVector(const Types::Plane& plane, const Types::Vector3D& vector);
+		float dotProductAsPosition(const Types::Plane& plane, const Types::Vector3D& vector);
+		float distanceFromPlane(const Types::Plane& plane, const Types::Vector3D& point);
+		Types::Vector3D reflectVector(const Types::Vector3D& vectorToReflect, const Types::Plane& reflectIn);
+		Types::Vector3D reflectPosition(const Types::Vector3D& positionToReflect, const Types::Plane& reflectIn);
+	}
+}

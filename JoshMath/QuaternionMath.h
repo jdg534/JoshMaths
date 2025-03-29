@@ -1,16 +1,8 @@
 #pragma once
 
-#include "VectorMath.h"
-#include "ConversionFunctions.h"
-#include "InterpolationFunctions.h"
-#include "MatrixMath.h"
-#include "MiscellaneousFunctions.h"
-#include "PhysicsSolvers.h"
-#include "PlaneMath.h"
-#include "QuaternionMath.h"
-#include "TransformationMath.h"
-#include "VolumeIntersectionMaths.h"
+#include "MathTypes.h"
 
+#include <cstdint>
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -35,3 +27,34 @@ SOFTWARE.
 
 */
 
+namespace Math
+{
+	namespace Quaternion
+	{
+		Types::Quaternion create(float angle, const Types::Vector3D& axis);
+
+		Types::Quaternion conjugate(const Types::Quaternion& original);
+
+		Types::Quaternion normalise(Types::Quaternion& toNormalise);
+
+		Types::Quaternion scale(const Types::Quaternion& toScale, float scale);
+
+		Types::Quaternion multiply(const Types::Quaternion& a, const Types::Quaternion& b);
+
+		Types::Quaternion add(const Types::Quaternion& a, const Types::Quaternion& b);
+
+		Types::Quaternion subtract(const Types::Quaternion& a, const Types::Quaternion& b);
+
+		void identityForMul(Types::Quaternion& a);
+
+		void identityForAdd(Types::Quaternion& a);
+
+		float norm(const Types::Quaternion& a);
+		
+		Types::Quaternion inverse(const Types::Quaternion& a);
+
+		Types::Matrix4x4 toMatrix4x4(const Types::Quaternion& a);
+
+		Types::Matrix3x3 toMatrix3x3(const Types::Quaternion& a);
+	}
+}

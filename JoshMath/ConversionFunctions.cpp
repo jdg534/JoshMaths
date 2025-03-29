@@ -1,16 +1,7 @@
-#pragma once
-
-#include "VectorMath.h"
 #include "ConversionFunctions.h"
-#include "InterpolationFunctions.h"
-#include "MatrixMath.h"
-#include "MiscellaneousFunctions.h"
-#include "PhysicsSolvers.h"
-#include "PlaneMath.h"
-#include "QuaternionMath.h"
-#include "TransformationMath.h"
-#include "VolumeIntersectionMaths.h"
+#include "VectorMath.h"
 
+#include <cfloat>
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -35,3 +26,30 @@ SOFTWARE.
 
 */
 
+using namespace Math::Types;
+
+float Math::Conversion::degreesToRadians(float valueInDegrees)
+{
+	return valueInDegrees * (3.14159265359f / 180.0f);
+}
+
+float Math::Conversion::radiansToDegrees(float valueInRadians)
+{
+	return valueInRadians * (180.0f / 3.14159265359f);
+}
+
+PolarCoordinate Math::Conversion::CartesianToPolar(const Vector2D& cartVal)
+{
+	PolarCoordinate rv;
+	rv.radius = Math::Vector::magnitude(cartVal);
+	rv.angle = atanf(cartVal.x / cartVal.y);
+	return rv;
+}
+
+Vector2D Math::Conversion::PolarToCartesian(const PolarCoordinate& PolarVal)
+{
+	Vector2D rv; // Note angle is meant to be in radians.
+	rv.x = PolarVal.radius * cosf(PolarVal.angle);
+	rv.y = PolarVal.radius * sinf(PolarVal.angle);
+	return rv;
+}

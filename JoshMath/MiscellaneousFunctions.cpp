@@ -1,16 +1,6 @@
-#pragma once
-
-#include "VectorMath.h"
-#include "ConversionFunctions.h"
-#include "InterpolationFunctions.h"
-#include "MatrixMath.h"
 #include "MiscellaneousFunctions.h"
-#include "PhysicsSolvers.h"
-#include "PlaneMath.h"
-#include "QuaternionMath.h"
-#include "TransformationMath.h"
-#include "VolumeIntersectionMaths.h"
 
+#include <cfloat>
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -35,3 +25,11 @@ SOFTWARE.
 
 */
 
+float Math::Miscellaneous::diff(float x, float y)
+{
+	if (x > y)
+	{
+		return x - y;
+	}
+	return y - x;
+}
