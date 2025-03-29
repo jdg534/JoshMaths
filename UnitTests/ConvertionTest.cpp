@@ -9,7 +9,7 @@ GTEST_TEST(Convetion, DegreesToRadians)
 
 	float expectedResults = 1.0056587f;
 
-	float actualResults = Math::degreesToRadians(degreeValue);
+	float actualResults = Math::Conversion::degreesToRadians(degreeValue);
 
 	EXPECT_FLOAT_EQ(expectedResults, actualResults);
 }
@@ -21,7 +21,7 @@ GTEST_TEST(Convetion, RadiansToDegrees)
 
 	float expectedValue = 307.79293f;
 
-	float actualResults = Math::radiansToDegrees(radianValue);
+	float actualResults = Math::Conversion::radiansToDegrees(radianValue);
 
 	EXPECT_FLOAT_EQ(expectedValue, actualResults);
 }
@@ -39,7 +39,7 @@ GTEST_TEST(Convetion, CartesianToPolar)
 
 	expectedRes.radius = 5.0f;
 	expectedRes.angle = 45.0f;
-	expectedRes.angle = Math::degreesToRadians(expectedRes.angle);
+	expectedRes.angle = Math::Conversion::degreesToRadians(expectedRes.angle);
 
 	actualRes = Math::Conversion::CartesianToPolar(input);
 
@@ -56,7 +56,7 @@ GTEST_TEST(Convetion, PolarToCartesian)
 
 	Vector2D expectedResults, actualResults;
 
-	input.angle = Math::degreesToRadians(45.0f);
+	input.angle = Math::Conversion::degreesToRadians(45.0f);
 	input.radius = 5.0f;
 
 	expectedResults.x = 3.53553f;

@@ -379,7 +379,7 @@ GTEST_TEST(VectorTest, LookAt2D)
 	nextLookAtPoint.y = 90.0f;
 
 	expected = 90.0f; // need to convert to radians
-	expected = Math::degreesToRadians(expected);
+	expected = Math::Conversion::degreesToRadians(expected);
 
 	actual = Math::Vector::lookAt2D(currentLookAtPoint, nextLookAtPoint, lookFromPoint);
 

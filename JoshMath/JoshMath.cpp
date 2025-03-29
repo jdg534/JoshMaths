@@ -242,12 +242,12 @@ Matrix4x4 Math::Vector::lookAt3D(const Vector3D & position, const Vector3D & tar
 	return rv;
 }
 
-float Math::degreesToRadians(float valueInDegrees)
+float Math::Conversion::degreesToRadians(float valueInDegrees)
 {
 	return valueInDegrees * (3.14159265359 / 180);
 }
 
-float Math::radiansToDegrees(float valueInRadians)
+float Math::Conversion::radiansToDegrees(float valueInRadians)
 {
 	return valueInRadians * (180 / 3.14159265359);
 }

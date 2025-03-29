@@ -69,11 +69,11 @@ namespace Math
 		Types::Matrix4x4 lookAt3D(const Types::Vector3D& position, const Types::Vector3D& targetPosition, const Types::Vector3D& upVec);
 	}
 
-	float degreesToRadians(float valueInDegrees);
-	float radiansToDegrees(float valueInRadians);
-
 	namespace Conversion
 	{
+		float degreesToRadians(float valueInDegrees);
+		float radiansToDegrees(float valueInRadians);
+
 		Types::PolarCoordinate CartesianToPolar(const Types::Vector2D& cartVal);
 		Types::Vector2D PolarToCartesian(const Types::PolarCoordinate& Polarval);
 	}
