@@ -1518,3 +1518,104 @@ GTEST_TEST(MatrixMath, Identity4x4)
 		++actIter;
 	}
 }
+
+// get identity
+GTEST_TEST(MatrixMath, GetIdentity2x2)
+{
+	const Matrix2x2 id = Math::MatrixMath::identity2x2();
+	EXPECT_FLOAT_EQ(id.r1c1, 1.0f);
+	EXPECT_FLOAT_EQ(id.r1c2, 0.0f);
+	EXPECT_FLOAT_EQ(id.r2c1, 0.0f);
+	EXPECT_FLOAT_EQ(id.r2c2, 1.0f);
+}
+
+GTEST_TEST(MatrixMath, GetIdentity3x3)
+{
+	const Matrix3x3 z = Math::MatrixMath::identity3x3();
+	EXPECT_FLOAT_EQ(z.r1c1, 1.0f);
+	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c3, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r2c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c2, 1.0f);
+	EXPECT_FLOAT_EQ(z.r2c3, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r3c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c3, 1.0f);
+}
+
+GTEST_TEST(MatrixMath, GetIdentity4x4)
+{
+	const Matrix4x4 z = Math::MatrixMath::identity4x4();
+	EXPECT_FLOAT_EQ(z.r1c1, 1.0f);
+	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c3, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c4, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r2c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c2, 1.0f);
+	EXPECT_FLOAT_EQ(z.r2c3, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c4, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r3c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c3, 1.0f);
+	EXPECT_FLOAT_EQ(z.r3c4, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r4c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r4c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r4c3, 0.0f);
+	EXPECT_FLOAT_EQ(z.r4c4, 1.0f);
+}
+
+// get zero
+GTEST_TEST(MatrixMath, GetZero2x2)
+{
+	const Matrix2x2 z = Math::MatrixMath::zero2x2();
+	EXPECT_FLOAT_EQ(z.r1c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r2c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c2, 0.0f);
+}
+
+GTEST_TEST(MatrixMath, GetZero3x3)
+{
+	const Matrix3x3 z = Math::MatrixMath::zero3x3();
+	EXPECT_FLOAT_EQ(z.r1c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c3, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r2c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c3, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r3c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c3, 0.0f);
+}
+
+GTEST_TEST(MatrixMath, GetZero4x4)
+{
+	const Matrix4x4 z = Math::MatrixMath::zero4x4();
+	EXPECT_FLOAT_EQ(z.r1c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c3, 0.0f);
+	EXPECT_FLOAT_EQ(z.r1c4, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r2c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c3, 0.0f);
+	EXPECT_FLOAT_EQ(z.r2c4, 0.0f);
+	
+	EXPECT_FLOAT_EQ(z.r3c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c3, 0.0f);
+	EXPECT_FLOAT_EQ(z.r3c4, 0.0f);
+
+	EXPECT_FLOAT_EQ(z.r4c1, 0.0f);
+	EXPECT_FLOAT_EQ(z.r4c2, 0.0f);
+	EXPECT_FLOAT_EQ(z.r4c3, 0.0f);
+	EXPECT_FLOAT_EQ(z.r4c4, 0.0f);
+}
