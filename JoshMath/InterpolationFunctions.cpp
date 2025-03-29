@@ -1,6 +1,8 @@
 #include "InterpolationFunctions.h"
 #include "QuaternionMath.h"
 
+#include <cmath>
+
 /*
 Copyright (c) 2015 Joshua Gibson
 
