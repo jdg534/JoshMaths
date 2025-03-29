@@ -211,7 +211,7 @@ namespace Math
 		void rotate3DY(Types::Matrix3x1& toRotate, float thetaRads);
 		void rotate3DZ(Types::Matrix3x1& toRotate, float thetaRads);
 		
-		void rotateCustomAxis(const Types::Vector3D& axisUnitVector, float thetaRads, Types::Matrix3x1 & toRotate);
+		void rotateCustomAxis(const Types::Vector3D& axisUnitVector, float thetaRads, Types::Matrix3x1& toRotate);
 
 		Types::Matrix2x2 get2dRotationMatrixClkWise(float thetaRads);
 		Types::Matrix2x2 get2dRotationMatrixAntiClkWise(float thetaRads);

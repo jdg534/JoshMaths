@@ -97,7 +97,7 @@ float Math::Vector::angleBetween(const Vector3D& a, const Vector3D& b)
 	return acosf(cosTheta);
 }
 
-Vector2D Math::Vector::add (const Vector2D& a, const Vector2D& b)
+Vector2D Math::Vector::add(const Vector2D& a, const Vector2D& b)
 {
 	Vector2D returnVal;
 	returnVal.x = a.x + b.x;
@@ -105,7 +105,7 @@ Vector2D Math::Vector::add (const Vector2D& a, const Vector2D& b)
 	return returnVal;
 }
 
-Vector2D Math::Vector::subtract (const Vector2D& a, const Vector2D& b)
+Vector2D Math::Vector::subtract(const Vector2D& a, const Vector2D& b)
 {
 	Vector2D rv;
 	rv.x = a.x - b.x;
@@ -113,7 +113,7 @@ Vector2D Math::Vector::subtract (const Vector2D& a, const Vector2D& b)
 	return rv;
 }
 
-Vector3D Math::Vector::add (const Vector3D& a, const Vector3D& b)
+Vector3D Math::Vector::add(const Vector3D& a, const Vector3D& b)
 {
 	Vector3D rv;
 	rv.x = a.x + b.x;
@@ -122,7 +122,7 @@ Vector3D Math::Vector::add (const Vector3D& a, const Vector3D& b)
 	return rv;
 }
 
-Vector3D Math::Vector::subtract (const Vector3D& a, const Vector3D& b)
+Vector3D Math::Vector::subtract(const Vector3D& a, const Vector3D& b)
 {
 	Vector3D rv;
 	rv.x = a.x - b.x;
@@ -141,14 +141,14 @@ Vector3D Math::Vector::wayToVector(const Vector3D& pointA, const Vector3D& point
 	return subtract(pointB, pointA);
 }
 
-float Math::Vector::magnitude (const Vector2D& a)
+float Math::Vector::magnitude(const Vector2D& a)
 {
 	float rv = (a.x * a.x) + (a.y * a.y);
 	rv = sqrtf(rv);
 	return rv;
 }
 
-float Math::Vector::magnitude (const Vector3D& a)
+float Math::Vector::magnitude(const Vector3D& a)
 {
 	float rv = (a.x * a.x) + (a.y * a.y) + (a.z * a.z);
 	rv = sqrtf(rv);
@@ -257,7 +257,6 @@ PolarCoordinate Math::Conversion::CartesianToPolar(const Vector2D& cartVal)
 	PolarCoordinate rv;
 	rv.radius = Math::Vector::magnitude(cartVal);
 	rv.angle = atanf(cartVal.x / cartVal.y);
-	// rv.angle = radiansToDegrees(rv.angle); // rads only
 	return rv;
 }
 
@@ -481,7 +480,7 @@ Matrix4x4 Math::Matrix::subtract(const Matrix4x4& a, const Matrix4x4& b)
 	return rv;
 }
 
-Matrix2x1 Math::Matrix::multiply(float scale, const Matrix2x1 & a)
+Matrix2x1 Math::Matrix::multiply(float scale, const Matrix2x1& a)
 {
 	Matrix2x1 rv;
 	rv.r1c1 = a.r1c1 * scale;
@@ -489,7 +488,7 @@ Matrix2x1 Math::Matrix::multiply(float scale, const Matrix2x1 & a)
 	return rv;
 }
 
-Matrix2x2 Math::Matrix::multiply(float scale, const Matrix2x2 & a)
+Matrix2x2 Math::Matrix::multiply(float scale, const Matrix2x2& a)
 {
 	Matrix2x2 rv;
 	rv.r1c1 = a.r1c1 * scale;
@@ -499,7 +498,7 @@ Matrix2x2 Math::Matrix::multiply(float scale, const Matrix2x2 & a)
 	return rv;
 }
 
-Matrix3x1 Math::Matrix::multiply(float scale, const Matrix3x1 & a)
+Matrix3x1 Math::Matrix::multiply(float scale, const Matrix3x1& a)
 {
 	Matrix3x1 rv;
 	rv.r1c1 = a.r1c1 * scale;
@@ -508,7 +507,7 @@ Matrix3x1 Math::Matrix::multiply(float scale, const Matrix3x1 & a)
 	return rv;
 }
 
-Matrix3x3 Math::Matrix::multiply(float scale, const Matrix3x3 & a)
+Matrix3x3 Math::Matrix::multiply(float scale, const Matrix3x3& a)
 {
 	Matrix3x3 rv;
 
@@ -527,7 +526,7 @@ Matrix3x3 Math::Matrix::multiply(float scale, const Matrix3x3 & a)
 	return rv;
 }
 
-Matrix4x1 Math::Matrix::multiply(float scale, const Matrix4x1 & a)
+Matrix4x1 Math::Matrix::multiply(float scale, const Matrix4x1& a)
 {
 	Matrix4x1 rv;
 	rv.r1c1 = a.r1c1 * scale;
@@ -537,7 +536,7 @@ Matrix4x1 Math::Matrix::multiply(float scale, const Matrix4x1 & a)
 	return rv;
 }
 
-Matrix4x3 Math::Matrix::multiply(float scale, const Matrix4x3 & a)
+Matrix4x3 Math::Matrix::multiply(float scale, const Matrix4x3& a)
 {
 	Matrix4x3 rv;
 
@@ -560,7 +559,7 @@ Matrix4x3 Math::Matrix::multiply(float scale, const Matrix4x3 & a)
 	return rv;
 }
 
-Matrix4x4 Math::Matrix::multiply(float scale, const Matrix4x4 & a)
+Matrix4x4 Math::Matrix::multiply(float scale, const Matrix4x4& a)
 {
 	Matrix4x4 rv;
 
@@ -587,7 +586,7 @@ Matrix4x4 Math::Matrix::multiply(float scale, const Matrix4x4 & a)
 	return rv;
 }
 
-Matrix2x1 Math::Matrix::multiply(const Matrix2x2 & a, const Matrix2x1 & b)
+Matrix2x1 Math::Matrix::multiply(const Matrix2x2& a, const Matrix2x1& b)
 {
 	Matrix2x1 rv;
 	rv.r1c1 = (a.r1c1 * b.r1c1) + (a.r1c2 * b.r2c1);
@@ -595,7 +594,7 @@ Matrix2x1 Math::Matrix::multiply(const Matrix2x2 & a, const Matrix2x1 & b)
 	return rv;
 }
 
-Matrix2x2 Math::Matrix::multiply(const Matrix2x2 & a, const Matrix2x2 & b)
+Matrix2x2 Math::Matrix::multiply(const Matrix2x2& a, const Matrix2x2& b)
 {
 	Matrix2x2 rv;
 
@@ -608,7 +607,7 @@ Matrix2x2 Math::Matrix::multiply(const Matrix2x2 & a, const Matrix2x2 & b)
 	return rv;
 }
 
-Matrix3x1 Math::Matrix::multiply(const Matrix3x3 & a, const Matrix3x1 & b)
+Matrix3x1 Math::Matrix::multiply(const Matrix3x3& a, const Matrix3x1& b)
 {
 	Matrix3x1 rv;
 	rv.r1c1 = (a.r1c1 * b.r1c1) + (a.r1c2 * b.r2c1) + (a.r1c3 * b.r3c1);
@@ -617,7 +616,7 @@ Matrix3x1 Math::Matrix::multiply(const Matrix3x3 & a, const Matrix3x1 & b)
 	return rv;
 }
 
-Matrix3x3 Math::Matrix::multiply(const Matrix3x3 & a, const Matrix3x3 & b)
+Matrix3x3 Math::Matrix::multiply(const Matrix3x3& a, const Matrix3x3& b)
 {
 	Matrix3x3 rv;
 
@@ -636,7 +635,7 @@ Matrix3x3 Math::Matrix::multiply(const Matrix3x3 & a, const Matrix3x3 & b)
 	return rv;
 }
 
-Matrix4x1 Math::Matrix::multiply(const Matrix4x4 & a, const Matrix4x1 & b)
+Matrix4x1 Math::Matrix::multiply(const Matrix4x4& a, const Matrix4x1& b)
 {
 	Matrix4x1 rv;
 	rv.r1c1 = (a.r1c1 * b.r1c1) + (a.r1c2 * b.r2c1) + (a.r1c3 * b.r3c1) + (a.r1c4 * b.r4c1);
@@ -647,7 +646,7 @@ Matrix4x1 Math::Matrix::multiply(const Matrix4x4 & a, const Matrix4x1 & b)
 	return rv;
 }
 
-Matrix4x3 Math::Matrix::multiply(const Matrix4x4 & a, const Matrix4x3 & b)
+Matrix4x3 Math::Matrix::multiply(const Matrix4x4& a, const Matrix4x3& b)
 {
 	Matrix4x3 rv;
 	rv.r1c1 = (a.r1c1 * b.r1c1) + (a.r1c2 * b.r2c1) + (a.r1c3 * b.r3c1) + (a.r1c4 * b.r4c1);
@@ -669,7 +668,7 @@ Matrix4x3 Math::Matrix::multiply(const Matrix4x4 & a, const Matrix4x3 & b)
 	return rv;
 }
 
-Matrix4x4 Math::Matrix::multiply(const Matrix4x4 & a, const Matrix4x4 & b)
+Matrix4x4 Math::Matrix::multiply(const Matrix4x4& a, const Matrix4x4& b)
 {
 	Matrix4x4 rv;
 
@@ -696,7 +695,7 @@ Matrix4x4 Math::Matrix::multiply(const Matrix4x4 & a, const Matrix4x4 & b)
 	return rv;
 }
 
-Matrix4x1 Math::Matrix::multiply(const Matrix4x3 & a, const Matrix3x1 & b)
+Matrix4x1 Math::Matrix::multiply(const Matrix4x3& a, const Matrix3x1& b)
 {
 	Matrix4x1 rv;
 	rv.r1c1 = (a.r1c1 * b.r1c1) + (a.r1c2 * b.r2c1) + (a.r1c3 * b.r3c1);
@@ -706,7 +705,7 @@ Matrix4x1 Math::Matrix::multiply(const Matrix4x3 & a, const Matrix3x1 & b)
 	return rv;
 }
 
-Matrix4x3 Math::Matrix::multiply(const Matrix4x3 & a, const Matrix3x3 & b)
+Matrix4x3 Math::Matrix::multiply(const Matrix4x3& a, const Matrix3x3& b)
 {
 	Matrix4x3 rv;
 
@@ -729,12 +728,12 @@ Matrix4x3 Math::Matrix::multiply(const Matrix4x3 & a, const Matrix3x3 & b)
 	return rv;
 }
 
-float Math::Matrix::determinant(const Matrix2x2 & a)
+float Math::Matrix::determinant(const Matrix2x2& a)
 {
 	return (a.r1c1 * a.r2c2) - (a.r1c2 * a.r2c1);
 }
 
-float Math::Matrix::determinant(const Matrix3x3 & a)
+float Math::Matrix::determinant(const Matrix3x3& a)
 {
 	float aa, ab, ac, ba,bb, bc;
 
@@ -749,7 +748,7 @@ float Math::Matrix::determinant(const Matrix3x3 & a)
 	return (aa + ab + ac) - (ba + bb + bc);
 }
 
-float Math::Matrix::determinant(const Matrix4x4 & a)
+float Math::Matrix::determinant(const Matrix4x4& a)
 {
 	const float PosA = a.r1c1 * a.r2c2 * a.r3c3 * a.r4c4;
 	const float PosB = a.r1c2 * a.r2c3 * a.r3c4 * a.r4c1;
@@ -765,7 +764,7 @@ float Math::Matrix::determinant(const Matrix4x4 & a)
 		 - NegA - NegB - NegC - NegD;
 }
 
-Matrix2x2 Math::Matrix::transpose(const Matrix2x2 & a)
+Matrix2x2 Math::Matrix::transpose(const Matrix2x2& a)
 {
 	Matrix2x2 rv;
 	rv.r1c1 = a.r1c1;
@@ -775,7 +774,7 @@ Matrix2x2 Math::Matrix::transpose(const Matrix2x2 & a)
 	return rv;
 }
 
-Matrix3x3 Math::Matrix::transpose(const Matrix3x3 & a)
+Matrix3x3 Math::Matrix::transpose(const Matrix3x3& a)
 {
 	Matrix3x3 rv;
 	rv.r1c1 = a.r1c1;
@@ -793,7 +792,7 @@ Matrix3x3 Math::Matrix::transpose(const Matrix3x3 & a)
 	return rv;
 }
 
-Matrix4x4 Math::Matrix::transpose(const Matrix4x4 & a)
+Matrix4x4 Math::Matrix::transpose(const Matrix4x4& a)
 {
 	Matrix4x4 rv;
 	rv.r1c1 = a.r1c1;
@@ -819,7 +818,7 @@ Matrix4x4 Math::Matrix::transpose(const Matrix4x4 & a)
 	return rv;
 }
 
-Matrix2x2 Math::Matrix::inverse(const Matrix2x2 & a)
+Matrix2x2 Math::Matrix::inverse(const Matrix2x2& a)
 {	
 	Matrix2x2 toMul;
 	toMul.r1c1 = a.r2c2;
@@ -832,7 +831,7 @@ Matrix2x2 Math::Matrix::inverse(const Matrix2x2 & a)
 
 }
 
-Matrix3x3 Math::Matrix::inverse(const Matrix3x3 & a)
+Matrix3x3 Math::Matrix::inverse(const Matrix3x3& a)
 {
 	Matrix3x3 toMul;
 	toMul.r1c1 = (a.r2c2 * a.r3c3) - (a.r2c3 * a.r3c2);
@@ -850,7 +849,7 @@ Matrix3x3 Math::Matrix::inverse(const Matrix3x3 & a)
 	return multiply(mul, toMul);
 }
 
-Matrix4x4 Math::Matrix::inverse(const Matrix4x4 & a)
+Matrix4x4 Math::Matrix::inverse(const Matrix4x4& a)
 {
 	float mul = 1.0f / determinant(a);
 	Matrix4x4 b;
@@ -894,17 +893,17 @@ Matrix4x4 Math::Matrix::inverse(const Matrix4x4 & a)
 	return multiply(mul, b);
 }
 
-void Math::Matrix::makeIdentity(Matrix2x2 & a)
+void Math::Matrix::makeIdentity(Matrix2x2& a)
 {
 	a = identity2x2();
 }
 
-void Math::Matrix::makeIdentity(Matrix3x3 & a)
+void Math::Matrix::makeIdentity(Matrix3x3& a)
 {
 	a = identity3x3();
 }
 
-void Math::Matrix::makeIdentity(Matrix4x4 & a)
+void Math::Matrix::makeIdentity(Matrix4x4& a)
 {
 	a = identity4x4();
 }
@@ -973,7 +972,7 @@ Quaternion Math::Quaternion::create(float angle, const Vector3D& axis)
 	return rv;
 }
 
-Quaternion Math::Quaternion::conjugate(const Types::Quaternion & original)
+Quaternion Math::Quaternion::conjugate(const Types::Quaternion& original)
 {
 	Types::Quaternion rv;
 
@@ -985,7 +984,7 @@ Quaternion Math::Quaternion::conjugate(const Types::Quaternion & original)
 	return rv;
 }
 
-Quaternion Math::Quaternion::normalise(Types::Quaternion & toNormalise)
+Quaternion Math::Quaternion::normalise(Types::Quaternion& toNormalise)
 {
 	Types::Quaternion rv;
 	float normVal = norm(toNormalise);
@@ -1008,7 +1007,7 @@ Quaternion Math::Quaternion::normalise(Types::Quaternion & toNormalise)
 	return rv;
 }
 
-Quaternion Math::Quaternion::scale(const Types::Quaternion & toScale, float scale)
+Quaternion Math::Quaternion::scale(const Types::Quaternion& toScale, float scale)
 {
 	Types::Quaternion rv;
 	rv.x = toScale.x * scale;
@@ -1018,7 +1017,7 @@ Quaternion Math::Quaternion::scale(const Types::Quaternion & toScale, float scal
 	return rv;
 }
 
-Quaternion Math::Quaternion::multiply(const Types::Quaternion & a, const Types::Quaternion & b)
+Quaternion Math::Quaternion::multiply(const Types::Quaternion& a, const Types::Quaternion& b)
 {
 	Types::Quaternion rv;
 	rv.w = (a.w * b.w - a.x * b.x - a.y * b.y - a.z * b.z);
@@ -1028,7 +1027,7 @@ Quaternion Math::Quaternion::multiply(const Types::Quaternion & a, const Types::
 	return rv;
 }
 
-Quaternion Math::Quaternion::add(const Types::Quaternion & a, const Types::Quaternion & b)
+Quaternion Math::Quaternion::add(const Types::Quaternion& a, const Types::Quaternion& b)
 {
 	Types::Quaternion rv;
 	rv.w = a.w + b.w;
@@ -1038,7 +1037,7 @@ Quaternion Math::Quaternion::add(const Types::Quaternion & a, const Types::Quate
 	return rv;
 }
 
-Quaternion Math::Quaternion::subtract(const Types::Quaternion & a, const Types::Quaternion & b)
+Quaternion Math::Quaternion::subtract(const Types::Quaternion& a, const Types::Quaternion& b)
 {
 	Types::Quaternion rv;
 	rv.w = a.w - b.w;
@@ -1048,7 +1047,7 @@ Quaternion Math::Quaternion::subtract(const Types::Quaternion & a, const Types::
 	return rv;
 }
 
-void Math::Quaternion::identityForMul(Types::Quaternion & a)
+void Math::Quaternion::identityForMul(Types::Quaternion& a)
 {
 	a.w = 1.0f;
 	a.x = 0.0f;
@@ -1056,7 +1055,7 @@ void Math::Quaternion::identityForMul(Types::Quaternion & a)
 	a.z = 0.0f;
 }
 
-void Math::Quaternion::identityForAdd(Types::Quaternion & a)
+void Math::Quaternion::identityForAdd(Types::Quaternion& a)
 {
 	a.w = 0.0f;
 	a.x = 0.0f;
@@ -1288,9 +1287,9 @@ void Math::Transform::rotate3DZ(Matrix3x1& toRotate, float thetaRads)
 	toRotate = Math::Matrix::multiply(rot, toRotate);
 }
 
-void Math::Transform::rotateCustomAxis(const Vector3D& axisUnitVector, float thetaRads, Matrix3x1 & toRotate)
+void Math::Transform::rotateCustomAxis(const Vector3D& axisUnitVector, float thetaRads, Matrix3x1& toRotate)
 {
-	// TODO: add assert for axisUnitVector being an unit vector.
+	assert(Vector::magnitude(axisUnitVector) > 0.9999f && Vector::magnitude(axisUnitVector) < 1.1111f); // note not compiled in release.
 
 	float cosTheta, sinTheta;
 	Matrix3x3 rot;
@@ -1554,7 +1553,6 @@ Matrix4x4 Math::Transform::LeftHandViewMatrix(const Vector3D& eye, const Vector3
 
 	return rv;
 }
-
 
 Matrix4x4 Math::Transform::OrthographicProjectionMatrix(float width, float height, float nearZ, float farZ)
 {
@@ -2115,6 +2113,7 @@ bool Math::VolumeIntersection::volumeInRayPath(const Ray2D& r, const BoundingCap
 	}
 	return false;
 }
+
 bool Math::VolumeIntersection::volumeInRayPath(const Ray3D& r, const BoundingCapsule3D& vol, uint32_t numSegments)
 {
 	using namespace Math::Interpolation;
@@ -2456,6 +2455,7 @@ float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray2D& 
 	}
 	return -1.0f;
 }
+
 float Math::VolumeIntersection::rayDistanceToCollisionReverseTrace(const Ray3D& r, const BoundingCapsule3D& vol, float stepSize, uint32_t numSegments)
 {
 	using namespace std;
