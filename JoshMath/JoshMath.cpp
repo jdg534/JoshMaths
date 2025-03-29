@@ -3,6 +3,7 @@
 
 #include <cassert>
 #include <cfloat>
+#include <cstring> // for std:memcpy
 
 /*
 Copyright (c) 2015 Joshua Gibson
@@ -893,23 +894,65 @@ Matrix4x4 Math::MatrixMath::inverse(const Matrix4x4 & a)
 
 void Math::MatrixMath::makeIdentity(Matrix2x2 & a)
 {
-	a.r1c1 = 1.0f; a.r1c2 = 0.0f;
-	a.r2c1 = 0.0f; a.r2c2 = 1.0f;
+	a = identity2x2();
 }
 
 void Math::MatrixMath::makeIdentity(Matrix3x3 & a)
 {
-	a.r1c1 = 1.0f; a.r1c2 = 0.0f; a.r1c3 = 0.0f;
-	a.r2c1 = 0.0f; a.r2c2 = 1.0f; a.r2c3 = 0.0f;
-	a.r3c1 = 0.0f; a.r3c2 = 0.0f; a.r3c3 = 1.0f;
+	a = identity3x3();
 }
 
 void Math::MatrixMath::makeIdentity(Matrix4x4 & a)
 {
-	a.r1c1 = 1.0f; a.r1c2 = 0.0f; a.r1c3 = 0.0f; a.r1c4 = 0.0f;
-	a.r2c1 = 0.0f; a.r2c2 = 1.0f; a.r2c3 = 0.0f; a.r2c4 = 0.0f;
-	a.r3c1 = 0.0f; a.r3c2 = 0.0f; a.r3c3 = 1.0f; a.r3c4 = 0.0f;
-	a.r4c1 = 0.0f; a.r4c2 = 0.0f; a.r4c3 = 0.0f; a.r4c4 = 1.0f;
+	a = identity4x4();
+}
+
+Matrix2x2 Math::MatrixMath::identity2x2()
+{
+	Matrix2x2 m = zero2x2();
+	m.r1c1 = 1.0f;
+	m.r2c2 = 1.0f;
+	return m;
+}
+
+Matrix3x3 Math::MatrixMath::identity3x3()
+{
+	Matrix3x3 m = zero3x3();
+	m.r1c1 = 1.0f;
+	m.r2c2 = 1.0f;
+	m.r3c3 = 1.0f;
+	return m;
+}
+
+Matrix4x4 Math::MatrixMath::identity4x4()
+{
+	Matrix4x4 m = zero4x4();
+	m.r1c1 = 1.0f;
+	m.r2c2 = 1.0f;
+	m.r3c3 = 1.0f;
+	m.r4c4 = 1.0f;
+	return m;
+}
+
+Matrix2x2 Math::MatrixMath::zero2x2()
+{
+	Matrix2x2 m;
+	std::memset(&m, 0, sizeof(Matrix2x2));
+	return m;
+}
+
+Matrix3x3 Math::MatrixMath::zero3x3()
+{
+	Matrix3x3 m;
+	std::memset(&m, 0, sizeof(Matrix3x3));
+	return m;
+}
+
+Matrix4x4 Math::MatrixMath::zero4x4()
+{
+	Matrix4x4 m;
+	std::memset(&m, 0, sizeof(Matrix4x4));
+	return m;
 }
 
 Quaternion Math::QuaternionMath::create(float angle, const Vector3D& axis)

@@ -149,6 +149,14 @@ namespace Math
 		void makeIdentity(Matrix2x2& a);
 		void makeIdentity(Matrix3x3& a);
 		void makeIdentity(Matrix4x4& a);
+
+		Matrix2x2 identity2x2();
+		Matrix3x3 identity3x3();
+		Matrix4x4 identity4x4();
+
+		Matrix2x2 zero2x2();
+		Matrix3x3 zero3x3();
+		Matrix4x4 zero4x4();
 	}
 
 	namespace QuaternionMath
