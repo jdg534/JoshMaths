@@ -1,6 +1,7 @@
 #include "VectorMath.h"
 
 #include <cfloat>
+#include <cmath>
 
 /*
 Copyright (c) 2015 Joshua Gibson
