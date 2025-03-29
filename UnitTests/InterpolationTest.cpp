@@ -2,6 +2,8 @@
 
 #include <JoshMath.h>
 
+using namespace Math::Types;
+
 GTEST_TEST(Interpolation, Lerp)
 {
 	float min, max, weight, expected, actual;

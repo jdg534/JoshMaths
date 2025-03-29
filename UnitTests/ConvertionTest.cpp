@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include <JoshMath.h>
 
+using namespace Math::Types;
+
 GTEST_TEST(Convetion, DegreesToRadians)
 {
 	float degreeValue = 57.62f;
@@ -39,7 +41,7 @@ GTEST_TEST(Convetion, CartesianToPolar)
 	expectedRes.angle = 45.0f;
 	expectedRes.angle = Math::degreesToRadians(expectedRes.angle);
 
-	actualRes = Math::PolarCoordinateMath::CartesianToPolar(input);
+	actualRes = Math::Conversion::CartesianToPolar(input);
 
 	//Assert::AreEqual(expectedRes, actualRes); // test only fails from floating point rounding errors, by the values are close enough
 	constexpr float tolerance = 0.001f;
@@ -60,7 +62,7 @@ GTEST_TEST(Convetion, PolarToCartesian)
 	expectedResults.x = 3.53553f;
 	expectedResults.y = 3.53553f;
 
-	actualResults = Math::PolarCoordinateMath::PolarToCartesian(input);
+	actualResults = Math::Conversion::PolarToCartesian(input);
 
 	// EXPECT_FLOAT_EQ(expectedResults.x, actualResults.x); // test only fails from floating point rounding errors, by the values are close enough
 	// EXPECT_FLOAT_EQ(expectedResults.y, actualResults.y); // test only fails from floating point rounding errors, by the values are close enough

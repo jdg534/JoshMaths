@@ -1,7 +1,9 @@
 #include <gtest/gtest.h>
 #include <JoshMath.h>
 
-GTEST_TEST(VectorMathTest, Adding2D)
+using namespace Math::Types;
+
+GTEST_TEST(VectorTest, Adding2D)
 {
 	Vector2D a, b;
 	Vector2D results;
@@ -11,14 +13,14 @@ GTEST_TEST(VectorMathTest, Adding2D)
 	b.x = 3.3f;
 	b.y = 4.4f;
 
-	results = Math::VectorMath::add(a, b);
+	results = Math::Vector::add(a, b);
 
 
 	EXPECT_FLOAT_EQ(4.4f, results.x);
 	EXPECT_FLOAT_EQ(6.6f, results.y);
 }
 
-GTEST_TEST(VectorMathTest, Adding3D)
+GTEST_TEST(VectorTest, Adding3D)
 {
 	Vector3D a, b;
 	Vector3D results;
@@ -30,7 +32,7 @@ GTEST_TEST(VectorMathTest, Adding3D)
 	b.y = 4.4f;
 	b.z = 6.6f;
 
-	results = Math::VectorMath::add(a, b);
+	results = Math::Vector::add(a, b);
 
 
 	EXPECT_FLOAT_EQ(4.4f, results.x);
@@ -38,20 +40,20 @@ GTEST_TEST(VectorMathTest, Adding3D)
 	EXPECT_FLOAT_EQ(12.1f, results.z);
 }
 
-GTEST_TEST(VectorMathTest, Subtraction2D)
+GTEST_TEST(VectorTest, Subtraction2D)
 {
 	Vector2D a, b, actual, expected;
 	a.x = b.x = 12.752f;
 	a.y = b.y = 1324.43f;
 
 	expected.x = expected.y = 0.0f;
-	actual = Math::VectorMath::subtract(a, b);
+	actual = Math::Vector::subtract(a, b);
 
 	EXPECT_FLOAT_EQ(expected.x, actual.x);
 	EXPECT_FLOAT_EQ(expected.y, actual.y);
 }
 
-GTEST_TEST(VectorMathTest, Subtraction3D)
+GTEST_TEST(VectorTest, Subtraction3D)
 {
 	Vector3D a, b, actual, expected;
 	a.x = b.x = 12.752f;
@@ -59,14 +61,14 @@ GTEST_TEST(VectorMathTest, Subtraction3D)
 	a.z = b.z = 534.123f;
 
 	expected.x = expected.y = expected.z = 0.0f;
-	actual = Math::VectorMath::subtract(a, b);
+	actual = Math::Vector::subtract(a, b);
 
 	EXPECT_FLOAT_EQ(expected.x, actual.x);
 	EXPECT_FLOAT_EQ(expected.y, actual.y);
 	EXPECT_FLOAT_EQ(expected.z, actual.z);
 }
 
-GTEST_TEST(VectorMathTest, WayTo2D)
+GTEST_TEST(VectorTest, WayTo2D)
 {
 	Vector2D pointOfOrigin, targetPoint, expectedResults, actualResults;
 	pointOfOrigin.x = 77.8271f;
@@ -77,12 +79,12 @@ GTEST_TEST(VectorMathTest, WayTo2D)
 	expectedResults.x = targetPoint.x - pointOfOrigin.x;
 	expectedResults.y = targetPoint.y - pointOfOrigin.y;
 
-	actualResults = Math::VectorMath::wayToVector(pointOfOrigin, targetPoint);
+	actualResults = Math::Vector::wayToVector(pointOfOrigin, targetPoint);
 	EXPECT_FLOAT_EQ(expectedResults.x, actualResults.x);
 	EXPECT_FLOAT_EQ(expectedResults.y, actualResults.y);
 }
 
-GTEST_TEST(VectorMathTest, WayTo3D)
+GTEST_TEST(VectorTest, WayTo3D)
 {
 	Vector3D pointOfOrigin, targetPoint, expectedResults, actualResults;
 	pointOfOrigin.x = 77.8271f;
@@ -96,7 +98,7 @@ GTEST_TEST(VectorMathTest, WayTo3D)
 	expectedResults.y = targetPoint.y - pointOfOrigin.y;
 	expectedResults.z = targetPoint.z - pointOfOrigin.z;
 
-	actualResults = Math::VectorMath::wayToVector(pointOfOrigin, targetPoint);
+	actualResults = Math::Vector::wayToVector(pointOfOrigin, targetPoint);
 	
 	EXPECT_FLOAT_EQ(expectedResults.x, actualResults.x);
 	EXPECT_FLOAT_EQ(expectedResults.y, actualResults.y);
@@ -104,7 +106,7 @@ GTEST_TEST(VectorMathTest, WayTo3D)
 }
 
 // mag
-GTEST_TEST(VectorMathTest, Mag2D)
+GTEST_TEST(VectorTest, Mag2D)
 {
 	Vector2D in;
 
@@ -114,13 +116,13 @@ GTEST_TEST(VectorMathTest, Mag2D)
 	float expected, actual;
 
 	expected = 8.399808522f;// done via scientific calcultor
-	actual = Math::VectorMath::magnitude(in);
+	actual = Math::Vector::magnitude(in);
 
 	// Assert::AreEqual(expected, actual);// fails (floating point rounding error)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-GTEST_TEST(VectorMathTest, Mag3D)
+GTEST_TEST(VectorTest, Mag3D)
 {
 	Vector3D in;
 
@@ -132,12 +134,12 @@ GTEST_TEST(VectorMathTest, Mag3D)
 
 	expected = 8.636949693f; // scienticif calculator
 
-	actual = Math::VectorMath::magnitude(in);
+	actual = Math::Vector::magnitude(in);
 
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-GTEST_TEST(VectorMathTest, MagSqurd2D)
+GTEST_TEST(VectorTest, MagSqurd2D)
 {
 	Vector2D in;
 
@@ -148,14 +150,14 @@ GTEST_TEST(VectorMathTest, MagSqurd2D)
 
 	expected = 70.5568f;
 
-	actual = Math::VectorMath::magnitudeSquared(in);
+	actual = Math::Vector::magnitudeSquared(in);
 
 
 	// Assert::AreEqual(expected, actual);// fails (floating point rounding error)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-GTEST_TEST(VectorMathTest, MagSqurd3D)
+GTEST_TEST(VectorTest, MagSqurd3D)
 {
 	Vector3D in;
 
@@ -167,20 +169,20 @@ GTEST_TEST(VectorMathTest, MagSqurd3D)
 
 	expected = 74.5969f;
 
-	actual = Math::VectorMath::magnitudeSquared(in);
+	actual = Math::Vector::magnitudeSquared(in);
 
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
 // scale
-GTEST_TEST(VectorMathTest, Scale2D)
+GTEST_TEST(VectorTest, Scale2D)
 {
 	float scale = 2.0f;
 	Vector2D input, expected, actual;
 	input.x = 5.0f;
 	input.y = 50.0f;
 
-	actual = Math::VectorMath::scaled(scale, input);
+	actual = Math::Vector::scaled(scale, input);
 
 	expected.x = 10.0f;
 	expected.y = 100.0f;
@@ -189,7 +191,7 @@ GTEST_TEST(VectorMathTest, Scale2D)
 	EXPECT_FLOAT_EQ(expected.y, actual.y);
 }
 
-GTEST_TEST(VectorMathTest, Scale3D)
+GTEST_TEST(VectorTest, Scale3D)
 {
 	float scale = 2.0f;
 	Vector3D input, expected, actual;
@@ -197,7 +199,7 @@ GTEST_TEST(VectorMathTest, Scale3D)
 	input.y = 50.0f;
 	input.z = 500.0f;
 
-	actual = Math::VectorMath::scaled(scale, input);
+	actual = Math::Vector::scaled(scale, input);
 
 	expected.x = 10.0f;
 	expected.y = 100.0f;
@@ -209,7 +211,7 @@ GTEST_TEST(VectorMathTest, Scale3D)
 }
 
 // unit vector
-GTEST_TEST(VectorMathTest, UnitVec2D)
+GTEST_TEST(VectorTest, UnitVec2D)
 {
 	Vector2D in, expected, actual;
 	in.x = 100.0f;
@@ -219,11 +221,11 @@ GTEST_TEST(VectorMathTest, UnitVec2D)
 	expected.x = 0.316227766016837933199889354443;
 	expected.y = 0.948683298050513799599668063329;
 
-	actual = Math::VectorMath::unitVector(in);
+	actual = Math::Vector::unitVector(in);
 
 	float expectedMag = 1.0f;
 
-	float actualMag = Math::VectorMath::magnitude(actual);
+	float actualMag = Math::Vector::magnitude(actual);
 
 
 	EXPECT_FLOAT_EQ(expectedMag, actualMag);
@@ -231,19 +233,19 @@ GTEST_TEST(VectorMathTest, UnitVec2D)
 	EXPECT_FLOAT_EQ(expected.y, actual.y);
 }
 
-GTEST_TEST(VectorMathTest, UnitVec3D)
+GTEST_TEST(VectorTest, UnitVec3D)
 {
 	Vector3D in, exp, actual;
 
 	in.x = in.y = in.z = 55.0f;
 
-	actual = Math::VectorMath::unitVector(in);
+	actual = Math::Vector::unitVector(in);
 	
 	// // calculated with notepad++ & windows calculator
 	exp.x = exp.y = exp.z = 0.57735026918962576450914878050215;
 
 	float expectedMag = 1.0f,
-		actualMag = Math::VectorMath::magnitude(actual);
+		actualMag = Math::Vector::magnitude(actual);
 
 	EXPECT_FLOAT_EQ(expectedMag, actualMag);
 	EXPECT_FLOAT_EQ(exp.x, actual.x);
@@ -252,7 +254,7 @@ GTEST_TEST(VectorMathTest, UnitVec3D)
 }
 
 // dot product
-GTEST_TEST(VectorMathTest, DotProd2D)
+GTEST_TEST(VectorTest, DotProd2D)
 {
 	Vector2D a, b;
 
@@ -265,13 +267,13 @@ GTEST_TEST(VectorMathTest, DotProd2D)
 	float exp, act;
 
 	exp = 321;
-	act = Math::VectorMath::dotProduct(a, b);
+	act = Math::Vector::dotProduct(a, b);
 
 
 	EXPECT_FLOAT_EQ(exp, act);
 }
 
-GTEST_TEST(VectorMathTest, DotProd3D)
+GTEST_TEST(VectorTest, DotProd3D)
 {
 	Vector3D a, b;
 
@@ -286,7 +288,7 @@ GTEST_TEST(VectorMathTest, DotProd3D)
 	float exp, act;
 
 	exp = 230;
-	act = Math::VectorMath::dotProduct(a, b);
+	act = Math::Vector::dotProduct(a, b);
 
 
 	EXPECT_FLOAT_EQ(exp, act);
@@ -294,7 +296,7 @@ GTEST_TEST(VectorMathTest, DotProd3D)
 
 /* un comment once merged the altDotProduct back into this branch
 // alt dot product
-GTEST_TEST(VectorMathTest, AltDotProd2D)
+GTEST_TEST(VectorTest, AltDotProd2D)
 {
 	Vector2D a, b;
 
@@ -307,13 +309,13 @@ GTEST_TEST(VectorMathTest, AltDotProd2D)
 	float exp, act;
 
 	exp = 321;
-	act = Math::VectorMath::altDotProduct(a, b);
+	act = Math::Vector::altDotProduct(a, b);
 
 
 	EXPECT_FLOAT_EQ(exp, act);
 }
 
-GTEST_TEST(VectorMath_AltDotProd3D)
+GTEST_TEST(Vector_AltDotProd3D)
 {
 	Vector3D a, b;
 
@@ -330,14 +332,14 @@ GTEST_TEST(VectorMath_AltDotProd3D)
 	expected = 259.0f;
 	// expected = Math::degreesToRadians(expected);
 
-	actual = Math::VectorMath::altDotProduct(a, b);
+	actual = Math::Vector::altDotProduct(a, b);
 
 	Assert::AreEqual(expected, actual);
 }
 */
 
 // cross product
-GTEST_TEST(VectorMathTest, Cross3D)
+GTEST_TEST(VectorTest, Cross3D)
 {
 	Vector3D a, b, exp, act;
 
@@ -349,7 +351,7 @@ GTEST_TEST(VectorMathTest, Cross3D)
 	b.y = -2.0f;
 	b.z = 0.0f;
 
-	act = Math::VectorMath::crossProduct(a, b);
+	act = Math::Vector::crossProduct(a, b);
 
 	exp.x = 2.0f;
 	exp.y = 1.0f;
@@ -362,7 +364,7 @@ GTEST_TEST(VectorMathTest, Cross3D)
 
 
 // look at
-GTEST_TEST(VectorMathTest, LookAt2D)
+GTEST_TEST(VectorTest, LookAt2D)
 {
 	Vector2D lookFromPoint, currentLookAtPoint, nextLookAtPoint;
 
@@ -379,19 +381,19 @@ GTEST_TEST(VectorMathTest, LookAt2D)
 	expected = 90.0f; // need to convert to radians
 	expected = Math::degreesToRadians(expected);
 
-	actual = Math::VectorMath::lookAt2D(currentLookAtPoint, nextLookAtPoint, lookFromPoint);
+	actual = Math::Vector::lookAt2D(currentLookAtPoint, nextLookAtPoint, lookFromPoint);
 
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
 /*  add these once the main Math code has been moved back into this branch
-TEST_METHOD(VectorMath_LookAt3D)
+TEST_METHOD(Vector_LookAt3D)
 {
 	Assert::AreEqual(1, 0);
 }
 
 // angle between
-TEST_METHOD(VectorMath_angleBetween2D)
+TEST_METHOD(Vector_angleBetween2D)
 {
 	Vector2D a, b;
 	a.x = 45.0f;
@@ -403,12 +405,12 @@ TEST_METHOD(VectorMath_angleBetween2D)
 	float expected, actual;
 	expected = 90.0f; // to rads
 	expected = Math::degreesToRadians(expected);
-	actual = Math::VectorMath::angleBetween(a, b);
+	actual = Math::Vector::angleBetween(a, b);
 
 	Assert::AreEqual(expected, actual);
 }
 
-TEST_METHOD(VectorMath_angleBetween3D)
+TEST_METHOD(Vector_angleBetween3D)
 {
 	Vector3D a, b;
 	a.x = 45.0f;
@@ -422,7 +424,7 @@ TEST_METHOD(VectorMath_angleBetween3D)
 	float expected, actual;
 	expected = 39.362f; // to rads
 	expected = Math::degreesToRadians(expected);
-	actual = Math::VectorMath::angleBetween(a, b);
+	actual = Math::Vector::angleBetween(a, b);
 
 	// Assert::AreEqual(expected, actual); // fails, but due to floating point rounding error
 	Assert::AreEqual(1, 1); // the above fails due to floating point rounding errors

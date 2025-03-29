@@ -1,6 +1,8 @@
 #include <gtest/gtest.h>
 #include <JoshMath.h>
 
+using namespace Math::Types;
+
 GTEST_TEST(VolumeIntersection, BoxCheckWorks)
 {
 	BoundingBox a, b;
@@ -661,8 +663,8 @@ GTEST_TEST(VolumeIntersection,VolInPathCircle)
 	ray.pointOfOrigin.x = -0.3f;
 	ray.pointOfOrigin.y = 1.0f;
 
-	ray.direction = Math::VectorMath::wayToVector(ray.pointOfOrigin, vol.position);
-	ray.direction = Math::VectorMath::unitVector(ray.direction);
+	ray.direction = Math::Vector::wayToVector(ray.pointOfOrigin, vol.position);
+	ray.direction = Math::Vector::unitVector(ray.direction);
 
 	bool expected = true,
 		actual = Math::VolumeIntersection::volumeInRayPath(ray, vol);
@@ -682,11 +684,11 @@ GTEST_TEST(VolumeIntersection,VolInPathCircleNoFalsePositive)
 	ray.pointOfOrigin.x = -0.3f;
 	ray.pointOfOrigin.y = 1.0f;
 
-	ray.direction = Math::VectorMath::wayToVector(ray.pointOfOrigin, vol.position);
+	ray.direction = Math::Vector::wayToVector(ray.pointOfOrigin, vol.position);
 	ray.direction.x = -ray.direction.x;
 	ray.direction.y = -ray.direction.y;
 
-	ray.direction = Math::VectorMath::unitVector(ray.direction);
+	ray.direction = Math::Vector::unitVector(ray.direction);
 
 	bool expected = false,
 		actual = Math::VolumeIntersection::volumeInRayPath(ray, vol);
@@ -745,8 +747,8 @@ GTEST_TEST(VolumeIntersection,VolInPathSphere)
 	bc.radius = 5.0f;
 
 	r.pointOfOrigin.x = r.pointOfOrigin.y = r.pointOfOrigin.z = 0.0f;
-	r.direction = Math::VectorMath::wayToVector(r.pointOfOrigin, bc.position);
-	r.direction = Math::VectorMath::unitVector(r.direction);
+	r.direction = Math::Vector::wayToVector(r.pointOfOrigin, bc.position);
+	r.direction = Math::Vector::unitVector(r.direction);
 
 	bool expected = true,
 		actual = Math::VolumeIntersection::volumeInRayPath(r, bc);
@@ -766,8 +768,8 @@ GTEST_TEST(VolumeIntersection,VolInPathSphereNoFalsePositive)
 	bc.radius = 5.0f;
 
 	r.pointOfOrigin.x = r.pointOfOrigin.y = r.pointOfOrigin.z = 0.0f;
-	r.direction = Math::VectorMath::wayToVector(bc.position, r.pointOfOrigin);
-	r.direction = Math::VectorMath::unitVector(r.direction);
+	r.direction = Math::Vector::wayToVector(bc.position, r.pointOfOrigin);
+	r.direction = Math::Vector::unitVector(r.direction);
 
 	bool expected = false,
 		actual = Math::VolumeIntersection::volumeInRayPath(r, bc);

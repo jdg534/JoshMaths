@@ -4,8 +4,10 @@
 
 #include <cstring> // for std:memcpy
 
+using namespace Math::Types;
+
 // Additions
-GTEST_TEST(MatrixMath, Addition2x1)
+GTEST_TEST(Matrix, Addition2x1)
 {
 	Matrix2x1 a, b, expectedResults, actualResults;
 	a.r1c1 = 5;
@@ -15,7 +17,7 @@ GTEST_TEST(MatrixMath, Addition2x1)
 
 	expectedResults.r1c1 = 5 + 7;
 	expectedResults.r2c1 = 6 + 8;
-	actualResults = Math::MatrixMath::add(a, b);
+	actualResults = Math::Matrix::add(a, b);
 	
 	float * expIter = &expectedResults.r1c1;
 	float * actIter = &actualResults.r1c1;
@@ -28,7 +30,7 @@ GTEST_TEST(MatrixMath, Addition2x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Addition2x2)
+GTEST_TEST(Matrix, Addition2x2)
 {
 	Matrix2x2 a, b, expectedResults, actualResults;
 	a.r1c1 = b.r1c1 = 5;
@@ -40,7 +42,7 @@ GTEST_TEST(MatrixMath, Addition2x2)
 	expectedResults.r1c2 = 6 + 6;
 	expectedResults.r2c1 = 7 + 7;
 	expectedResults.r2c2 = 8 + 8;
-	actualResults = Math::MatrixMath::add(a, b);
+	actualResults = Math::Matrix::add(a, b);
 	
 	float * expIter = &expectedResults.r1c1;
 	float * actIter = &actualResults.r1c1;
@@ -53,7 +55,7 @@ GTEST_TEST(MatrixMath, Addition2x2)
 	}
 }
 
-GTEST_TEST(MatrixMath, Addition3x1)
+GTEST_TEST(Matrix, Addition3x1)
 {
 	Matrix3x1 a, b, expectedResults, actualResults;
 	a.r1c1 = 5;
@@ -65,7 +67,7 @@ GTEST_TEST(MatrixMath, Addition3x1)
 	expectedResults.r1c1 = 5 + 7;
 	expectedResults.r2c1 = 6 + 8;
 	expectedResults.r3c1 = 9 + 10;
-	actualResults = Math::MatrixMath::add(a, b);
+	actualResults = Math::Matrix::add(a, b);
 	
 	float * expIter = &expectedResults.r1c1;
 	float * actIter = &actualResults.r1c1;
@@ -78,7 +80,7 @@ GTEST_TEST(MatrixMath, Addition3x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Addition3x3)
+GTEST_TEST(Matrix, Addition3x3)
 {
 	Matrix3x3 a, b, expectedResults, actualResults;
 
@@ -92,7 +94,7 @@ GTEST_TEST(MatrixMath, Addition3x3)
 	a.r3c2 = b.r3c2 = 3.2f;
 	a.r3c3 = b.r3c3 = 3.3f;
 
-	actualResults = Math::MatrixMath::add(a, b);
+	actualResults = Math::Matrix::add(a, b);
 	expectedResults.r1c1 = 1.1f + 1.1f;
 	expectedResults.r1c2 = 1.2f + 1.2f;
 	expectedResults.r1c3 = 1.3f + 1.3f;
@@ -114,7 +116,7 @@ GTEST_TEST(MatrixMath, Addition3x3)
 	EXPECT_FLOAT_EQ(actualResults.r3c3, expectedResults.r3c3);
 }
 
-GTEST_TEST(MatrixMath, Addition4x1)
+GTEST_TEST(Matrix, Addition4x1)
 {
 	Matrix4x1 a, b, expected, actual;
 
@@ -143,7 +145,7 @@ GTEST_TEST(MatrixMath, Addition4x1)
 	std::memcpy(&b, setB, sizeof(Matrix4x1));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix4x1));
 
-	actual = Math::MatrixMath::add(a, b);
+	actual = Math::Matrix::add(a, b);
 	
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -156,7 +158,7 @@ GTEST_TEST(MatrixMath, Addition4x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Addition4x3)
+GTEST_TEST(Matrix, Addition4x3)
 {
 	Matrix4x3 a, b, expected, actual;
 
@@ -185,7 +187,7 @@ GTEST_TEST(MatrixMath, Addition4x3)
 	std::memcpy(&b, setB, sizeof(Matrix4x3));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix4x3));
 
-	actual = Math::MatrixMath::add(a, b);
+	actual = Math::Matrix::add(a, b);
 	
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -198,7 +200,7 @@ GTEST_TEST(MatrixMath, Addition4x3)
 	}
 }
 
-GTEST_TEST(MatrixMath, Addition4x4)
+GTEST_TEST(Matrix, Addition4x4)
 {
 	Matrix4x4 a, b, expected, actual;
 
@@ -227,7 +229,7 @@ GTEST_TEST(MatrixMath, Addition4x4)
 	std::memcpy(&b, setB, sizeof(Matrix4x4));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix4x4));
 
-	actual = Math::MatrixMath::add(a, b);
+	actual = Math::Matrix::add(a, b);
 	
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -241,7 +243,7 @@ GTEST_TEST(MatrixMath, Addition4x4)
 }
 
 // Subtraction
-GTEST_TEST(MatrixMath, Subtract2x1)
+GTEST_TEST(Matrix, Subtract2x1)
 {
 	Matrix2x1 a, b, expected, actual;
 
@@ -269,7 +271,7 @@ GTEST_TEST(MatrixMath, Subtract2x1)
 	std::memcpy(&b, setB, sizeof(Matrix2x1));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix2x1));
 
-	actual = Math::MatrixMath::subtract(a, b);
+	actual = Math::Matrix::subtract(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -282,7 +284,7 @@ GTEST_TEST(MatrixMath, Subtract2x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Subtract2x2)
+GTEST_TEST(Matrix, Subtract2x2)
 {
 	Matrix2x2 a, b, expected, actual;
 
@@ -310,7 +312,7 @@ GTEST_TEST(MatrixMath, Subtract2x2)
 	std::memcpy(&b, setB, sizeof(Matrix2x2));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix2x2));
 
-	actual = Math::MatrixMath::subtract(a, b);
+	actual = Math::Matrix::subtract(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -323,7 +325,7 @@ GTEST_TEST(MatrixMath, Subtract2x2)
 	}
 }
 
-GTEST_TEST(MatrixMath, Subtract3x1)
+GTEST_TEST(Matrix, Subtract3x1)
 {
 	Matrix3x1 a, b, expected, actual;
 
@@ -351,7 +353,7 @@ GTEST_TEST(MatrixMath, Subtract3x1)
 	std::memcpy(&b, setB, sizeof(Matrix3x1));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix3x1));
 
-	actual = Math::MatrixMath::subtract(a, b);
+	actual = Math::Matrix::subtract(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -364,7 +366,7 @@ GTEST_TEST(MatrixMath, Subtract3x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Subtract3x3)
+GTEST_TEST(Matrix, Subtract3x3)
 {
 	Matrix3x3 a, b, expected, actual;
 
@@ -392,7 +394,7 @@ GTEST_TEST(MatrixMath, Subtract3x3)
 	std::memcpy(&b, setB, sizeof(Matrix3x3));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix3x3));
 
-	actual = Math::MatrixMath::subtract(a, b);
+	actual = Math::Matrix::subtract(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -405,7 +407,7 @@ GTEST_TEST(MatrixMath, Subtract3x3)
 	}
 }
 
-GTEST_TEST(MatrixMath, Subtract4x1)
+GTEST_TEST(Matrix, Subtract4x1)
 {
 	Matrix4x1 a, b, expected, actual;
 
@@ -433,7 +435,7 @@ GTEST_TEST(MatrixMath, Subtract4x1)
 	std::memcpy(&b, setB, sizeof(Matrix4x1));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix4x1));
 
-	actual = Math::MatrixMath::subtract(a, b);
+	actual = Math::Matrix::subtract(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -446,7 +448,7 @@ GTEST_TEST(MatrixMath, Subtract4x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Subtract4x3)
+GTEST_TEST(Matrix, Subtract4x3)
 {
 	Matrix4x3 a, b, expected, actual;
 
@@ -474,7 +476,7 @@ GTEST_TEST(MatrixMath, Subtract4x3)
 	std::memcpy(&b, setB, sizeof(Matrix4x3));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix4x3));
 
-	actual = Math::MatrixMath::subtract(a, b);
+	actual = Math::Matrix::subtract(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -487,7 +489,7 @@ GTEST_TEST(MatrixMath, Subtract4x3)
 	}
 }
 
-GTEST_TEST(MatrixMath, Subtract4x4)
+GTEST_TEST(Matrix, Subtract4x4)
 {
 	Matrix4x4 a, b, expected, actual;
 
@@ -515,7 +517,7 @@ GTEST_TEST(MatrixMath, Subtract4x4)
 	std::memcpy(&b, setB, sizeof(Matrix4x4));
 	std::memcpy(&expected, expectedSet, sizeof(Matrix4x4));
 
-	actual = Math::MatrixMath::subtract(a, b);
+	actual = Math::Matrix::subtract(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -530,7 +532,7 @@ GTEST_TEST(MatrixMath, Subtract4x4)
 
 // multiplication, (many functions to test)
 // scaler mul
-GTEST_TEST(MatrixMath, scale2x1Mat)
+GTEST_TEST(Matrix, scale2x1Mat)
 {
 	Matrix2x1 a, expected, actual;
 	float scale = 2.0f;
@@ -540,7 +542,7 @@ GTEST_TEST(MatrixMath, scale2x1Mat)
 	expected.r1c1 = 2.0f;
 	expected.r2c1 = 4.0f;
 
-	actual = Math::MatrixMath::multiply(scale, a);
+	actual = Math::Matrix::multiply(scale, a);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -553,7 +555,7 @@ GTEST_TEST(MatrixMath, scale2x1Mat)
 	}
 }
 
-GTEST_TEST(MatrixMath, scale2x2Mat)
+GTEST_TEST(Matrix, scale2x2Mat)
 {
 	Matrix2x2 a, expected, actual;
 	float scale = 2.0f;
@@ -567,7 +569,7 @@ GTEST_TEST(MatrixMath, scale2x2Mat)
 	expected.r2c1 = 4.2f;
 	expected.r2c2 = 4.4f;
 
-	actual = Math::MatrixMath::multiply(scale, a);
+	actual = Math::Matrix::multiply(scale, a);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -580,7 +582,7 @@ GTEST_TEST(MatrixMath, scale2x2Mat)
 	}
 }
 
-GTEST_TEST(MatrixMath, scale3x1Mat)
+GTEST_TEST(Matrix, scale3x1Mat)
 {
 	Matrix3x1 a, expected, actual;
 	float scale = 2.0f;
@@ -592,7 +594,7 @@ GTEST_TEST(MatrixMath, scale3x1Mat)
 	expected.r2c1 = 4.0f;
 	expected.r3c1 = 6.0f;
 
-	actual = Math::MatrixMath::multiply(scale, a);
+	actual = Math::Matrix::multiply(scale, a);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -605,7 +607,7 @@ GTEST_TEST(MatrixMath, scale3x1Mat)
 	}
 }
 
-GTEST_TEST(MatrixMath, scale3x3Mat)
+GTEST_TEST(Matrix, scale3x3Mat)
 {
 	Matrix3x3 a, expected, actual;
 	float scale = 2.0f;
@@ -629,7 +631,7 @@ GTEST_TEST(MatrixMath, scale3x3Mat)
 	expected.r3c2 = 6.4f;
 	expected.r3c3 = 6.6f;
 
-	actual = Math::MatrixMath::multiply(scale, a);
+	actual = Math::Matrix::multiply(scale, a);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -642,7 +644,7 @@ GTEST_TEST(MatrixMath, scale3x3Mat)
 	}
 }
 
-GTEST_TEST(MatrixMath, scale4x1Mat)
+GTEST_TEST(Matrix, scale4x1Mat)
 {
 	Matrix4x1 a, expected, actual;
 	float scale = 2.0f;
@@ -656,7 +658,7 @@ GTEST_TEST(MatrixMath, scale4x1Mat)
 	expected.r3c1 = 6.0f;
 	expected.r4c1 = 8.0f;
 
-	actual = Math::MatrixMath::multiply(scale, a);
+	actual = Math::Matrix::multiply(scale, a);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -669,7 +671,7 @@ GTEST_TEST(MatrixMath, scale4x1Mat)
 	}
 }
 
-GTEST_TEST(MatrixMath, scale4x3Mat)
+GTEST_TEST(Matrix, scale4x3Mat)
 {
 	Matrix4x3 a, expected, actual;
 	float scale = 2.0f;
@@ -699,7 +701,7 @@ GTEST_TEST(MatrixMath, scale4x3Mat)
 	expected.r4c2 = 8.4f;
 	expected.r4c3 = 8.6f;
 
-	actual = Math::MatrixMath::multiply(scale, a);
+	actual = Math::Matrix::multiply(scale, a);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -712,7 +714,7 @@ GTEST_TEST(MatrixMath, scale4x3Mat)
 	}
 }
 
-GTEST_TEST(MatrixMath, scale4x4Mat)
+GTEST_TEST(Matrix, scale4x4Mat)
 {
 	Matrix4x4 a, expected, actual;
 	float scale = 2.0f;
@@ -750,7 +752,7 @@ GTEST_TEST(MatrixMath, scale4x4Mat)
 	expected.r4c3 = 8.6f;
 	expected.r4c4 = 8.8f;
 
-	actual = Math::MatrixMath::multiply(scale, a);
+	actual = Math::Matrix::multiply(scale, a);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -780,7 +782,7 @@ GTEST_TEST(MartixMath, Mul2x2With2x1)
 	expected.r1c1 = 17;
 	expected.r2c1 = 39;
 
-	actual = Math::MatrixMath::multiply(a, b);
+	actual = Math::Matrix::multiply(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -793,7 +795,7 @@ GTEST_TEST(MartixMath, Mul2x2With2x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Mul2x2With2x2)
+GTEST_TEST(Matrix, Mul2x2With2x2)
 {
 	Matrix2x2 a, b, expected, actual;
 
@@ -812,7 +814,7 @@ GTEST_TEST(MatrixMath, Mul2x2With2x2)
 	expected.r2c1 = 43;
 	expected.r2c2 = 50;
 
-	actual = Math::MatrixMath::multiply(a, b);
+	actual = Math::Matrix::multiply(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -825,7 +827,7 @@ GTEST_TEST(MatrixMath, Mul2x2With2x2)
 	}
 }
 
-GTEST_TEST(MatrixMath, Mul3x3With3x1)
+GTEST_TEST(Matrix, Mul3x3With3x1)
 {
 	Matrix3x3 a;
 	Matrix3x1 b, expected, actual;
@@ -848,7 +850,7 @@ GTEST_TEST(MatrixMath, Mul3x3With3x1)
 	expected.r2c1 = 167;
 	expected.r3c1 = 266;
 
-	actual = Math::MatrixMath::multiply(a, b);
+	actual = Math::Matrix::multiply(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -861,7 +863,7 @@ GTEST_TEST(MatrixMath, Mul3x3With3x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Mul3x3With3x3)
+GTEST_TEST(Matrix, Mul3x3With3x3)
 {
 	Matrix3x3 a, b, expected, actual;
 
@@ -895,7 +897,7 @@ GTEST_TEST(MatrixMath, Mul3x3With3x3)
 	expected.r3c2 = 342;
 	expected.r3c3 = 366;
 
-	actual = Math::MatrixMath::multiply(a, b);
+	actual = Math::Matrix::multiply(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -908,7 +910,7 @@ GTEST_TEST(MatrixMath, Mul3x3With3x3)
 	}
 }
 
-GTEST_TEST(MatrixMath, Mul4x4With4x1)
+GTEST_TEST(Matrix, Mul4x4With4x1)
 {
 	Matrix4x4 a;
 	Matrix4x1 b, expected, actual;
@@ -940,7 +942,7 @@ GTEST_TEST(MatrixMath, Mul4x4With4x1)
 	expected.r3c1 = 782;
 	expected.r4c1 = 1078;
 
-	actual = Math::MatrixMath::multiply(a, b);
+	actual = Math::Matrix::multiply(a, b);
 
 	float * expIter = &expected.r1c1;
 	float * actIter = &actual.r1c1;
@@ -953,7 +955,7 @@ GTEST_TEST(MatrixMath, Mul4x4With4x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Mul4x4With4x3)
+GTEST_TEST(Matrix, Mul4x4With4x3)
 {
 	Matrix4x4 a;
 	Matrix4x3 b, exp, act;
@@ -1001,7 +1003,7 @@ GTEST_TEST(MatrixMath, Mul4x4With4x3)
 	exp.r4c2 = 1320;
 	exp.r4c3 = 1378;
 
-	act = Math::MatrixMath::multiply(a, b);
+	act = Math::Matrix::multiply(a, b);
 
 	float * expIter = &exp.r1c1;
 	float * actIter = &act.r1c1;
@@ -1014,7 +1016,7 @@ GTEST_TEST(MatrixMath, Mul4x4With4x3)
 	}
 }
 
-GTEST_TEST(MatrixMath, Mul4x4With4x4)
+GTEST_TEST(Matrix, Mul4x4With4x4)
 {
 	Matrix4x4 a, b, exp, act;
 
@@ -1072,7 +1074,7 @@ GTEST_TEST(MatrixMath, Mul4x4With4x4)
 	exp.r4c3 = 1470;
 	exp.r4c4 = 1528;
 
-	act = Math::MatrixMath::multiply(a, b);
+	act = Math::Matrix::multiply(a, b);
 
 	float * expIter = &exp.r1c1;
 	float * actIter = &act.r1c1;
@@ -1085,7 +1087,7 @@ GTEST_TEST(MatrixMath, Mul4x4With4x4)
 	}
 }
 
-GTEST_TEST(MatrixMath, Mul4x3With3x1)
+GTEST_TEST(Matrix, Mul4x3With3x1)
 {
 	Matrix4x3 a;
 	Matrix3x1 b;
@@ -1116,7 +1118,7 @@ GTEST_TEST(MatrixMath, Mul4x3With3x1)
 	exp.r3c1 = 338;
 	exp.r4c1 = 464;
 
-	act = Math::MatrixMath::multiply(a, b);
+	act = Math::Matrix::multiply(a, b);
 	
 	float * expIter = &exp.r1c1;
 	float * actIter = &act.r1c1;
@@ -1129,7 +1131,7 @@ GTEST_TEST(MatrixMath, Mul4x3With3x1)
 	}
 }
 
-GTEST_TEST(MatrixMath, Mul4x3With3x3)
+GTEST_TEST(Matrix, Mul4x3With3x3)
 {
 	Matrix4x3 a, exp, act;
 	Matrix3x3 b;
@@ -1172,7 +1174,7 @@ GTEST_TEST(MatrixMath, Mul4x3With3x3)
 
 
 
-	act = Math::MatrixMath::multiply(a, b);
+	act = Math::Matrix::multiply(a, b);
 
 	float * expIter = &exp.r1c1;
 	float * actIter = &act.r1c1;
@@ -1186,7 +1188,7 @@ GTEST_TEST(MatrixMath, Mul4x3With3x3)
 }
 
 // determinant
-GTEST_TEST(MatrixMath, determinant2x2)
+GTEST_TEST(Matrix, determinant2x2)
 {
 	Matrix2x2 in;
 	in.r1c1 = 1;
@@ -1195,12 +1197,12 @@ GTEST_TEST(MatrixMath, determinant2x2)
 	in.r2c2 = 4;
 
 	float expected = -2.0f;
-	float actual = Math::MatrixMath::determinant(in);
+	float actual = Math::Matrix::determinant(in);
 
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-GTEST_TEST(MatrixMath, determinant3x3)
+GTEST_TEST(Matrix, determinant3x3)
 {
 	Matrix3x3 in;
 	float expected, actual;
@@ -1216,12 +1218,12 @@ GTEST_TEST(MatrixMath, determinant3x3)
 
 	expected = 5637;
 
-	actual = Math::MatrixMath::determinant(in);
+	actual = Math::Matrix::determinant(in);
 
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-GTEST_TEST(MatrixMath, determinant4x4)
+GTEST_TEST(Matrix, determinant4x4)
 {
 	Matrix4x4 in;
 
@@ -1242,12 +1244,12 @@ GTEST_TEST(MatrixMath, determinant4x4)
 	const float expected = ExpectedPosA + ExpectedPosB + ExpectedPosC + ExpectedPosD
 		- ExpectedNegA -  ExpectedNegB - ExpectedNegC - ExpectedNegD;
 
-	const float actual = Math::MatrixMath::determinant(in);
+	const float actual = Math::Matrix::determinant(in);
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
 // transpose
-GTEST_TEST(MatrixMath, Transpose2x2)
+GTEST_TEST(Matrix, Transpose2x2)
 {
 	Matrix2x2 a, exp, act;
 	a.r1c1 = 1;
@@ -1260,7 +1262,7 @@ GTEST_TEST(MatrixMath, Transpose2x2)
 	exp.r2c1 = 2;
 	exp.r2c2 = 4;
 
-	act = Math::MatrixMath::transpose(a);
+	act = Math::Matrix::transpose(a);
 
 	float * expIter = &exp.r1c1;
 	float * actIter = &act.r1c1;
@@ -1273,7 +1275,7 @@ GTEST_TEST(MatrixMath, Transpose2x2)
 	}
 }
 
-GTEST_TEST(MatrixMath, Transpose3x3)
+GTEST_TEST(Matrix, Transpose3x3)
 {
 	Matrix3x3 a, exp, act;
 	a.r1c1 = 1;
@@ -1296,7 +1298,7 @@ GTEST_TEST(MatrixMath, Transpose3x3)
 	exp.r3c2 = 6;
 	exp.r3c3 = 9;
 
-	act = Math::MatrixMath::transpose(a);
+	act = Math::Matrix::transpose(a);
 
 	float * expIter = &exp.r1c1;
 	float * actIter = &act.r1c1;
@@ -1309,7 +1311,7 @@ GTEST_TEST(MatrixMath, Transpose3x3)
 	}
 }
 
-GTEST_TEST(MatrixMath, Transpose4x4)
+GTEST_TEST(Matrix, Transpose4x4)
 {
 	Matrix4x4 a, exp, act;
 
@@ -1350,7 +1352,7 @@ GTEST_TEST(MatrixMath, Transpose4x4)
 	exp.r4c3 = 12;
 	exp.r4c4 = 16;
 
-	act = Math::MatrixMath::transpose(a);
+	act = Math::Matrix::transpose(a);
 
 	float * expIter = &exp.r1c1;
 	float * actIter = &act.r1c1;
@@ -1364,7 +1366,7 @@ GTEST_TEST(MatrixMath, Transpose4x4)
 }
 
 // inverse
-GTEST_TEST(MatrixMath, Inverse2x2)
+GTEST_TEST(Matrix, Inverse2x2)
 {
 	Matrix2x2 in;
 
@@ -1375,7 +1377,7 @@ GTEST_TEST(MatrixMath, Inverse2x2)
 	in.r2c1 = 11;
 	in.r2c2 = 21;
 
-	actual = Math::MatrixMath::inverse(in);
+	actual = Math::Matrix::inverse(in);
 
 	//expected.r1c1 = -21/92;
 	//expected.r1c2 = -5 / 92;
@@ -1397,7 +1399,7 @@ GTEST_TEST(MatrixMath, Inverse2x2)
 	}
 }
 
-GTEST_TEST(MatrixMath, Inverse3x3)
+GTEST_TEST(Matrix, Inverse3x3)
 {
 	Matrix3x3 in, expected, actual;
 
@@ -1411,7 +1413,7 @@ GTEST_TEST(MatrixMath, Inverse3x3)
 	in.r3c2 = 45;
 	in.r3c3 = 78;
 
-	actual = Math::MatrixMath::inverse(in);
+	actual = Math::Matrix::inverse(in);
 
 	expected.r1c1 = 213.0f / 1142.0f;
 	expected.r1c2 = -10.0f / 571.0f;
@@ -1439,10 +1441,10 @@ GTEST_TEST(MatrixMath, Inverse3x3)
 }
 
 // identy matrix
-GTEST_TEST(MatrixMath, Identity2x2)
+GTEST_TEST(Matrix, Identity2x2)
 {
 	Matrix2x2 expected, actual;
-	Math::MatrixMath::makeIdentity(actual);
+	Math::Matrix::makeIdentity(actual);
 
 	expected.r1c1 = 1.0f;
 	expected.r1c2 = 0.0f;
@@ -1460,10 +1462,10 @@ GTEST_TEST(MatrixMath, Identity2x2)
 	}
 }
 
-GTEST_TEST(MatrixMath, Identity3x3)
+GTEST_TEST(Matrix, Identity3x3)
 {
 	Matrix3x3 expected, actual;
-	Math::MatrixMath::makeIdentity(actual);
+	Math::Matrix::makeIdentity(actual);
 
 	expected.r1c1 = 1.0f;
 	expected.r1c2 = 0.0f;
@@ -1486,10 +1488,10 @@ GTEST_TEST(MatrixMath, Identity3x3)
 	}
 }
 
-GTEST_TEST(MatrixMath, Identity4x4)
+GTEST_TEST(Matrix, Identity4x4)
 {
 	Matrix4x4 expected, actual;
-	Math::MatrixMath::makeIdentity(actual);
+	Math::Matrix::makeIdentity(actual);
 
 	expected.r1c1 = 1.0f;
 	expected.r1c2 = 0.0f;
@@ -1520,18 +1522,18 @@ GTEST_TEST(MatrixMath, Identity4x4)
 }
 
 // get identity
-GTEST_TEST(MatrixMath, GetIdentity2x2)
+GTEST_TEST(Matrix, GetIdentity2x2)
 {
-	const Matrix2x2 id = Math::MatrixMath::identity2x2();
+	const Matrix2x2 id = Math::Matrix::identity2x2();
 	EXPECT_FLOAT_EQ(id.r1c1, 1.0f);
 	EXPECT_FLOAT_EQ(id.r1c2, 0.0f);
 	EXPECT_FLOAT_EQ(id.r2c1, 0.0f);
 	EXPECT_FLOAT_EQ(id.r2c2, 1.0f);
 }
 
-GTEST_TEST(MatrixMath, GetIdentity3x3)
+GTEST_TEST(Matrix, GetIdentity3x3)
 {
-	const Matrix3x3 z = Math::MatrixMath::identity3x3();
+	const Matrix3x3 z = Math::Matrix::identity3x3();
 	EXPECT_FLOAT_EQ(z.r1c1, 1.0f);
 	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
 	EXPECT_FLOAT_EQ(z.r1c3, 0.0f);
@@ -1545,9 +1547,9 @@ GTEST_TEST(MatrixMath, GetIdentity3x3)
 	EXPECT_FLOAT_EQ(z.r3c3, 1.0f);
 }
 
-GTEST_TEST(MatrixMath, GetIdentity4x4)
+GTEST_TEST(Matrix, GetIdentity4x4)
 {
-	const Matrix4x4 z = Math::MatrixMath::identity4x4();
+	const Matrix4x4 z = Math::Matrix::identity4x4();
 	EXPECT_FLOAT_EQ(z.r1c1, 1.0f);
 	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
 	EXPECT_FLOAT_EQ(z.r1c3, 0.0f);
@@ -1570,9 +1572,9 @@ GTEST_TEST(MatrixMath, GetIdentity4x4)
 }
 
 // get zero
-GTEST_TEST(MatrixMath, GetZero2x2)
+GTEST_TEST(Matrix, GetZero2x2)
 {
-	const Matrix2x2 z = Math::MatrixMath::zero2x2();
+	const Matrix2x2 z = Math::Matrix::zero2x2();
 	EXPECT_FLOAT_EQ(z.r1c1, 0.0f);
 	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
 
@@ -1580,9 +1582,9 @@ GTEST_TEST(MatrixMath, GetZero2x2)
 	EXPECT_FLOAT_EQ(z.r2c2, 0.0f);
 }
 
-GTEST_TEST(MatrixMath, GetZero3x3)
+GTEST_TEST(Matrix, GetZero3x3)
 {
-	const Matrix3x3 z = Math::MatrixMath::zero3x3();
+	const Matrix3x3 z = Math::Matrix::zero3x3();
 	EXPECT_FLOAT_EQ(z.r1c1, 0.0f);
 	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
 	EXPECT_FLOAT_EQ(z.r1c3, 0.0f);
@@ -1596,9 +1598,9 @@ GTEST_TEST(MatrixMath, GetZero3x3)
 	EXPECT_FLOAT_EQ(z.r3c3, 0.0f);
 }
 
-GTEST_TEST(MatrixMath, GetZero4x4)
+GTEST_TEST(Matrix, GetZero4x4)
 {
-	const Matrix4x4 z = Math::MatrixMath::zero4x4();
+	const Matrix4x4 z = Math::Matrix::zero4x4();
 	EXPECT_FLOAT_EQ(z.r1c1, 0.0f);
 	EXPECT_FLOAT_EQ(z.r1c2, 0.0f);
 	EXPECT_FLOAT_EQ(z.r1c3, 0.0f);
