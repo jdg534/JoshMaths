@@ -3,6 +3,7 @@
 
 #include <cassert>
 #include <cfloat>
+#include <cstring> // for std:memcpy
 
 /*
 Copyright (c) 2015 Joshua Gibson
