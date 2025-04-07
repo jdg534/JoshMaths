@@ -29,6 +29,7 @@ namespace Math
 {
 	namespace Interpolation
 	{
+		int intLerp(int a, int b, int targetPoint); // should be in range 0 - 100 inclusive
 		float lerp(float valueA, float valueB, float targetPoint); // target point should be between 0.0f & 1.0f
 		
 		// vector lerp

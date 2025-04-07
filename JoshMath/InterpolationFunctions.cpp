@@ -28,6 +28,12 @@ SOFTWARE.
 
 using namespace Math::Types;
 
+int intLerp(int a, int b, int targetPoint)
+{
+	throw std::exception("not implemented");
+	return -1;
+}
+
 float Math::Interpolation::lerp(float valueA, float valueB, float targetPoint) // target point should be between 0.0f & 1.0f
 {
 	return (1.0f - targetPoint) * valueA + targetPoint * valueB;
