@@ -78,7 +78,8 @@ namespace Math
 			float tx, float ty, float tz);
 
 		float interpolationWeight(float min, float max, float x);
-		int intinterpolationWeight(int min, int max, int x); // note this is note for accuracy. It's for running when without float arithmatic.
+		// note this is note for accuracy. It's for running when without float arithmatic.
+		int intInterpolationWeight(int min, int max, int x);
 
 		float smoothStep(float min, float max, float x);
 	}

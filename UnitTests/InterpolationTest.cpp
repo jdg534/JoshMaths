@@ -11,6 +11,13 @@ GTEST_TEST(Interpolation, IntLerpWorks)
 	EXPECT_EQ(expected, actual);
 }
 
+GTEST_TEST(Interpolation, IntLerpWeightBiasCorrect)
+{
+	const int a = 0, b = 100, weight = 25, expected = 25;
+	const int actual = Math::Interpolation::intLerp(a, b, weight);
+	EXPECT_EQ(expected, actual);
+}
+
 GTEST_TEST(Interpolation, IntLerpClampsAtMax)
 {
 	const int a = 5, b = 75, weight = 150, expected = 75;
@@ -53,7 +60,7 @@ GTEST_TEST(Interpolation, CalcWeightingValue)
 	EXPECT_FLOAT_EQ(expected, actual);
 }
 
-GTEST_TEST(Interpolatio, CalcWeightingValueGive1IfMinSameAsMax)
+GTEST_TEST(Interpolation, CalcWeightingValueGive1IfMinSameAsMax)
 {
 	float min, max, target, expected, actual;
 
@@ -66,6 +73,24 @@ GTEST_TEST(Interpolatio, CalcWeightingValueGive1IfMinSameAsMax)
 	actual = Math::Interpolation::interpolationWeight(min, max, target);
 
 	EXPECT_FLOAT_EQ(expected, actual);
+}
+
+// Note it's about not using floats, not persision.
+GTEST_TEST(Interpolation, CalcIntLerpWeightWorks)
+{
+	const int a = 25, b = 75, targetValue = 50, expectedLower = 45, expectedUpper = 55;
+	const int actual = Math::Interpolation::intInterpolationWeight(a, b, targetValue);
+	EXPECT_LT(expectedLower, actual);
+	EXPECT_LT(actual, expectedUpper);
+}
+
+// Note it's about not using floats, not persision.
+GTEST_TEST(Interpolation, CalcIntLerpWeightWorksBiggerMinThanMax)
+{
+	const int a = 100, b = 0, targetValue = 25, expectedLower = 70, expectedUpper = 80;
+	const int actual = Math::Interpolation::intInterpolationWeight(a, b, targetValue);
+	EXPECT_LT(expectedLower, actual);
+	EXPECT_LT(actual, expectedUpper);
 }
 
 GTEST_TEST(Interpolation, BiLerp)
