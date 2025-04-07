@@ -4,6 +4,28 @@
 
 using namespace Math::Types;
 
+GTEST_TEST(Interpolation, IntLerpWorks)
+{
+	const int a = 50, b = 100, weight = 50, expected = 75;
+	const int actual = Math::Interpolation::intLerp(a, b, weight);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(Interpolation, IntLerpClampsAtMax)
+{
+	const int a = 5, b = 75, weight = 150, expected = 75;
+	const int actual = Math::Interpolation::intLerp(a, b, weight);
+	EXPECT_EQ(expected, actual);
+}
+
+GTEST_TEST(Interpolation, IntLerpClampsAtMin)
+{
+	const int a = 5, b = 75, weight = -150, expected = 5;
+	const int actual = Math::Interpolation::intLerp(a, b, weight);
+	EXPECT_EQ(expected, actual);
+}
+
+
 GTEST_TEST(Interpolation, Lerp)
 {
 	float min, max, weight, expected, actual;
