@@ -174,6 +174,12 @@ float Math::Interpolation::interpolationWeight(float min, float max, float x)
 	return diffMinX / diffMinMax;
 }
 
+int Math::Interpolation::intinterpolationWeight(int min, int max, int x)
+{
+	throw std::exception("Not implemented");
+	return -1;
+}
+
 float Math::Interpolation::smoothStep(float min, float max, float x)
 {
 	float clampedX = std::max(min, std::min(max, x));
