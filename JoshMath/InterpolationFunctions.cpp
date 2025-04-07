@@ -28,7 +28,7 @@ SOFTWARE.
 
 using namespace Math::Types;
 
-int intLerp(int a, int b, int targetPoint)
+int Math::Interpolation::intLerp(int a, int b, int targetPoint)
 {
 	throw std::exception("not implemented");
 	return -1;
