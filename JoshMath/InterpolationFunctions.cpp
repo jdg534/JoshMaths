@@ -30,8 +30,11 @@ using namespace Math::Types;
 
 int Math::Interpolation::intLerp(int a, int b, int targetPoint)
 {
-	throw std::exception("not implemented");
-	return -1;
+	if (targetPoint <= 0) return a;
+	if (targetPoint >= 100) return b;
+	const int targetPointB = 100 - targetPoint;
+	return (a * targetPoint / 100)
+		 + (b * targetPointB / 100);
 }
 
 float Math::Interpolation::lerp(float valueA, float valueB, float targetPoint) // target point should be between 0.0f & 1.0f
