@@ -1,5 +1,6 @@
 #include "InterpolationFunctions.h"
 #include "QuaternionMath.h"
+#include "MiscellaneousFunctions.h"
 
 #include <cmath>
 
@@ -27,6 +28,15 @@ SOFTWARE.
 */
 
 using namespace Math::Types;
+
+int Math::Interpolation::intLerp(int a, int b, int targetPoint)
+{
+	if (targetPoint <= 0) return a;
+	if (targetPoint >= 100) return b;
+	const int weightTowardA = 100 - targetPoint;
+	return (a * weightTowardA / 100)
+		 + (b * targetPoint / 100);
+}
 
 float Math::Interpolation::lerp(float valueA, float valueB, float targetPoint) // target point should be between 0.0f & 1.0f
 {
@@ -163,6 +173,28 @@ float Math::Interpolation::interpolationWeight(float min, float max, float x)
 		return 1.0f;
 	}
 	return diffMinX / diffMinMax;
+}
+
+int Math::Interpolation::intInterpolationWeight(int min, int max, int x)
+{
+	if (max < min) return 100 - intInterpolationWeight(max, min, x); // flip
+	if (x <= min) return 0;
+	if (x >= max) return 100;
+	// Think binary search!
+	constexpr int start_weight = 50;
+	// fast return if the target point is exactly on the half way point.
+	constexpr int SPLITS = 50 / 2;
+	constexpr int maxBitShifts = 6; // can only shift 50 right, 6 times and still have whole number.
+	int weight = 50;
+	for (int numSplits = 1; numSplits < maxBitShifts; ++numSplits)
+	{
+		const int weightDiffForCurrentSplit = start_weight >> numSplits;
+		const int highValue = intLerp(min,max, weight + weightDiffForCurrentSplit);
+		const int lowValue = intLerp(min, max, weight - weightDiffForCurrentSplit);
+		const bool addTheLowWeight = std::abs(x - lowValue) < std::abs(x - highValue);
+		weight += addTheLowWeight ? -weightDiffForCurrentSplit : weightDiffForCurrentSplit;
+	}
+	return weight;
 }
 
 float Math::Interpolation::smoothStep(float min, float max, float x)

@@ -29,6 +29,7 @@ namespace Math
 {
 	namespace Interpolation
 	{
+		int intLerp(int a, int b, int targetPoint); // should be in range 0 - 100 inclusive
 		float lerp(float valueA, float valueB, float targetPoint); // target point should be between 0.0f & 1.0f
 		
 		// vector lerp
@@ -77,6 +78,8 @@ namespace Math
 			float tx, float ty, float tz);
 
 		float interpolationWeight(float min, float max, float x);
+		// note this is note for accuracy. It's for running when without float arithmatic.
+		int intInterpolationWeight(int min, int max, int x);
 
 		float smoothStep(float min, float max, float x);
 	}
